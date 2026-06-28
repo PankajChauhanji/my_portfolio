@@ -24,7 +24,7 @@ jobs:
             echo "❌ PUBLIC_REPO_TOKEN_PORTFOLIO is missing — add it under repo Settings → Secrets"
             exit 1
           fi
-          echo "✅ Token verified (${#PUBLIC_REPO_TOKEN} chars)"
+          echo "✅ Token verified (${#PUBLIC_REPO_TOKEN_PORTFOLIO} chars)"
 
       - name: Remove private content
         run: |
@@ -34,8 +34,11 @@ jobs:
           # ── Real content data ──
           remove_file data/explorer.json
 
-          # ── Real images (webp only; jpgs are already gitignored) ──
-          remove_dir  static/img/
+          # ── Real images — remove only trek photo subfolders, keep SVGs ──
+          remove_dir  static/img/valley_of_flowers
+          remove_dir  static/img/kedarkantha
+          remove_dir  static/img/badrinath
+          remove_dir  static/img/tungnath
 
           # ── Pre-built dist folder (contains rendered private content) ──
           remove_dir  dist
@@ -65,7 +68,7 @@ jobs:
         run: |
           git config user.name  "PankajChauhanji"
           git config user.email "pankajchauhan.nitsri@gmail.com"
-          git config --global url."https://x-access-token:${PUBLIC_REPO_TOKEN}@github.com/".insteadOf "https://github.com/"
+          git config --global url."https://x-access-token:${PUBLIC_REPO_TOKEN_PORTFOLIO}@github.com/".insteadOf "https://github.com/"
 
           git remote add public https://github.com/PankajChauhanji/my_portfolio.git
 
