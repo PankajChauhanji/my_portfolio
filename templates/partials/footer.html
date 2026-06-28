@@ -1,0 +1,13 @@
+<footer class="relative mt-24 border-t" style="border-color:var(--border)">
+  <div class="max-w-content mx-auto px-5 sm:px-8 py-10 flex flex-col sm:flex-row items-center justify-between gap-5">
+    <p class="font-mono text-xs text-muted">&copy; {{ year }} {{ profile.name }} - {{ site.footer_note }}</p>
+    <div class="flex items-center gap-5 font-mono text-sm">
+      {% if site.features.contact and site.contact.enabled %}
+      <button type="button" class="contact-open text-glacier hover:brightness-110 transition">{{ site.contact.button_label }}</button>
+      {% endif %}
+      {% for s in profile.social %}
+      <a href="{{ s.href }}"{% if s.type != 'email' %} target="_blank" rel="noopener"{% endif %} class="text-muted hover:text-glacier transition-colors">{{ s.label }}</a>
+      {% endfor %}
+    </div>
+  </div>
+</footer>

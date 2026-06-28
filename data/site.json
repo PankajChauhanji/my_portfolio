@@ -1,0 +1,55 @@
+{
+  "brand": "Pankaj",
+  "nav": [
+    { "label": "home", "endpoint": "home" },
+    { "label": "work", "endpoint": "projects" },
+    { "label": "explorer", "endpoint": "explorer" },
+    { "label": "blog", "endpoint": "blog" }
+  ],
+  "theme_default": "dark",
+  "features": { "projects": true, "explorer": true, "blog": true, "resume": true, "contact": true },
+  "seo": {
+    "description": "Pankaj Chauhan - Software Engineer specializing in Python, Agentic AI, and large-scale data extraction. Builder, problem-solver, high-altitude trekker.",
+    "keywords": ["Software Engineer", "Python", "Agentic AI", "RAG", "Data Extraction", "Perfios", "OCR", "LLM"]
+  },
+  "footer_note": "built with Flask & a lot of altitude.",
+  "contact": {
+    "enabled": true,
+    "button_label": "Connect",
+    "to_email": "pankajchauhan.nitsri@gmail.com",
+    "provider": "formsubmit",
+    "web3forms_access_key": "",
+    "heading": "Let's connect",
+    "subtitle": "Send me a message and I'll get back to you - no need to open your inbox.",
+    "success_message": "Thanks! Your message is on its way."
+  },
+  "pages": {
+    "home": {
+      "hero_greeting": "Hi, I'm",
+      "ctas": [
+        { "label": "View work", "endpoint": "projects", "style": "primary" },
+        { "label": "Read the blog", "endpoint": "blog", "style": "ghost" }
+      ],
+      "about":          { "eyebrow": "// about", "title_pre": "Two worlds,", "title_break": "one approach." },
+      "experience":     { "eyebrow": "// experience", "title": "Where I've shipped." },
+      "skills":         { "eyebrow": "// toolkit" },
+      "certifications": { "eyebrow": "// certifications" },
+      "cta":            { "title_pre": "Let's build something ", "title_accent": "solid", "title_post": ".", "subtitle": "Open to interesting problems in data, AI, and backend engineering." }
+    },
+    "projects": {
+      "eyebrow": "// work",
+      "title_pre": "Things I've ", "title_accent": "built", "title_post": ".",
+      "subtitle": "Pinned projects from my GitHub - games, data-science notebooks, and systems experiments. Each links straight to the source."
+    },
+    "explorer": {
+      "eyebrow": "// explorer",
+      "title_pre": "Life above the ", "title_accent": "treeline", "title_post": ".",
+      "subtitle": "High-altitude treks across the Himalaya, sorted by altitude. Tap any one to open its story and full photo gallery."
+    },
+    "blog": {
+      "eyebrow": "// blog",
+      "title_pre": "Notes & ", "title_accent": "writing", "title_post": ".",
+      "subtitle": "Thoughts on engineering, data, AI - and the occasional dispatch from altitude."
+    }
+  }
+}

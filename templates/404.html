@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block title %}Lost - {{ profile.name }}{% endblock %}
+{% block content %}
+<section class="max-w-content mx-auto px-5 sm:px-8 min-h-[60vh] flex flex-col justify-center text-center">
+  <p class="font-display font-bold text-7xl sm:text-9xl alpenglow">404</p>
+  <p class="font-mono text-muted mt-4">Off the marked trail - this route doesn't exist.</p>
+  <div class="mt-8"><a href="{{ url_for('home') }}" class="btn btn-primary">&larr; Back to base camp</a></div>
+</section>
+{% endblock %}

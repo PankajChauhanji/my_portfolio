@@ -1,0 +1,24 @@
+[
+  {
+    "slug": "cutting-ocr-costs",
+    "title": "Cutting OCR Costs by 85% Without Losing Accuracy",
+    "excerpt": "Region-of-interest cropping, smart caching, and a little prompt engineering go a long way when you're processing millions of documents.",
+    "date": "2026-05-18",
+    "tags": ["Engineering", "OCR", "LLMs"],
+    "cover": "/static/img/blog-cutting-ocr-costs.svg",
+    "reading_time": "6 min read",
+    "content_file": "cutting-ocr-costs.md",
+    "published": true
+  },
+  {
+    "slug": "notes-from-6153m",
+    "title": "Notes from 6,153 m",
+    "excerpt": "What a midnight summit push on Stok Kangri taught me about pacing, planning, and shipping software.",
+    "date": "2026-04-02",
+    "tags": ["Mountains", "Life"],
+    "cover": "/static/img/blog-notes-from-6153m.svg",
+    "reading_time": "4 min read",
+    "content_file": "notes-from-6153m.md",
+    "published": true
+  }
+]

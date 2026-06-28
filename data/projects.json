@@ -1,0 +1,98 @@
+[
+  {
+    "slug": "drawhunt",
+    "title": "DrawHunt",
+    "summary": "A draw-and-guess party game for the browser - one player sketches the secret word while everyone else races to guess it.",
+    "description": "DrawHunt is a browser-based take on the classic draw-and-guess game. One player gets a word and sketches it on a shared canvas while the others type their guesses against the clock.",
+    "highlights": [
+      "Real-time canvas drawing and guessing loop",
+      "Lightweight, no-install browser gameplay"
+    ],
+    "tags": ["JavaScript", "HTML5 Canvas", "Game"],
+    "language": "JavaScript",
+    "links": [{ "label": "Source", "href": "https://github.com/PankajChauhanji/DrawHunt", "type": "github" }],
+    "year": "",
+    "featured": true,
+    "cover": "/static/img/project-drawhunt.svg"
+  },
+  {
+    "slug": "super-seven-cards",
+    "title": "Super Seven Cards",
+    "summary": "A digital implementation of the Sevens card game (a.k.a. Card Dominoes), built in Python.",
+    "description": "A Python implementation of Sevens / Card Dominoes, where players build sequences outward from the sevens. Includes the full game logic and turn handling.",
+    "highlights": [
+      "Complete Sevens game rules and turn engine",
+      "Clean, testable Python game logic"
+    ],
+    "tags": ["Python", "Game", "Logic"],
+    "language": "Python",
+    "links": [{ "label": "Source", "href": "https://github.com/PankajChauhanji/SuperSevenCards", "type": "github" }],
+    "year": "",
+    "featured": true,
+    "cover": "/static/img/project-super-seven-cards.svg"
+  },
+  {
+    "slug": "ocr-string-similarity",
+    "title": "OCR String Similarity",
+    "summary": "Image-similarity and fuzzy string-matching experiments for cleaning up noisy OCR output.",
+    "description": "A set of experiments in image similarity and fuzzy string matching aimed at de-noising and reconciling OCR output against references - the same class of problem behind my day-job parser work.",
+    "highlights": [
+      "Image similarity matching for OCR de-duplication",
+      "Fuzzy string comparison for noisy text"
+    ],
+    "tags": ["Python", "OCR", "Jupyter", "NLP"],
+    "language": "Jupyter Notebook",
+    "links": [{ "label": "Source", "href": "https://github.com/PankajChauhanji/ocr-string-similarity", "type": "github" }],
+    "year": "",
+    "featured": true,
+    "cover": "/static/img/project-ocr-string-similarity.svg"
+  },
+  {
+    "slug": "cricket-analysis-prediction",
+    "title": "Cricket Analysis & Prediction",
+    "summary": "Exploratory data analysis and predictive modelling on cricket match data.",
+    "description": "A data-science notebook that explores historical cricket data and builds models to predict innings scores and outcomes - feature engineering, EDA, and regression in one place.",
+    "highlights": [
+      "EDA on historical match data",
+      "Regression models for score prediction"
+    ],
+    "tags": ["Python", "Pandas", "ML", "Jupyter"],
+    "language": "Jupyter Notebook",
+    "links": [{ "label": "Source", "href": "https://github.com/PankajChauhanji/cricket-analysis-prediction", "type": "github" }],
+    "year": "",
+    "featured": true,
+    "cover": "/static/img/project-cricket-analysis-prediction.svg"
+  },
+  {
+    "slug": "line-encoder",
+    "title": "Line Encoder & Scrambler",
+    "summary": "Digital line-encoding schemes and scrambling techniques, implemented from scratch in Python.",
+    "description": "An implementation of classic digital line-encoding schemes - NRZ-L, NRZ-I, RZ, Manchester, Differential Manchester, AMI, and pseudoternary - plus advanced scrambling techniques B8ZS and 4B5B.",
+    "highlights": [
+      "Seven line-encoding schemes implemented from scratch",
+      "B8ZS and 4B5B scrambling"
+    ],
+    "tags": ["Python", "Networking", "Algorithms"],
+    "language": "Python",
+    "links": [{ "label": "Source", "href": "https://github.com/PankajChauhanji/line_encoder", "type": "github" }],
+    "year": "",
+    "featured": true,
+    "cover": "/static/img/project-line-encoder.svg"
+  },
+  {
+    "slug": "salary-predictions",
+    "title": "Salary Predictions",
+    "summary": "A regression model that predicts software-developer salaries from experience and skills.",
+    "description": "A machine-learning project that predicts software-developer salaries from features like experience and skill set, wrapped in a simple, explainable regression model.",
+    "highlights": [
+      "Salary prediction via regression",
+      "Feature engineering on developer attributes"
+    ],
+    "tags": ["Python", "ML", "Regression"],
+    "language": "Python",
+    "links": [{ "label": "Source", "href": "https://github.com/PankajChauhanji/salary_predictions", "type": "github" }],
+    "year": "",
+    "featured": true,
+    "cover": "/static/img/project-salary-predictions.svg"
+  }
+]

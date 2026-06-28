@@ -1,0 +1,43 @@
+<header class="sticky top-0 z-40 backdrop-blur-md" style="background:color-mix(in srgb, var(--bg) 78%, transparent); border-bottom:1px solid var(--border)">
+  <nav class="max-w-content mx-auto px-5 sm:px-8 h-16 flex items-center justify-between">
+    <a href="{{ url_for('home') }}" class="flex items-center gap-2.5 group">
+      <img src="{{ url_for('static', filename='img/favicon.svg') }}" alt="" class="w-7 h-7 transition-transform group-hover:-translate-y-0.5">
+      <span class="font-display font-bold text-lg tracking-tight">{{ site.brand }}<span class="text-glacier">.</span></span>
+    </a>
+    <div class="hidden md:flex items-center gap-6">
+      {% for item in site.nav %}
+      <a href="{{ url_for(item.endpoint) }}" class="nav-link {{ 'active' if active==item.endpoint }}">{{ item.label }}</a>
+      {% endfor %}
+      {% if site.features.contact and site.contact.enabled %}
+      <button type="button" class="contact-open nav-link">{{ site.contact.button_label | lower }}</button>
+      {% endif %}
+      {% if site.features.resume %}
+      <a href="{{ url_for('resume') }}" download class="btn btn-primary !px-4 !py-2 text-xs">&darr; {{ profile.resume.label }}</a>
+      {% endif %}
+      <button id="theme-toggle" type="button" aria-label="Toggle colour theme" class="grid place-items-center w-9 h-9 rounded-full border border-border hover:border-glacier transition-colors">
+        <span class="hidden dark:inline text-base" aria-hidden="true">&#9728;</span>
+        <span class="inline dark:hidden text-base" aria-hidden="true">&#9790;</span>
+      </button>
+    </div>
+    <div class="flex md:hidden items-center gap-2">
+      <button id="theme-toggle-m" type="button" aria-label="Toggle colour theme" class="grid place-items-center w-9 h-9 rounded-full border border-border">
+        <span class="hidden dark:inline" aria-hidden="true">&#9728;</span>
+        <span class="inline dark:hidden" aria-hidden="true">&#9790;</span>
+      </button>
+      <button id="menu-btn" type="button" aria-label="Open menu" aria-expanded="false" class="grid place-items-center w-9 h-9 rounded-full border border-border font-mono">&#8801;</button>
+    </div>
+  </nav>
+  <div id="mobile-menu" class="md:hidden hidden border-t" style="border-color:var(--border); background:var(--bg)">
+    <div class="px-5 py-3 flex flex-col gap-1">
+      {% for item in site.nav %}
+      <a href="{{ url_for(item.endpoint) }}" class="nav-link py-2 {{ 'active' if active==item.endpoint }}">{{ item.label }}</a>
+      {% endfor %}
+      {% if site.features.contact and site.contact.enabled %}
+      <button type="button" class="contact-open nav-link py-2 text-left">{{ site.contact.button_label | lower }}</button>
+      {% endif %}
+      {% if site.features.resume %}
+      <a href="{{ url_for('resume') }}" download class="nav-link py-2 text-glacier">&darr; {{ profile.resume.label }}</a>
+      {% endif %}
+    </div>
+  </div>
+</header>

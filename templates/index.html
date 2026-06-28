@@ -1,0 +1,126 @@
+{% extends 'base.html' %}
+{% block title %}{{ profile.name }}{% endblock %}
+{% set hp = site.pages.home %}
+{% block content %}
+<!-- HERO -->
+<section class="max-w-content mx-auto px-5 sm:px-8 pt-20 sm:pt-28 pb-16">
+  <p class="eyebrow reveal">{{ profile.role }} &middot; {{ profile.company }} &middot; {{ profile.location }}</p>
+  <h1 class="reveal font-display font-bold tracking-tight leading-[0.95] mt-5 text-5xl sm:text-7xl lg:text-8xl">
+    <span class="block text-text">{{ hp.hero_greeting }}</span>
+    <span class="block alpenglow">{{ profile.name }}</span>
+  </h1>
+  <div class="reveal mt-7 font-mono text-base sm:text-lg text-muted">
+    <span class="text-glacier">~/whoami</span><span class="text-text/60"> &#10095; </span><span id="typer" class="text-text cursor-blink" data-roles='{{ profile.terminal_roles | tojson }}'></span>
+  </div>
+  <p class="reveal mt-7 max-w-2xl text-lg sm:text-xl text-muted leading-relaxed">{{ profile.tagline }}</p>
+  <div class="reveal mt-9 flex flex-wrap gap-3">
+    {% for c in hp.ctas %}
+    <a href="{{ url_for(c.endpoint) }}" class="btn {{ 'btn-primary' if c.style=='primary' else 'btn-ghost' }}">{{ c.label }}{{ ' &rarr;' | safe if c.style=='primary' }}</a>
+    {% endfor %}
+    {% if site.features.resume %}<a href="{{ url_for('resume') }}" download class="btn btn-ghost">&darr; {{ profile.resume.label }}</a>{% endif %}
+  </div>
+</section>
+
+<!-- STATS -->
+<section class="max-w-content mx-auto px-5 sm:px-8 pb-20">
+  <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
+    {% for s in profile.stats %}
+    <div class="reveal card rounded-2xl p-5 sm:p-6">
+      <div class="font-display font-bold text-3xl sm:text-4xl {{ 'alpenglow' if s.kind == 'trek' else 'text-glacier' }}">{{ s.value }}</div>
+      <div class="font-mono text-[11px] uppercase tracking-wider text-muted mt-2">{{ '\u25b2' if s.kind == 'trek' else '$' }} {{ s.label }}</div>
+    </div>
+    {% endfor %}
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="max-w-content mx-auto px-5 sm:px-8 pb-24">
+  <div class="grid lg:grid-cols-[0.4fr_0.6fr] gap-10 lg:gap-16 items-start">
+    <div class="reveal">
+      <p class="eyebrow">{{ hp.about.eyebrow }}</p>
+      <h2 class="font-display font-bold text-3xl sm:text-4xl mt-4 leading-tight">{{ hp.about.title_pre }}<br>{{ hp.about.title_break }}</h2>
+      <p class="font-mono text-sm text-muted mt-6 border-l-2 pl-4" style="border-color:var(--glacier)">"{{ profile.quote }}"</p>
+    </div>
+    <div class="reveal space-y-5 text-lg text-muted leading-relaxed">
+      {% for para in profile.about %}<p>{{ para }}</p>{% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section class="max-w-content mx-auto px-5 sm:px-8 pb-24">
+  <p class="eyebrow reveal">{{ hp.experience.eyebrow }}</p>
+  <h2 class="reveal font-display font-bold text-3xl sm:text-4xl mt-4 mb-10">{{ hp.experience.title }}</h2>
+  <div class="space-y-5">
+    {% for job in profile.experience %}
+    <div class="reveal card rounded-3xl p-6 sm:p-8">
+      <div class="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
+        <h3 class="font-display font-bold text-xl">{{ job.company }}</h3>
+        <span class="font-mono text-xs text-muted">{{ job.location }}</span>
+      </div>
+      {% for role in job.roles %}
+      <div class="mt-5 {% if not loop.first %}pt-5{% endif %}" {% if not loop.first %}style="border-top:1px dashed var(--border)"{% endif %}>
+        <div class="flex flex-wrap items-baseline justify-between gap-x-4">
+          <h4 class="font-semibold text-text flex items-center gap-2">
+            {{ role.title }}
+            {% if role.current %}<span class="font-mono text-[10px] uppercase tracking-wider px-2 py-0.5 rounded-full" style="background:color-mix(in srgb,var(--glacier) 18%,transparent);color:var(--glacier)">current</span>{% endif %}
+          </h4>
+          <span class="font-mono text-xs text-muted">{{ role.start }} &ndash; {{ role.end }}</span>
+        </div>
+        <ul class="mt-3 space-y-2">
+          {% for h in role.highlights %}
+          <li class="flex gap-3 text-muted leading-relaxed text-[15px]"><span class="text-glacier mt-1 shrink-0">&#9651;</span><span>{{ h }}</span></li>
+          {% endfor %}
+        </ul>
+      </div>
+      {% endfor %}
+    </div>
+    {% endfor %}
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section class="max-w-content mx-auto px-5 sm:px-8 pb-24">
+  <p class="eyebrow reveal">{{ hp.skills.eyebrow }}</p>
+  <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 mt-6">
+    {% for group in profile.skills %}
+    <div class="reveal card rounded-2xl p-6">
+      <h3 class="font-display font-semibold text-lg mb-4 flex items-center gap-2"><span class="w-2 h-2 rounded-full alpenglow-bar"></span>{{ group.group }}</h3>
+      <div class="flex flex-wrap gap-2">
+        {% for item in group['items'] %}<span class="tag">{{ item }}</span>{% endfor %}
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</section>
+
+<!-- CERTIFICATIONS -->
+<section class="max-w-content mx-auto px-5 sm:px-8 pb-24">
+  <p class="eyebrow reveal">{{ hp.certifications.eyebrow }}</p>
+  <div class="grid sm:grid-cols-2 gap-3 mt-6">
+    {% for c in profile.certifications %}
+    <a href="{{ c.url }}" target="_blank" rel="noopener" class="reveal card rounded-xl p-4 flex items-center justify-between gap-4 group">
+      <div>
+        <div class="font-medium text-text leading-snug">{{ c.name }}</div>
+        <div class="font-mono text-xs text-muted mt-1">{{ c.issuer }}</div>
+      </div>
+      <span class="font-mono text-xs text-glacier shrink-0 opacity-70 group-hover:opacity-100 transition-opacity">verify &#8599;</span>
+    </a>
+    {% endfor %}
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="max-w-content mx-auto px-5 sm:px-8 pb-8">
+  <div class="reveal card rounded-3xl p-8 sm:p-12 text-center">
+    <h2 class="font-display font-bold text-3xl sm:text-5xl">{{ hp.cta.title_pre }}<span class="alpenglow">{{ hp.cta.title_accent }}</span>{{ hp.cta.title_post }}</h2>
+    <p class="text-muted mt-4 max-w-xl mx-auto">{{ hp.cta.subtitle }}</p>
+    <div class="mt-7 flex flex-wrap gap-3 justify-center">
+      {% if site.features.contact and site.contact.enabled %}<button type="button" class="contact-open btn btn-primary">{{ site.contact.button_label }}</button>{% endif %}
+      {% for s in profile.social %}
+      <a href="{{ s.href }}"{% if s.type != 'email' %} target="_blank" rel="noopener"{% endif %} class="btn btn-ghost">{{ s.label }}</a>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endblock %}

@@ -1,0 +1,115 @@
+{
+  "name": "Pankaj Chauhan",
+  "first_name": "Pankaj",
+  "role": "Software Engineer",
+  "title": "Senior Member of Technical Staff",
+  "company": "Perfios Software Solutions",
+  "location": "New Delhi, India",
+  "hometown": "Dehradun, Uttarakhand",
+  "email": "pankajchauhan.nitsri@gmail.com",
+  "phone": "+91 8057307366",
+  "quote": "Be the change that you want to see in the world.",
+  "tagline": "I turn millions of messy PDFs into clean, structured data - and trade screens for ridgelines on the weekend.",
+  "terminal_roles": [
+    "software_engineer @ perfios",
+    "agentic_ai_builder",
+    "pdf_data_miner",
+    "high_altitude_trekker"
+  ],
+  "summary": "Software Engineer specializing in Python and Agentic AI, building scalable data-extraction pipelines for millions of records. I integrate LLMs, RAG, and custom parser frameworks to hit 98%+ accuracy while cutting operational and OCR costs.",
+  "about": [
+    "I build scalable backend systems for fintech, where my work revolves around one messy problem: extracting clean, structured data from millions of complex PDFs and images. I've built the core pipelines that handle extraction at massive scale, engineered custom parser frameworks, and shipped PDF-tampering detection that has secured over 1.5 million documents.",
+    "Lately my focus has shifted toward applied AI inside enterprise systems - LLMs, RAG, and agentic workflows powering risk-monitoring products that are smarter and far cheaper to run. Combining traditional data mining with modern generative models is exactly the kind of problem I want to keep solving.",
+    "Away from the keyboard I'm usually at altitude. Long approaches and quiet summits in the Himalaya are how I reset - and planning an expedition turns out to be a lot like planning a release."
+  ],
+  "resume": { "file": "resume.pdf", "label": "Résumé" },
+  "stats": [
+    { "label": "years_building", "value": "5+", "kind": "code" },
+    { "label": "docs_secured", "value": "1.5M+", "kind": "code" },
+    { "label": "extraction_accuracy", "value": "98%+", "kind": "code" },
+    { "label": "highest_trek_m", "value": "6,153", "kind": "trek" }
+  ],
+  "skills": [
+    { "group": "Languages", "items": ["Python", "C++", "Java", "JavaScript"] },
+    { "group": "Generative AI & RAG", "items": ["Prompt Engineering", "Agentic AI", "RAG", "Vector Databases", "LLM Integration", "MCP", "LangChain", "LangGraph", "CrewAI"] },
+    { "group": "Data Mining", "items": ["PDF Parsing", "OCR", "Tampering Detection", "Generic Parsers", "Pandas", "NumPy", "PyMuPDF", "pdfplumber"] },
+    { "group": "Web & Data", "items": ["Flask", "Node.js", "PostgreSQL", "MySQL", "MongoDB", "REST APIs"] },
+    { "group": "Tooling", "items": ["Linux", "Git", "Docker", "Jupyter", "VS Code", "Jira"] }
+  ],
+  "experience": [
+    {
+      "company": "Perfios Software Solutions",
+      "location": "New Delhi, India",
+      "roles": [
+        {
+          "title": "Senior Member of Technical Staff",
+          "start": "Apr 2024", "end": "Present", "current": true,
+          "highlights": [
+            "Architected a Corporate Risk platform monitoring Indian entities for adverse media and governance risk - a 10K/day pipeline with custom ML noise-filters and a scalable API layer.",
+            "Cut LLM costs by 85% through advanced prompt engineering while accurately classifying Fraud, Litigation, and Misconduct risk.",
+            "Built a DGFT trade-risk pipeline that analyses daily court judgments, combining multi-stage OCR with prompt engineering to classify complex legal risk.",
+            "Led research on table extraction from PDFs and images, shipping a versatile solution across 10M+ records."
+          ]
+        },
+        {
+          "title": "Software Engineer - II",
+          "start": "Apr 2022", "end": "Apr 2024", "current": false,
+          "highlights": [
+            "Developed an industry-first PDF Tampering Detection solution for banking fraud, analysing 1.5M+ documents with an automated scoring mechanism that slashed false positives.",
+            "Built a versatile parser-utility framework for fields, tables, and key-value pairs from PDFs, images, and OCR - cutting development time 80-85% at 98.6% accuracy.",
+            "Improved accuracy and latency with OCR error management, caching, and region-of-interest cropping."
+          ]
+        }
+      ]
+    },
+    {
+      "company": "Karza Technologies",
+      "location": "Mumbai, India",
+      "roles": [
+        {
+          "title": "Software Engineer",
+          "start": "Jun 2021", "end": "Apr 2022", "current": false,
+          "highlights": [
+            "Built low-latency parser APIs for KYC services, integrating Google OCR and Azure OCR.",
+            "Reduced API latency 40% via caching and optimised search algorithms.",
+            "Created custom parsers for complex tables, removing the need for expensive third-party APIs."
+          ]
+        }
+      ]
+    },
+    {
+      "company": "SmartServ",
+      "location": "Pune, India",
+      "roles": [
+        {
+          "title": "Software Development Intern",
+          "start": "Jan 2021", "end": "Jun 2021", "current": false,
+          "highlights": [
+            "Wrote SQL and MongoDB migration scripts and built front-end features with React and jQuery.",
+            "Took ownership from root-cause analysis to production release."
+          ]
+        }
+      ]
+    }
+  ],
+  "education": [
+    {
+      "institution": "National Institute of Technology, Srinagar",
+      "degree": "B.Tech", "field": "Information Technology",
+      "start": "2017", "end": "2021", "location": "J&K, India"
+    }
+  ],
+  "certifications": [
+    { "name": "IBM RAG and Agentic AI (Specialization)", "issuer": "IBM", "url": "https://coursera.org/share/920288b8a01f570be6ecc0c0f108cb7f" },
+    { "name": "Generative AI for Software Developers (Specialization)", "issuer": "IBM", "url": "https://coursera.org/share/e677124390f6b70b9dbe6f23f8863d3a" },
+    { "name": "Advanced RAG with Vector Databases & Retrievers", "issuer": "IBM", "url": "https://coursera.org/share/847e231943eb0f614734b41fd800d220" },
+    { "name": "Agentic AI with LangGraph, CrewAI, AutoGen & BeeAI", "issuer": "IBM", "url": "https://coursera.org/share/a06e4ae58ee07e980be718acfb1511f7" },
+    { "name": "Build AI Agents using MCP", "issuer": "IBM", "url": "https://coursera.org/share/fc5f79e74ba8998e5e94e338fa0ab702" },
+    { "name": "Build Multimodal Generative AI Applications", "issuer": "IBM", "url": "https://coursera.org/share/b778bd48faea85c520e96ec494e67bac" }
+  ],
+  "social": [
+    { "label": "GitHub", "href": "https://github.com/PankajChauhanji", "type": "link" },
+    { "label": "LinkedIn", "href": "https://www.linkedin.com/in/pankaj-chauhan-sde/", "type": "link" },
+    { "label": "Email", "href": "mailto:pankajchauhan.nitsri@gmail.com", "type": "email" }
+  ]
+}

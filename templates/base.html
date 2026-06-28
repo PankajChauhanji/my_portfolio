@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="{{ site.seo.description }}">
+  <meta name="keywords" content="{{ site.seo.keywords | join(', ') }}">
+  <meta name="author" content="{{ profile.name }}">
+  <meta property="og:title" content="{{ profile.name }} - {{ profile.role }}">
+  <meta property="og:description" content="{{ site.seo.description }}">
+  <meta property="og:type" content="website">
+  <title>{% block title %}{{ profile.name }}{% endblock %} - {{ profile.role }}</title>
+  <link rel="icon" href="{{ url_for('static', filename='img/favicon.svg') }}" type="image/svg+xml">
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem('theme');
+        if (t === 'light') document.documentElement.classList.remove('dark');
+        else document.documentElement.classList.add('dark');
+      } catch (e) { document.documentElement.classList.add('dark'); }
+    })();
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/output.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+  <noscript><style>.reveal{opacity:1!important;transform:none!important}</style></noscript>
+</head>
+<body class="font-sans antialiased min-h-screen flex flex-col overflow-x-hidden">
+  <a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:z-50 focus:top-3 focus:left-3 focus:bg-surface focus:text-text focus:px-4 focus:py-2 focus:rounded-lg focus:border focus:border-border">Skip to content</a>
+  <div class="contour-field" aria-hidden="true">{% include 'partials/contours.svg' %}</div>
+  <div class="aurora" style="width:42vw;height:42vw;top:-12vw;left:-8vw;background:var(--alpenglow-1)" aria-hidden="true"></div>
+  <div class="aurora" style="width:38vw;height:38vw;top:8vw;right:-12vw;background:var(--alpenglow-3)" aria-hidden="true"></div>
+  {% include 'partials/nav.html' %}
+  <main id="main" class="flex-1 w-full">{% block content %}{% endblock %}</main>
+  {% include 'partials/footer.html' %}
+  {% include 'partials/contact_modal.html' %}
+  <script src="{{ url_for('static', filename='js/main.js') }}" defer></script>
+  {% block scripts %}{% endblock %}
+</body>
+</html>

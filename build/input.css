@@ -1,0 +1,14 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .btn { @apply inline-flex items-center gap-2 rounded-full px-5 py-2.5 font-medium transition-all duration-300 text-sm; }
+  .btn-primary { @apply text-bg; background-image: linear-gradient(90deg, var(--alpenglow-1), var(--alpenglow-2), var(--alpenglow-3)); }
+  .btn-primary:hover { filter: brightness(1.08); transform: translateY(-2px); }
+  .btn-ghost { @apply border border-border text-text hover:border-glacier; }
+  .tag { @apply font-mono text-[11px] uppercase tracking-wider rounded-md px-2 py-1 border border-border text-muted; }
+  .eyebrow { @apply font-mono text-xs uppercase tracking-[0.25em] text-glacier; }
+  .nav-link { @apply font-mono text-sm text-muted hover:text-text transition-colors relative; }
+  .nav-link.active { @apply text-text; }
+}

@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#0e2038"/><stop offset="0.55" stop-color="#2c4469"/><stop offset="1" stop-color="#ffd49a"/>
+    </linearGradient>
+    <radialGradient id="orb" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#ffd9a6" stop-opacity="0.95"/><stop offset="1" stop-color="#ffd9a6" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="800" height="600" fill="url(#sky)"/>
+  <circle cx="480" cy="132" r="120" fill="url(#orb)"/>
+  <circle cx="480" cy="132" r="38" fill="#ffd9a6" opacity="0.9"/>
+  <path d="M0,600 L0,344 L24,339 L48,285 L72,329 L96,314 L120,279 L144,320 L168,251 L192,299 L216,253 L240,294 L264,299 L288,248 L312,235 L336,241 L360,297 L384,243 L408,276 L432,289 L456,228 L480,297 L504,289 L528,272 L552,291 L576,250 L600,242 L624,259 L648,302 L672,302 L696,299 L720,285 L744,289 L768,295 L792,278 L800,600 Z" fill="#294166" opacity="0.55"/>
+  <path d="M0,600 L0,392 L24,312 L48,364 L72,314 L96,308 L120,301 L144,327 L168,368 L192,282 L216,366 L240,256 L264,292 L288,350 L312,331 L336,247 L360,246 L384,332 L408,349 L432,245 L456,299 L480,333 L504,357 L528,256 L552,364 L576,299 L600,295 L624,273 L648,291 L672,288 L696,309 L720,359 L744,413 L768,416 L792,366 L800,600 Z" fill="#213859" opacity="0.85"/>
+  <path d="M0,600 L0,508 L24,503 L48,435 L72,354 L96,426 L120,419 L144,404 L168,450 L192,373 L216,424 L240,424 L264,298 L288,312 L312,359 L336,288 L360,360 L384,311 L408,278 L432,325 L456,418 L480,292 L504,305 L528,406 L552,319 L576,355 L600,337 L624,438 L648,344 L672,337 L696,404 L720,357 L744,444 L768,506 L792,383 L800,600 Z" fill="#081322" opacity="1.0"/>
+</svg>

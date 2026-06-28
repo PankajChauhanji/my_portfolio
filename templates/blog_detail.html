@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block title %}{{ post.title }} - {{ profile.name }}{% endblock %}
+{% block content %}
+<article class="max-w-content mx-auto px-5 sm:px-8 pt-8">
+  <a href="{{ url_for('blog') }}" class="font-mono text-sm text-muted hover:text-glacier transition-colors inline-flex items-center gap-1.5"><span aria-hidden="true">&larr;</span> all posts</a>
+
+  <header class="max-w-3xl mx-auto pt-10 text-center">
+    <div class="font-mono text-xs text-muted flex items-center justify-center gap-3">
+      <span>{{ fmt_date(post.date) }}</span><span class="opacity-40">/</span><span>{{ post.reading_time }}</span>
+    </div>
+    <h1 class="font-display font-bold text-3xl sm:text-5xl leading-tight mt-4">{{ post.title }}</h1>
+    <div class="flex flex-wrap gap-2 justify-center mt-5">{% for t in post.tags %}<span class="tag">{{ t }}</span>{% endfor %}</div>
+  </header>
+
+  <div class="max-w-3xl mx-auto mt-10 rounded-3xl overflow-hidden aspect-[2/1]">
+    <img src="{{ post.cover }}" alt="{{ post.title }}" class="w-full h-full object-cover">
+  </div>
+
+  <div class="prose-portfolio max-w-2xl mx-auto mt-12">
+    {{ content_html | safe }}
+  </div>
+
+  <div class="max-w-2xl mx-auto mt-14 pt-8 text-center" style="border-top:1px solid var(--border)">
+    <a href="{{ url_for('blog') }}" class="btn btn-ghost">&larr; Back to all posts</a>
+  </div>
+</article>
+{% endblock %}

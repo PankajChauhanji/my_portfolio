@@ -1,0 +1,134 @@
+[
+  {
+    "slug": "stok-kangri", "title": "Stok Kangri", "type": "trek", "region": "Ladakh, India",
+    "altitude_m": 6153,
+    "summary": "A demanding non-technical 6000er. The summit push starts near midnight; the air at the top makes every step a negotiation.",
+    "story": [
+      "Stok Kangri is the kind of mountain that looks impossible from base camp and only slightly less so at 2 a.m. when you clip on the headtorch. There's nothing technical about it - and yet at 6,153 m the thin air turns simple walking into the hardest thing you've done.",
+      "We acclimatised for days in Leh and at advance base before the summit night. The reward is a sunrise over the Karakoram that I still think about on hard days at work."
+    ],
+    "stats": [
+      { "label": "Altitude", "value": "6,153 m" },
+      { "label": "Duration", "value": "8 days" },
+      { "label": "Best season", "value": "August" },
+      { "label": "Grade", "value": "Challenging" }
+    ],
+    "cover": "/static/img/trek-stok-kangri.svg",
+    "gallery": [
+      { "src": "/static/img/trek-stok-kangri-1.svg", "caption": "First light on the summit ridge" },
+      { "src": "/static/img/trek-stok-kangri-2.svg", "caption": "Advance base camp" },
+      { "src": "/static/img/trek-stok-kangri-3.svg", "caption": "The long walk in" },
+      { "src": "/static/img/trek-stok-kangri-4.svg", "caption": "Glacier crossing at dawn" }
+    ]
+  },
+  {
+    "slug": "roopkund", "title": "Roopkund", "type": "trek", "region": "Uttarakhand, India",
+    "altitude_m": 5029,
+    "summary": "The mystery lake trek - a glacial tarn rimmed with ancient skeletons, reached through meadows that turn gold in autumn.",
+    "story": [
+      "Roopkund is famous for the human skeletons scattered around its shore, but what stays with you is the approach: endless golden meadows, the climb to Junargali, and the first sight of the frozen lake far below.",
+      "Autumn light on the Bugyals is unreal. This was the trek that made me fall for the high Himalaya."
+    ],
+    "stats": [
+      { "label": "Altitude", "value": "5,029 m" },
+      { "label": "Duration", "value": "7 days" },
+      { "label": "Best season", "value": "September" },
+      { "label": "Grade", "value": "Moderate-Hard" }
+    ],
+    "cover": "/static/img/trek-roopkund.svg",
+    "gallery": [
+      { "src": "/static/img/trek-roopkund-1.svg", "caption": "Golden meadows below Bedni" },
+      { "src": "/static/img/trek-roopkund-2.svg", "caption": "Approach to Junargali" },
+      { "src": "/static/img/trek-roopkund-3.svg", "caption": "The frozen lake" },
+      { "src": "/static/img/trek-roopkund-4.svg", "caption": "Camp under the stars" }
+    ]
+  },
+  {
+    "slug": "hampta-pass", "title": "Hampta Pass", "type": "trek", "region": "Himachal Pradesh, India",
+    "altitude_m": 4270,
+    "summary": "A dramatic crossover: lush green Kullu on one side, the stark cold desert of Spiti on the other, split by a single high pass.",
+    "story": [
+      "Few treks change scenery as fast as Hampta. You start in pine forest and river meadows on the Kullu side and crest the pass into the moonscape of Spiti within a day.",
+      "The pass day is long and the descent is steep, but standing on the col with two completely different worlds on either side is hard to beat."
+    ],
+    "stats": [
+      { "label": "Altitude", "value": "4,270 m" },
+      { "label": "Duration", "value": "5 days" },
+      { "label": "Best season", "value": "June" },
+      { "label": "Grade", "value": "Moderate" }
+    ],
+    "cover": "/static/img/trek-hampta-pass.svg",
+    "gallery": [
+      { "src": "/static/img/trek-hampta-pass-1.svg", "caption": "River meadows on the Kullu side" },
+      { "src": "/static/img/trek-hampta-pass-2.svg", "caption": "The pass at first light" },
+      { "src": "/static/img/trek-hampta-pass-3.svg", "caption": "Crossing into Spiti" },
+      { "src": "/static/img/trek-hampta-pass-4.svg", "caption": "Chandratal blue" }
+    ]
+  },
+  {
+    "slug": "kashmir-great-lakes", "title": "Kashmir Great Lakes", "type": "trek", "region": "Jammu & Kashmir, India",
+    "altitude_m": 4191,
+    "summary": "Seven alpine lakes strung across high passes. Easily the most scenic stretch I've walked - every campsite better than the last.",
+    "story": [
+      "The Kashmir Great Lakes trek is a greatest-hits reel of alpine scenery: meadow after meadow, pass after pass, and a new turquoise lake waiting on the far side of each.",
+      "It's not the highest trek I've done, but it might be the most beautiful. I'd go back tomorrow."
+    ],
+    "stats": [
+      { "label": "Altitude", "value": "4,191 m" },
+      { "label": "Duration", "value": "7 days" },
+      { "label": "Best season", "value": "July" },
+      { "label": "Grade", "value": "Moderate" }
+    ],
+    "cover": "/static/img/trek-kashmir-lakes.svg",
+    "gallery": [
+      { "src": "/static/img/trek-kashmir-lakes-1.svg", "caption": "Vishansar lake at sunrise" },
+      { "src": "/static/img/trek-kashmir-lakes-2.svg", "caption": "Gadsar pass" },
+      { "src": "/static/img/trek-kashmir-lakes-3.svg", "caption": "Twin lakes from above" },
+      { "src": "/static/img/trek-kashmir-lakes-4.svg", "caption": "Meadow camp" }
+    ]
+  },
+  {
+    "slug": "kedarkantha", "title": "Kedarkantha", "type": "trek", "region": "Uttarakhand, India",
+    "altitude_m": 3810,
+    "summary": "A winter classic. Snow-loaded pines, a frozen summit climb at dawn, and a 360-degree ring of Himalayan peaks at the top.",
+    "story": [
+      "Kedarkantha is the trek that hooks people on winter mountaineering. Snow from the first day, a magical campsite in the pines, and a summit dawn with peaks in every direction.",
+      "Simple, accessible, and unforgettable - the perfect introduction to snow."
+    ],
+    "stats": [
+      { "label": "Altitude", "value": "3,810 m" },
+      { "label": "Duration", "value": "6 days" },
+      { "label": "Best season", "value": "December" },
+      { "label": "Grade", "value": "Easy-Moderate" }
+    ],
+    "cover": "/static/img/trek-kedarkantha.svg",
+    "gallery": [
+      { "src": "/static/img/trek-kedarkantha-1.svg", "caption": "Summit dawn" },
+      { "src": "/static/img/trek-kedarkantha-2.svg", "caption": "Snow-loaded pines" },
+      { "src": "/static/img/trek-kedarkantha-3.svg", "caption": "Base camp clearing" },
+      { "src": "/static/img/trek-kedarkantha-4.svg", "caption": "Ridge to the top" }
+    ]
+  },
+  {
+    "slug": "sandakphu", "title": "Sandakphu", "type": "trek", "region": "West Bengal, India",
+    "altitude_m": 3636,
+    "summary": "The 'Sleeping Buddha' ridge - four of the five highest peaks on earth, including Everest and Kanchenjunga, on one horizon.",
+    "story": [
+      "From Sandakphu, on a clear morning, you can line up Everest, Lhotse, Makalu, and Kanchenjunga in a single sweep - the famous 'Sleeping Buddha' silhouette.",
+      "The trail rides the India-Nepal border through rhododendron forest and tiny ridgeline villages. Cold, windy, and absolutely worth it."
+    ],
+    "stats": [
+      { "label": "Altitude", "value": "3,636 m" },
+      { "label": "Duration", "value": "6 days" },
+      { "label": "Best season", "value": "November" },
+      { "label": "Grade", "value": "Easy-Moderate" }
+    ],
+    "cover": "/static/img/trek-sandakphu.svg",
+    "gallery": [
+      { "src": "/static/img/trek-sandakphu-1.svg", "caption": "The Sleeping Buddha at dawn" },
+      { "src": "/static/img/trek-sandakphu-2.svg", "caption": "Ridgeline trail" },
+      { "src": "/static/img/trek-sandakphu-3.svg", "caption": "Rhododendron forest" },
+      { "src": "/static/img/trek-sandakphu-4.svg", "caption": "Border village" }
+    ]
+  }
+]
