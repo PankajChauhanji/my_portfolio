@@ -21,26 +21,18 @@ jobs:
           PUBLIC_REPO_TOKEN: ${{ secrets.PUBLIC_REPO_TOKEN_PORTFOLIO }}
         run: |
           if [ -z "$PUBLIC_REPO_TOKEN" ]; then
-            echo "❌ PUBLIC_REPO_TOKEN is missing — add it under repo Settings → Secrets"
+            echo "❌ PUBLIC_REPO_TOKEN_PORTFOLIO is missing — add it under repo Settings → Secrets"
             exit 1
           fi
-          echo "✅ Token verified (${#PUBLIC_REPO_TOKEN_PORTFOLIO} chars)"
+          echo "✅ Token verified (${#PUBLIC_REPO_TOKEN} chars)"
 
       - name: Remove private content
         run: |
           remove_file() { [ -f "$1" ] && rm -f "$1"   && echo "removed: $1"   || echo "skip: $1"; }
           remove_dir()  { [ -d "$1" ] && rm -rf "$1"  && echo "removed: $1/"  || echo "skip: $1/"; }
 
-          # ── Real content data (explorer, blog posts, profile, projects) ──
+          # ── Real content data ──
           remove_file data/explorer.json
-          # remove_file data/blog.json
-          # remove_file data/profile.json
-          # remove_file data/projects.json
-          # remove_file data/site.json
-          # remove_file data/resume.pdf
-
-          # ── Blog markdown posts ──
-          # remove_dir  data/blog
 
           # ── Real images (webp only; jpgs are already gitignored) ──
           remove_dir  static/img/
@@ -65,7 +57,7 @@ jobs:
           ls -la data/ || echo "empty"
           echo ""
           echo "📁 Remaining static/img/:"
-          ls -la static/img/
+          ls -la static/img/ || echo "empty"
 
       - name: Push to public repo
         env:
@@ -73,7 +65,7 @@ jobs:
         run: |
           git config user.name  "PankajChauhanji"
           git config user.email "pankajchauhan.nitsri@gmail.com"
-          git config --global url."https://x-access-token:${PUBLIC_REPO_TOKEN_PORTFOLIO}@github.com/".insteadOf "https://github.com/"
+          git config --global url."https://x-access-token:${PUBLIC_REPO_TOKEN}@github.com/".insteadOf "https://github.com/"
 
           git remote add public https://github.com/PankajChauhanji/my_portfolio.git
 
