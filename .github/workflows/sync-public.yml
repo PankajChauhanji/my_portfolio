@@ -33,6 +33,9 @@ jobs:
 
           # ── Real content data ──
           remove_file data/explorer.json
+          
+          # remove internal readme
+          remove_file README_INTERNAL.md
 
           # ── Real images — remove only trek photo subfolders, keep SVGs ──
           remove_dir  static/img/valley_of_flowers
