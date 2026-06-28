@@ -25,9 +25,9 @@
   "resume": { "file": "resume.pdf", "label": "Résumé" },
   "stats": [
     { "label": "years_building", "value": "5+", "kind": "code" },
-    { "label": "docs_secured", "value": "1.5M+", "kind": "code" },
+    { "label": "docs_secured", "value": "10M+", "kind": "code" },
     { "label": "extraction_accuracy", "value": "98%+", "kind": "code" },
-    { "label": "highest_trek_m", "value": "6,153", "kind": "trek" }
+    { "label": "highest_trek_m", "value": "4,600", "kind": "trek" }
   ],
   "skills": [
     { "group": "Languages", "items": ["Python", "C++", "Java", "JavaScript"] },

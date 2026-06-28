@@ -18,13 +18,13 @@ jobs:
 
       - name: Verify token
         env:
-          PUBLIC_REPO_TOKEN: ${{ secrets.PUBLIC_REPO_TOKEN }}
+          PUBLIC_REPO_TOKEN: ${{ secrets.PUBLIC_REPO_TOKEN_PORTFOLIO }}
         run: |
           if [ -z "$PUBLIC_REPO_TOKEN" ]; then
             echo "❌ PUBLIC_REPO_TOKEN is missing — add it under repo Settings → Secrets"
             exit 1
           fi
-          echo "✅ Token verified (${#PUBLIC_REPO_TOKEN} chars)"
+          echo "✅ Token verified (${#PUBLIC_REPO_TOKEN_PORTFOLIO} chars)"
 
       - name: Remove private content
         run: |
@@ -33,18 +33,17 @@ jobs:
 
           # ── Real content data (explorer, blog posts, profile, projects) ──
           remove_file data/explorer.json
-          remove_file data/blog.json
-          remove_file data/profile.json
-          remove_file data/projects.json
-          remove_file data/site.json
-          remove_file data/resume.pdf
+          # remove_file data/blog.json
+          # remove_file data/profile.json
+          # remove_file data/projects.json
+          # remove_file data/site.json
+          # remove_file data/resume.pdf
 
           # ── Blog markdown posts ──
-          remove_dir  data/blog
+          # remove_dir  data/blog
 
           # ── Real images (webp only; jpgs are already gitignored) ──
-          remove_dir  static/img/valley_of_flowers
-          remove_dir  static/img/kedarkantha
+          remove_dir  static/img/
 
           # ── Pre-built dist folder (contains rendered private content) ──
           remove_dir  dist
@@ -70,13 +69,13 @@ jobs:
 
       - name: Push to public repo
         env:
-          PUBLIC_REPO_TOKEN: ${{ secrets.PUBLIC_REPO_TOKEN }}
+          PUBLIC_REPO_TOKEN: ${{ secrets.PUBLIC_REPO_TOKEN_PORTFOLIO }}
         run: |
           git config user.name  "PankajChauhanji"
           git config user.email "pankajchauhan.nitsri@gmail.com"
-          git config --global url."https://x-access-token:${PUBLIC_REPO_TOKEN}@github.com/".insteadOf "https://github.com/"
+          git config --global url."https://x-access-token:${PUBLIC_REPO_TOKEN_PORTFOLIO}@github.com/".insteadOf "https://github.com/"
 
-          git remote add public https://github.com/PankajChauhanji/portfolio.git
+          git remote add public https://github.com/PankajChauhanji/my_portfolio.git
 
           git add -A
           git commit -m "sync: public snapshot ($(date -u '+%Y-%m-%d %H:%M UTC'))" || echo "ℹ️  Nothing new to commit"

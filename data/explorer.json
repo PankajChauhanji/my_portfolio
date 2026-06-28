@@ -90,14 +90,14 @@
     ],
     "stats": [
       { "label": "Altitude", "value": "3,658 m" },
-      { "label": "Duration", "value": "4-6 days" },
+      { "label": "Duration", "value": "3 days" },
       { "label": "Best season", "value": "May-June, Sep-Oct" },
       { "label": "Grade", "value": "Moderate" }
     ],
     "cover": "/static/img/badrinath/20231112_095434.webp",
     "gallery": [
-      { "src": "/static/img/badrinath/20231111_083725.webp", "caption": "Badrinath trip" },
       { "src": "/static/img/badrinath/20231111_084517.webp", "caption": "Badrinath trip" },
+      { "src": "/static/img/badrinath/20231111_083725.webp", "caption": "Badrinath trip" },
       { "src": "/static/img/badrinath/20231111_115633.webp", "caption": "Badrinath trip" },
       { "src": "/static/img/badrinath/20231111_200826.webp", "caption": "Badrinath trip" },
       { "src": "/static/img/badrinath/20231111_202719.webp", "caption": "Badrinath trip" },
@@ -128,7 +128,7 @@
     ],
     "stats": [
       { "label": "Altitude", "value": "4,000 m" },
-      { "label": "Duration", "value": "3 days" },
+      { "label": "Duration", "value": "2 days" },
       { "label": "Best season", "value": "May-June, Sep-Oct" },
       { "label": "Grade", "value": "Easy-Moderate" }
     ],
