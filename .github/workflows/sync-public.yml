@@ -24,7 +24,7 @@ jobs:
             echo "❌ PUBLIC_REPO_TOKEN_PORTFOLIO is missing — add it under repo Settings → Secrets"
             exit 1
           fi
-          echo "✅ Token verified (${#PUBLIC_REPO_TOKEN_PORTFOLIO} chars)"
+          echo "✅ Token verified (${#PUBLIC_REPO_TOKEN} chars)"
 
       - name: Remove private content
         run: |
@@ -68,7 +68,7 @@ jobs:
         run: |
           git config user.name  "PankajChauhanji"
           git config user.email "pankajchauhan.nitsri@gmail.com"
-          git config --global url."https://x-access-token:${PUBLIC_REPO_TOKEN_PORTFOLIO}@github.com/".insteadOf "https://github.com/"
+          git config --global url."https://x-access-token:${PUBLIC_REPO_TOKEN}@github.com/".insteadOf "https://github.com/"
 
           git remote add public https://github.com/PankajChauhanji/my_portfolio.git
 
