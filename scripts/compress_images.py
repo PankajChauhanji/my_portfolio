@@ -109,11 +109,11 @@ def compress_gallery(
 
 # ── Run ───────────────────────────────────────────────────────────────────────
 compress_gallery(
-    directory="/home/pankaj/Documents/git_hub/portfolio/static/img/valley_of_flowers",
+    directory="/home/pankaj/Documents/git_hub/portfolio/static/img/kedarkantha",
     max_width=2000,
     max_height=2000,
     min_size_kb=100,
-    max_size_kb=400,
+    max_size_kb=350,
     quality_floor=40,
     quality_ceiling=95,
     keep_originals=True,

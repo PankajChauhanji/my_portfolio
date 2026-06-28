@@ -77,12 +77,29 @@
       { "label": "Best season", "value": "December" },
       { "label": "Grade", "value": "Easy-Moderate" }
     ],
-    "cover": "/static/img/trek-kedarkantha.svg",
+    "cover": "/static/img/kedarkantha/IMG_20220115_165856.webp",
     "gallery": [
-      { "src": "/static/img/trek-kedarkantha-1.svg", "caption": "Summit dawn" },
-      { "src": "/static/img/trek-kedarkantha-2.svg", "caption": "Snow-loaded pines" },
-      { "src": "/static/img/trek-kedarkantha-3.svg", "caption": "Base camp clearing" },
-      { "src": "/static/img/trek-kedarkantha-4.svg", "caption": "Ridge to the top" }
+      { "src": "/static/img/kedarkantha/20220114_164633.webp", "caption": "First camp as the light fades over the ridge" },
+      { "src": "/static/img/kedarkantha/20220115_084223.webp", "caption": "Morning glow on the snow-covered slopes" },
+      { "src": "/static/img/kedarkantha/20220115_090112.webp", "caption": "Trekkers ascending through deep winter snow" },
+      { "src": "/static/img/kedarkantha/20220115_112533.webp", "caption": "A clear winter sky above the treeline" },
+      { "src": "/static/img/kedarkantha/20220115_112734.webp", "caption": "Snow-loaded pines along the summit trail" },
+      { "src": "/static/img/kedarkantha/20220115_155035.webp", "caption": "Golden afternoon light on the descent" },
+      { "src": "/static/img/kedarkantha/20220115_155122.webp", "caption": "Wide views opening up near the top" },
+      { "src": "/static/img/kedarkantha/20220115_155609.webp", "caption": "The final ridge before the summit" },
+      { "src": "/static/img/kedarkantha/IMG_20220115_132120.webp", "caption": "Panoramic Himalayan peaks from the summit" },
+      { "src": "/static/img/kedarkantha/IMG_20220115_165420.webp", "caption": "Descending through the pine forest at dusk" },
+      { "src": "/static/img/kedarkantha/IMG_20220115_165856.webp", "caption": "Camp life as the temperature drops" },
+      { "src": "/static/img/kedarkantha/20250309_153330.webp", "caption": "A return visit — fresh snow on a familiar trail" },
+      { "src": "/static/img/kedarkantha/20250309_154457.webp", "caption": "Frozen stillness along the upper path" },
+      { "src": "/static/img/kedarkantha/20250309_161345 (1).webp", "caption": "Cloud shadows sweeping across the snowfield" },
+      { "src": "/static/img/kedarkantha/20250309_172401.webp", "caption": "Late afternoon hues painting the white slopes" },
+      { "src": "/static/img/kedarkantha/20250309_172822.webp", "caption": "Twilight settling over the Kedarkantha basin" },
+      { "src": "/static/img/kedarkantha/20250309_173435.webp", "caption": "The valley below blanketed in fresh snow" },
+      { "src": "/static/img/kedarkantha/20250309_173840.webp", "caption": "Last light of the day on the high ridges" },
+      { "src": "/static/img/kedarkantha/IMG-20250405-WA0017.webp", "caption": "Group shot at the Kedarkantha summit marker" },
+      { "src": "/static/img/kedarkantha/IMG-20250405-WA0018.webp", "caption": "Smiles and summit views — worth every step" },
+      { "src": "/static/img/kedarkantha/1000000518-01 (1).webp", "caption": "A wide frame capturing the full winter landscape" }
     ]
   }
 ]
