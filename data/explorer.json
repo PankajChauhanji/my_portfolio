@@ -4,16 +4,16 @@
     "title": "Valley of Flowers & Hemkund Sahib",
     "type": "trek",
     "region": "Uttarakhand, India",
-    "altitude_m": 4632,
+    "altitude_m": 4572,
     "summary": "A striking dual alpine landscape: an emerald valley carpeted in hundreds of monsoon wildflower species, paired with a steep, punishing ascent to a sacred high-altitude glacial lake wrapped in mist.",
     "story": [
       "Stepping into the Valley of Flowers feels like crossing the threshold into a living canvas. Hemmed in by massive, misty mountain walls, the valley floor transforms completely under monsoon showers, shifting its color palette weekly as rare endemic blooms compete for space.",
       "The next dawn completely changes the tone. The trek up to Hemkund Sahib is a relentless, gravity-defying climb. Pushing through thin air at 4,632 meters, the rewards hit all at once: a completely silent crystal tarn, floating ice sheets, and the quiet devotion echoing from the world's highest Gurudwara."
     ],
     "stats": [
-      { "label": "Altitude", "value": "4,632 m" },
-      { "label": "Duration", "value": "6 days" },
-      { "label": "Best season", "value": "July" },
+      { "label": "Altitude", "value": "4,572 m" },
+      { "label": "Duration", "value": "4 days" },
+      { "label": "Best season", "value": "June-September" },
       { "label": "Grade", "value": "Moderate" }
     ],
     "cover": "/static/img/valley_of_flowers/20250621_132210.webp",
