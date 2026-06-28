@@ -113,7 +113,7 @@ compress_gallery(
     max_width=2000,
     max_height=2000,
     min_size_kb=100,
-    max_size_kb=500,
+    max_size_kb=400,
     quality_floor=40,
     quality_ceiling=95,
     keep_originals=True,
