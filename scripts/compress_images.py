@@ -109,7 +109,7 @@ def compress_gallery(
 
 # ── Run ───────────────────────────────────────────────────────────────────────
 compress_gallery(
-    directory="/home/pankaj/Documents/git_hub/portfolio/static/img/kedarkantha",
+    directory="/home/pankaj/Documents/git_hub/portfolio/static/img/badrinath",
     max_width=2000,
     max_height=2000,
     min_size_kb=100,

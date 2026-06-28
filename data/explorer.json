@@ -36,31 +36,6 @@
     ]
   },
   {
-    "slug": "hampta-pass",
-    "title": "Hampta Pass",
-    "type": "trek",
-    "region": "Himachal Pradesh, India",
-    "altitude_m": 4270,
-    "summary": "A dramatic crossover: lush green Kullu on one side, the stark cold desert of Spiti on the other, split by a single high pass.",
-    "story": [
-      "Few treks change scenery as fast as Hampta. You start in pine forest and river meadows on the Kullu side and crest the pass into the moonscape of Spiti within a day.",
-      "The pass day is long and the descent is steep, but standing on the col with two completely different worlds on either side is hard to beat."
-    ],
-    "stats": [
-      { "label": "Altitude", "value": "4,270 m" },
-      { "label": "Duration", "value": "5 days" },
-      { "label": "Best season", "value": "June" },
-      { "label": "Grade", "value": "Moderate" }
-    ],
-    "cover": "/static/img/trek-hampta-pass.svg",
-    "gallery": [
-      { "src": "/static/img/trek-hampta-pass-1.svg", "caption": "River meadows on the Kullu side" },
-      { "src": "/static/img/trek-hampta-pass-2.svg", "caption": "The pass at first light" },
-      { "src": "/static/img/trek-hampta-pass-3.svg", "caption": "Crossing into Spiti" },
-      { "src": "/static/img/trek-hampta-pass-4.svg", "caption": "Chandratal blue" }
-    ]
-  },
-  {
     "slug": "kedarkantha",
     "title": "Kedarkantha",
     "type": "trek",
@@ -100,6 +75,76 @@
       { "src": "/static/img/kedarkantha/IMG-20250405-WA0017.webp", "caption": "Group shot at the Kedarkantha summit marker" },
       { "src": "/static/img/kedarkantha/IMG-20250405-WA0018.webp", "caption": "Smiles and summit views — worth every step" },
       { "src": "/static/img/kedarkantha/1000000518-01 (1).webp", "caption": "A wide frame capturing the full winter landscape" }
+    ]
+  },
+  {
+    "slug": "badrinath-vasudhara",
+    "title": "Badrinath & Vasudhara Falls",
+    "type": "trek",
+    "region": "Uttarakhand, India",
+    "altitude_m": 3658,
+    "summary": "A Char Dham pilgrimage that extends beyond the temple — past India's last village at the Tibetan border, and up a rocky high-altitude trail to a sacred 400-foot waterfall said to touch only the pure of heart.",
+    "story": [
+      "Badrinath at 3,300 meters is already a world apart — flanked by the Nar and Narayana ranges, the Alaknanda rushing below, Nilkantha towering above. But the journey doesn't end at the temple gates. Mana Village, a short drive away and the last settlement before Tibet, opens the door to the real high country.",
+      "From Mana, a 6 km trek on rocky terrain climbs to Vasudhara Falls at 3,658 meters. The waterfall drops 400 feet off a sheer cliff face, and the legend holds that its spray only touches those who are pure of heart. Standing there with Chaukhamba, Nilkantha, and Balakun filling the skyline, it's easy to believe it."
+    ],
+    "stats": [
+      { "label": "Altitude", "value": "3,658 m" },
+      { "label": "Duration", "value": "4-6 days" },
+      { "label": "Best season", "value": "May-June, Sep-Oct" },
+      { "label": "Grade", "value": "Moderate" }
+    ],
+    "cover": "/static/img/badrinath/20231112_095434.webp",
+    "gallery": [
+      { "src": "/static/img/badrinath/20231111_083725.webp", "caption": "Badrinath trip" },
+      { "src": "/static/img/badrinath/20231111_084517.webp", "caption": "Badrinath trip" },
+      { "src": "/static/img/badrinath/20231111_115633.webp", "caption": "Badrinath trip" },
+      { "src": "/static/img/badrinath/20231111_200826.webp", "caption": "Badrinath trip" },
+      { "src": "/static/img/badrinath/20231111_202719.webp", "caption": "Badrinath trip" },
+      { "src": "/static/img/badrinath/20231111_204650.webp", "caption": "Badrinath trip" },
+      { "src": "/static/img/badrinath/20231111_205246.webp", "caption": "Badrinath trip" },
+      { "src": "/static/img/badrinath/20231112_094812.webp", "caption": "Badrinath trip" },
+      { "src": "/static/img/badrinath/20231112_095434.webp", "caption": "Badrinath trip" },
+      { "src": "/static/img/badrinath/20231112_111618.webp", "caption": "Badrinath trip" },
+      { "src": "/static/img/badrinath/20231112_111810.webp", "caption": "Badrinath trip" },
+      { "src": "/static/img/badrinath/20231112_112224.webp", "caption": "Badrinath trip" },
+      { "src": "/static/img/badrinath/20231112_121901.webp", "caption": "Badrinath trip" },
+      { "src": "/static/img/badrinath/20231112_132647.webp", "caption": "Badrinath trip" },
+      { "src": "/static/img/badrinath/20231112_135046.webp", "caption": "Badrinath trip" },
+      { "src": "/static/img/badrinath/20231112_153849.webp", "caption": "Badrinath trip" },
+      { "src": "/static/img/badrinath/20231113_060513 (1).webp", "caption": "Badrinath trip" }
+    ]
+  },
+  {
+    "slug": "chandrashila",
+    "title": "Chandrashila & Tungnath",
+    "type": "trek",
+    "region": "Uttarakhand, India",
+    "altitude_m": 4000,
+    "summary": "A summit that earns its reputation — Chandrashila's 4,000-meter peak delivers one of the most complete Himalayan panoramas in Garhwal, with Nanda Devi, Trishul, Chaukhamba, and Bandarpunch all in a single unbroken sweep.",
+    "story": [
+      "The route up from Chopta passes through Tungnath Temple — the world's highest Shiva temple at 3,680 meters — but Chandrashila summit at 4,000 meters is the real destination. The final stretch breaks free of the treeline completely, leaving nothing between you and a full 360-degree ring of snow peaks.",
+      "On a clear day the view is almost disorienting in its scale. Peaks you've only seen individually suddenly appear together — Nanda Devi, Trishul, Chaukhamba, Kedar Dome, Bandarpunch — lined up across the horizon in every direction."
+    ],
+    "stats": [
+      { "label": "Altitude", "value": "4,000 m" },
+      { "label": "Duration", "value": "3 days" },
+      { "label": "Best season", "value": "May-June, Sep-Oct" },
+      { "label": "Grade", "value": "Easy-Moderate" }
+    ],
+    "cover": "/static/img/tungnath/20231113_172215.webp",
+    "gallery": [
+      { "src": "/static/img/tungnath/1707499046842.webp", "caption": "Tungnath trip" },
+      { "src": "/static/img/tungnath/20231113_155528.webp", "caption": "Tungnath trip" },
+      { "src": "/static/img/tungnath/20231113_164211.webp", "caption": "Tungnath trip" },
+      { "src": "/static/img/tungnath/20231113_164625.webp", "caption": "Tungnath trip" },
+      { "src": "/static/img/tungnath/20231113_171432.webp", "caption": "Tungnath trip" },
+      { "src": "/static/img/tungnath/20231113_172209.webp", "caption": "Tungnath trip" },
+      { "src": "/static/img/tungnath/20231113_172215.webp", "caption": "Tungnath trip" },
+      { "src": "/static/img/tungnath/20231113_172335.webp", "caption": "Tungnath trip" },
+      { "src": "/static/img/tungnath/20231113_172604.webp", "caption": "Tungnath trip" },
+      { "src": "/static/img/tungnath/20231113_172749.webp", "caption": "Tungnath trip" },
+      { "src": "/static/img/tungnath/20231113_173544.webp", "caption": "Tungnath trip" }
     ]
   }
 ]
