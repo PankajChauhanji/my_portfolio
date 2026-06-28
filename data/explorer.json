@@ -1,5 +1,30 @@
 [
   {
+    "slug": "valley-of-flowers",
+    "title": "Valley of Flowers & Hemkund Sahib",
+    "type": "trek",
+    "region": "Uttarakhand, India",
+    "altitude_m": 4632,
+    "summary": "A striking dual alpine landscape: an emerald valley carpeted in hundreds of monsoon wildflower species, paired with a steep, punishing ascent to a sacred high-altitude glacial lake wrapped in mist.",
+    "story": [
+      "Stepping into the Valley of Flowers feels like crossing the threshold into a living canvas. Hemmed in by massive, misty mountain walls, the valley floor transforms completely under monsoon showers, shifting its color palette weekly as rare endemic blooms compete for space.",
+      "The next dawn completely changes the tone. The trek up to Hemkund Sahib is a relentless, gravity-defying climb. Pushing through thin air at 4,632 meters, the rewards hit all at once: a completely silent crystal tarn, floating ice sheets, and the quiet devotion echoing from the world's highest Gurudwara."
+    ],
+    "stats": [
+      { "label": "Altitude", "value": "4,632 m" },
+      { "label": "Duration", "value": "6 days" },
+      { "label": "Best season", "value": "July" },
+      { "label": "Grade", "value": "Moderate" }
+    ],
+    "cover": "/static/img/valley_of_flowers/20250621_132210.jpg",
+    "gallery": [
+      { "src": "/static/img/valley_of_flowers/20250621_081716.jpg", "caption": "Deep inside the monsoon bloom of the valley" },
+      { "src": "/static/img/valley_of_flowers/20250621_133133.jpg", "caption": "Glacial streams cutting through a sea of green" },
+      { "src": "/static/img/valley_of_flowers/20250622_072502.jpg", "caption": "Navigating the steep switchbacks through the mist" },
+      { "src": "/static/img/valley_of_flowers/20250622_101103.jpg", "caption": "The serene and sacred high-altitude lake front" }
+    ]
+  },
+  {
     "slug": "stok-kangri", "title": "Stok Kangri", "type": "trek", "region": "Ladakh, India",
     "altitude_m": 6153,
     "summary": "A demanding non-technical 6000er. The summit push starts near midnight; the air at the top makes every step a negotiation.",

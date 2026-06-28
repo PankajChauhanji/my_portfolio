@@ -113,3 +113,10 @@ env_port/
 Procfile.local
 *.pem
 *.key
+
+# build folder
+dist/
+
+
+# Data files.
+*.jpg
