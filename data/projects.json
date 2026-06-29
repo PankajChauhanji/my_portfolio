@@ -8,8 +8,8 @@
       "Real-time canvas drawing and guessing loop",
       "Lightweight, no-install browser gameplay"
     ],
-    "tags": ["JavaScript", "HTML5 Canvas", "Game"],
-    "language": "JavaScript",
+    "tags": ["Flask", "WebSockets", "JavaScript", "HTML5 Canvas"],
+    "language": "JavaScript & Python",
     "links": [{ "label": "Source", "href": "https://github.com/PankajChauhanji/DrawHunt", "type": "github" }],
     "year": "",
     "featured": true,
@@ -24,8 +24,8 @@
       "Complete Sevens game rules and turn engine",
       "Clean, testable Python game logic"
     ],
-    "tags": ["Python", "Game", "Logic"],
-    "language": "Python",
+    "tags": ["Python", "WebSockets", "HTML5 Canvas", "CSS", "JavaScript"],
+    "language": "Python & JavaScript",
     "links": [{ "label": "Source", "href": "https://github.com/PankajChauhanji/SuperSevenCards", "type": "github" }],
     "year": "",
     "featured": true,
@@ -40,12 +40,12 @@
       "EDA on historical match data",
       "Regression models for score prediction"
     ],
-    "tags": ["Python", "Pandas", "ML", "Jupyter"],
-    "language": "Jupyter Notebook",
+    "tags": ["Python", "Pandas", "ML", "Regression", "Flask"],
+    "language": "Python & JavaScript",
     "links": [{ "label": "Source", "href": "https://github.com/PankajChauhanji/cricket-analysis-prediction", "type": "github" }],
     "year": "",
     "featured": true,
-    "cover": "/static/img/project-cricket-analysis-prediction.svg"
+    "cover": "/static/img/projects/cricket_prediction.webp"
   },
   {
     "slug": "line-encoder",
@@ -56,7 +56,7 @@
       "Seven line-encoding schemes implemented from scratch",
       "B8ZS and 4B5B scrambling"
     ],
-    "tags": ["Python", "Networking", "Algorithms"],
+    "tags": ["Python", "Networking", "Algorithms", "Flask"],
     "language": "Python",
     "links": [{ "label": "Source", "href": "https://github.com/PankajChauhanji/line_encoder", "type": "github" }],
     "year": "",
@@ -72,8 +72,8 @@
       "Image similarity matching for OCR de-duplication",
       "Fuzzy string comparison for noisy text"
     ],
-    "tags": ["Python", "OCR", "Jupyter", "NLP"],
-    "language": "Jupyter Notebook",
+    "tags": ["Python", "OCR", "Jupyter", "NLP", "Image Processing"],
+    "language": "Python",
     "links": [{ "label": "Source", "href": "https://github.com/PankajChauhanji/ocr-string-similarity", "type": "github" }],
     "year": "",
     "featured": true,

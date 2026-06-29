@@ -11,14 +11,14 @@
     "published": true
   },
   {
-    "slug": "notes-from-6153m",
-    "title": "Notes from 6,153 m",
-    "excerpt": "What a midnight summit push on Stok Kangri taught me about pacing, planning, and shipping software.",
-    "date": "2026-04-02",
-    "tags": ["Mountains", "Life"],
-    "cover": "/static/img/blog-notes-from-6153m.svg",
-    "reading_time": "4 min read",
-    "content_file": "notes-from-6153m.md",
+    "slug": "valley-of-flowers",
+    "title": "The Valley That Didn't Care I Was There",
+    "excerpt": "87 square kilometres of wildflowers, monsoon rain that soaks through everything, and the most peaceful feeling I've had in years. The Valley of Flowers is the kind of place that recalibrates you.",
+    "date": "2026-06-15",
+    "tags": ["Mountains", "Travel", "Life"],
+    "cover": "/static/img/valley_of_flowers/20250621_132210.webp",
+    "reading_time": "7 min read",
+    "content_file": "valley-of-flowers.md",
     "published": true
   }
 ]
