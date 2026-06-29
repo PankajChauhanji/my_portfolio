@@ -1,12 +1,12 @@
 [
   {
     "slug": "cutting-ocr-costs",
-    "title": "Cutting OCR Costs by 85% Without Losing Accuracy",
-    "excerpt": "Region-of-interest cropping, smart caching, and a little prompt engineering go a long way when you're processing millions of documents.",
+    "title": "How I Cut OCR API Costs by 80% Without Touching the Downstream",
+    "excerpt": "Google Vision charges per page, not per document. I built a configurable merging pipeline that packs multiple pages into one API call and silently reconstructs per-page responses on the way out. Here's exactly how it works.",
     "date": "2026-05-18",
-    "tags": ["Engineering", "OCR", "LLMs"],
+    "tags": ["Engineering", "OCR", "Python"],
     "cover": "/static/img/blog-cutting-ocr-costs.svg",
-    "reading_time": "6 min read",
+    "reading_time": "8 min read",
     "content_file": "cutting-ocr-costs.md",
     "published": true
   },
