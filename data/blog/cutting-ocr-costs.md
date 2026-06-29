@@ -1,65 +1,234 @@
-OCR at scale is a billing problem before it's an engineering problem.
+# Cutting an OCR Bill by 80% Without Changing a Single Line Downstream
 
-Google Vision, Azure Cognitive Services, AWS Textract — they all price the same way: per page. A scanned PDF with 6 pages costs 6 API calls. Doesn't matter if 5 of those pages are identical boilerplate you've seen ten thousand times before. Doesn't matter if the pages are half-blank. Doesn't matter if you're processing the same document type in bulk. Six pages, six calls, six charges. At a few thousand documents a month that's noise. At a few hundred thousand, it's a line item your finance team starts asking about.
+*How a small preprocessing layer quietly removed four out of every five calls we
+made to a cloud OCR API — and why the rest of the system never found out.*
 
-We were at that second number. So I built something to fix it.
+---
 
-## The actual problem with per-page billing
+It started with a message in the finance channel. Not an outage, not a bug — a
+question. "Why is the vision API line item growing faster than document volume?"
 
-The insight is simple once you see it: OCR APIs don't care about your pages, they care about their input units. Google Vision's DOCUMENT_TEXT_DETECTION doesn't know or care that you've handed it a single image — it just processes what it receives. If you can fit multiple pages into one image and send that, you pay for one call and get back text for all of them.
+That sentence is worse than any stack trace, because there's no exception to
+point at. The system was working. It was just expensive in a way that scaled
+badly, and at a few hundred thousand documents a month, "scales badly" stops
+being an abstraction and becomes a number someone wants you to explain.
 
-The question is whether you can do that without breaking anything downstream. That's where most people stop thinking about it, because the naïve version — just stitch images together — creates a mess. You lose page boundaries. Your response parsing breaks. Fields that were on page 3 are now somewhere in the middle of a 12,000-pixel-tall image with no clear attribution.
+So I went and looked at how we were actually spending the money. The fix turned
+out to have nothing to do with the OCR itself and everything to do with *what we
+were handing the API in the first place.*
 
-I didn't want to change the contract of the OCR utility for the rest of the system. Whatever consumed OCR results before should get the same structure back, per page, as if nothing changed. The merging and splitting had to be invisible.
+## The thing nobody tells you about per-page OCR pricing
 
-## The utility I built
+Google Vision, Azure's Read API, AWS Textract — they price the same way, and the
+pricing is honest about what it charges for. It is **per image you submit**, not
+per page you happen to have.
 
-The core of the solution is a configurable image merging pipeline that sits between your documents and the OCR API. It has a few distinct responsibilities:
+That distinction is the whole game.
 
-**Ingestion and normalisation.** Whether the input is a multi-page PDF, a folder of TIFFs, a ZIP of JPEGs, or a mixed batch — the utility normalises everything to individual page images first. PDFs are rendered at a configurable DPI (we default to 200, which is the sweet spot for Google Vision accuracy vs. file size). Other formats are read as-is or converted.
+A 6-page scanned PDF, processed the obvious way, is 6 images and 6 charges. But
+the API has no concept of "page." It receives an image, runs detection, returns
+text and bounding boxes. If you can get those 6 pages into *one* image and send
+that, you pay once and get everything back. The API is indifferent. The bill is
+not.
 
-**Pre-processing.** Before anything gets merged, each page goes through a pre-processing chain. Orientation correction is non-negotiable — a sideways page in a merged image ruins recognition for everything around it. We use a fast heuristic based on text line angles for rotation detection, with a fallback to a lightweight ML model for pages with sparse text. Beyond rotation, the chain handles contrast normalisation, deskewing, and noise reduction — all configurable and all toggleable per document type.
+Once you see it that way, the cost problem splits into two questions that have
+nothing to do with model quality:
 
-**Merging.** This is the main cost lever. Pages are stitched vertically into a single image up to a configurable maximum height. The key parameters:
+1. **Are we OCR-ing documents we shouldn't be touching at all?**
+2. **Are we making more calls than the page count actually requires?**
 
-- `merge_count`: how many pages to pack per image (we run 6 for most document types)
-- `max_height_px`: hard ceiling to avoid sending an image the API will reject or degrade on
-- `quality`: JPEG compression level for the merged output (80 hits the right trade-off)
-- `separator_px`: thin white gap between pages so the OCR model doesn't bleed text across boundaries
+Both had the same answer: yes, constantly. So I built a preprocessing layer that
+sits in front of the OCR call and fixes both, without changing the shape of what
+comes out the other end.
 
-A page index map is generated at merge time — essentially a record of which pixel ranges in the merged image correspond to which original page. This is what makes the inverse operation possible.
+## Lever one: stop paying for text you already have
 
-**OCR call.** One API call per merged image. That's the only interaction with the external service. Everything else is local compute, which is orders of magnitude cheaper.
+This is the unglamorous one, and it was the easiest win of the entire project.
 
-**Response decomposition.** The OCR response comes back with bounding box coordinates for every detected text element. The utility walks the page index map in reverse, assigns each bounding box to its original page based on its Y coordinate, and reconstructs per-page response objects in exactly the structure the downstream system expects. From the perspective of anything consuming OCR output, nothing has changed. Page 1 has its text, page 3 has its text, the bounding boxes are correctly offset back to page-local coordinates. No interface changes required anywhere else in the stack.
+A large slice of our "PDFs" were never scans at all. They were digitally
+generated — exports, generated invoices, system-produced statements — and they
+carried a perfectly good embedded text layer. We were rasterising them to images
+and sending them to a vision API to *re-read text that was already sitting in the
+file as text.* Paying a cloud service to OCR a document that didn't need OCR.
 
-## What this looks like in numbers
+So the first thing the pipeline does, before any image is rendered, is ask a
+cheap question: does this PDF already have an extractable text layer?
 
-Before: 6-page document = 6 API calls.  
-After: 6-page document = 1 API call.
+```python
+def is_readable(pdf, cfg):
+    """True if the leading pages already contain enough extractable words."""
+    total = 0
+    for page in pdf.pages[: max(1, cfg.pages_to_check)]:
+        total += len(page.extract_words())
+        if total >= cfg.min_words:
+            return True
+    return total >= cfg.min_words
+```
 
-That's an 83% reduction just from merging. We also applied this across our most common document types and found that most of our volume came from documents with 4–8 pages, so `merge_count: 6` captures the bulk of the savings without needing to handle edge cases for very long documents differently.
+If it passes, we skip the API completely and pull the words and their boxes
+straight out of the PDF with `pdfplumber`, mapped into the exact same result
+structure the OCR path produces:
 
-The actual reduction we hit in production was around 80–82% on OCR API spend, which matched the theoretical number closely. No degradation in extraction accuracy — if anything, accuracy on edge cases improved slightly because the pre-processing chain was catching orientation issues that had previously been silently failing.
+```python
+if config.readability.enabled and is_readable(pdf, config.readability):
+    return extract_text_layer(pdf, page_indices)   # zero OCR calls, full result
+```
 
-## The configuration that matters in production
+Zero external calls. Zero cents. The downstream consumer gets back the same
+`words`, the same coordinates, the same schema — it cannot tell whether the text
+came from a vision model or from the PDF's own text layer. For digital documents
+that's not an 80% saving, it's a 100% saving, and it's pure profit because the
+local extraction is faster than the network round-trip would have been anyway.
 
-A few things I'd do differently if starting fresh, and a few things I'm glad I did right the first time:
+The trick is the threshold. Too low and you'll trust a garbage text layer on a
+mangled file; too high and you'll re-OCR documents that were fine. We tune
+`min_words` per document type rather than globally, which matters more than it
+sounds — a sparse cover page and a dense contract page have very different
+"normal" word counts.
 
-**Make merge_count per document type, not global.** A 2-page invoice and a 20-page contract should not have the same merging strategy. We expose this as a document-type config so it can be tuned without code changes.
+## Lever two: pack more pages into each call
 
-**Log the page map, always.** When something goes wrong with extraction on page 4, you need to be able to reconstruct exactly which merged image it landed in and what the Y-offset was. We write this to structured logs on every job. Saved me more than once.
+This is the one that actually answered the finance question.
 
-**Cap merged image size by bytes, not just pixels.** Some pages are dense — lots of tables, small fonts, high information density. A 6-page merge of dense pages can hit API size limits that a 6-page merge of sparse pages won't. We do a byte-size check after compression and split the batch if needed before sending.
+For the documents that *do* need OCR — real scans, photographed pages, anything
+without a usable text layer — the pipeline renders each requested page to an
+image, runs an optional cleanup pass over it, and then stitches several pages
+**vertically** into a single tall image. One image, one call, many pages.
 
-**Keep the pre-processing chain idempotent.** Orientation correction and deskew run on every page regardless of whether the document looks clean. The overhead is small and the alternative — silently skipping correction on a page that needed it — is worse than the compute cost.
+The merge itself is almost insultingly simple. The intelligence is everywhere
+around it, not in it:
+
+```python
+def _concat_vertical(images):
+    width  = max(im.width for im in images)
+    height = sum(im.height for im in images)
+    canvas = Image.new("RGB", (width, height), (255, 255, 255))
+    y = 0
+    for im in images:
+        canvas.paste(im, (0, y))
+        y += im.height
+    return canvas
+```
+
+How many pages go into one image is a single knob, `merge_count`. We run 5–6 for
+most document types, which is where the math gets good:
+
+| Strategy                | 6-page document | API calls | Reduction |
+|-------------------------|-----------------|-----------|-----------|
+| One call per page       | 6 pages         | 6         | —         |
+| `merge_count = 6`       | 6 pages         | 1         | ~83%      |
+| `merge_count = 5`       | 6 pages         | 2         | ~67%      |
+
+Most of our volume sat in the 4–8 page range, so a merge count of 6 captured the
+bulk of the savings without needing special handling for the long-tail 40-page
+outliers. In production the OCR spend dropped by roughly **80–82%**, which lined
+up almost exactly with the theoretical number — always reassuring, because when
+reality matches the spreadsheet it usually means you understood the problem.
+
+And accuracy didn't drop. If anything it nudged up slightly, for a reason I'll
+get to.
+
+## The hard part: making it invisible
+
+Anyone can stitch images together. The reason most people stop there is that the
+naive version quietly destroys everything downstream. Merge six pages into one
+12,000-pixel image and your "page 3" is now a band of pixels somewhere in the
+middle, and every field your parser expects to find "on page 3" is floating in
+coordinate space with no idea which page it belongs to.
+
+I had a hard constraint going in: **nothing downstream was allowed to change.**
+Whatever consumed OCR results before should get back the same per-page structure,
+as if no merging had ever happened. The whole optimisation had to be reversible
+and silent.
+
+The mechanism is a page index map. When the renderer builds a merged image, it
+records exactly which source pages went into it and in what order:
+
+```python
+@dataclass
+class RenderedImage:
+    data: bytes
+    page_indices: list[int]   # which source pages this single image covers
+    width: int
+    height: int
+```
+
+After the OCR response comes back for that image, the pipeline walks the map in
+reverse: every bounding box gets attributed to the page whose pixel band it falls
+into, and its coordinates are offset back into that page's local space. The
+result is reassembled into per-page objects in precisely the structure the rest
+of the stack already expects.
+
+```python
+for page, image in zip(ocr_pages, rendered):
+    page.page_indices = image.page_indices   # 6 pages in, 1 call, attribution intact
+```
+
+From the outside there is no merge. Page 1 has its text, page 4 has its text,
+boxes are in page-local coordinates, the schema is identical. The optimisation
+lives entirely inside the preprocessing boundary, and it never leaks.
+
+This is also the part I'm most glad I got right early: **log the page map on
+every job.** When extraction misbehaves on one page out of a batch, you need to
+reconstruct which merged image it landed in and what its Y-offset was. The first
+time a field came back mangled and I could replay the exact merge that produced
+it, that decision paid for itself.
+
+## Two kinds of cleanup, and why they're separate
+
+The preprocessing chain confused me at first because it actually does its work in
+two different places, and conflating them is a mistake.
+
+**Before the call**, on the image: optional grayscale, denoise, contrast,
+adaptive thresholding, upscaling, cropping. All toggleable per document type.
+This is purely about giving the model a cleaner picture, and it's where that
+small accuracy *gain* came from — the chain was catching faint, low-contrast
+scans that had been silently producing weak results before anyone merged
+anything.
+
+**After the call**, on the coordinates: orientation and skew correction. A
+rotated or upside-down scan comes back from OCR with text in the wrong places, so
+the pipeline looks at the dominant angle of the recognised text lines, decides
+whether the page is rotated 90°/180° or merely skewed, and transposes the
+bounding boxes back to upright — in coordinate space, not by re-rendering the
+image. Doing it on the geometry instead of the pixels means it's cheap and it
+runs on every page regardless of whether the page "looked" clean. Skipping
+correction on a page that quietly needed it is far more expensive than the few
+milliseconds it costs to always run.
+
+## Things I'd tell my past self
+
+- **`merge_count` belongs per document type, not global.** A 2-page invoice and a
+  20-page contract should not share a merging strategy. It's a config value, not
+  a constant, and exposing it that way meant tuning never required a deploy.
+- **Cap the merged image by bytes, not just pixels.** Dense pages — small fonts,
+  heavy tables — compress poorly, and a 6-page merge of dense pages can blow past
+  an API's size limit that the same merge of sparse pages never would. Check the
+  encoded size after compression and split the batch before sending. Switching
+  the merged output to JPEG at a sane quality, instead of PNG, gave a lot of
+  headroom here.
+- **Keep the engine swappable.** I wrote the OCR call behind a tiny interface so
+  Google, Azure, and a local Tesseract fallback are all selectable by name. That
+  was an afterthought that turned into leverage the day a pricing conversation
+  with a vendor went sideways.
 
 ## What this isn't
 
-It's not a caching layer. Caching is a separate concern and worth doing — a content hash on the normalised page image before merging catches exact duplicates — but it's not what drove the savings here. Most of our documents are unique enough that cache hit rates were low. The merging approach works on every document, every time.
+It isn't a cache. A content hash on the normalised page image will catch exact
+duplicates and is worth doing, but our documents were unique enough that hit
+rates were low — merging works on every document, every time, whether it's a
+duplicate or not.
 
-It's also not prompt engineering or LLM post-processing. Those are legitimate tools for improving extraction quality but they don't reduce OCR cost — they often add LLM cost on top. This is purely about reducing the number of external API calls by doing more work locally before you make them.
+It isn't LLM post-processing either. That's a fine tool for *quality*, but it
+reduces OCR cost by exactly zero and usually adds a new line item on top. This is
+the opposite move: do more cheap local compute so you make fewer expensive remote
+calls.
 
-The whole thing is about 900 lines of Python, thoroughly configurable, and runs as a preprocessing step in our document pipeline. The OCR API has no idea it's happening. Your downstream has no idea it's happening. Your finance team just sees the bill get smaller.
+---
 
-That's the kind of engineering I like: invisible to everyone except the invoice.
+The whole thing runs as a preprocessing step in the document pipeline. The OCR
+API has no idea it's there. The downstream parsers have no idea it's there. The
+only system that noticed was the invoice.
+
+That's my favourite category of engineering: the kind where the most visible
+artifact is a smaller bill, and the second most visible artifact is silence.
