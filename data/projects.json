@@ -13,7 +13,7 @@
     "links": [{ "label": "Source", "href": "https://github.com/PankajChauhanji/DrawHunt", "type": "github" }],
     "year": "",
     "featured": true,
-    "cover": "/static/img/project-drawhunt.svg"
+    "cover": "/static/img/projects/draw_hunt_player_lobby.webp"
   },
   {
     "slug": "super-seven-cards",
@@ -29,23 +29,7 @@
     "links": [{ "label": "Source", "href": "https://github.com/PankajChauhanji/SuperSevenCards", "type": "github" }],
     "year": "",
     "featured": true,
-    "cover": "/static/img/project-super-seven-cards.svg"
-  },
-  {
-    "slug": "ocr-string-similarity",
-    "title": "OCR String Similarity",
-    "summary": "Image-similarity and fuzzy string-matching experiments for cleaning up noisy OCR output.",
-    "description": "A set of experiments in image similarity and fuzzy string matching aimed at de-noising and reconciling OCR output against references - the same class of problem behind my day-job parser work.",
-    "highlights": [
-      "Image similarity matching for OCR de-duplication",
-      "Fuzzy string comparison for noisy text"
-    ],
-    "tags": ["Python", "OCR", "Jupyter", "NLP"],
-    "language": "Jupyter Notebook",
-    "links": [{ "label": "Source", "href": "https://github.com/PankajChauhanji/ocr-string-similarity", "type": "github" }],
-    "year": "",
-    "featured": true,
-    "cover": "/static/img/project-ocr-string-similarity.svg"
+    "cover": "/static/img/projects/super_seven_game_table.webp"
   },
   {
     "slug": "cricket-analysis-prediction",
@@ -77,7 +61,23 @@
     "links": [{ "label": "Source", "href": "https://github.com/PankajChauhanji/line_encoder", "type": "github" }],
     "year": "",
     "featured": true,
-    "cover": "/static/img/project-line-encoder.svg"
+    "cover": "/static/img/projects/line_encoder_.webp"
+  },
+  {
+    "slug": "ocr-string-similarity",
+    "title": "OCR String Similarity",
+    "summary": "Image-similarity and fuzzy string-matching experiments for cleaning up noisy OCR output.",
+    "description": "A set of experiments in image similarity and fuzzy string matching aimed at de-noising and reconciling OCR output against references - the same class of problem behind my day-job parser work.",
+    "highlights": [
+      "Image similarity matching for OCR de-duplication",
+      "Fuzzy string comparison for noisy text"
+    ],
+    "tags": ["Python", "OCR", "Jupyter", "NLP"],
+    "language": "Jupyter Notebook",
+    "links": [{ "label": "Source", "href": "https://github.com/PankajChauhanji/ocr-string-similarity", "type": "github" }],
+    "year": "",
+    "featured": true,
+    "cover": "/static/img/project-ocr-string-similarity.svg"
   },
   {
     "slug": "salary-predictions",
