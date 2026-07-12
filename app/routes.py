@@ -1,5 +1,6 @@
 """All view functions, registered onto the app (bare endpoint names)."""
 import os
+import re
 import ssl
 import smtplib
 from email.message import EmailMessage
@@ -7,6 +8,8 @@ from email.message import EmailMessage
 from flask import render_template, abort, send_from_directory, request, jsonify
 
 from .content import load, by_slug, render_markdown, DATA_DIR
+
+EMAIL_REGEX = re.compile(r"^[^@\s]+@[^@\s]+\.[^@\s]+$")
 
 
 def register_routes(app):
@@ -63,6 +66,8 @@ def register_routes(app):
         message = (data.get("message") or "").strip()
         if not email or not message:
             return jsonify(ok=False, error="Email and message are required."), 400
+        if not EMAIL_REGEX.match(email):
+            return jsonify(ok=False, error="Please provide a valid email address."), 400
 
         host = os.environ.get("SMTP_HOST")
         port = int(os.environ.get("SMTP_PORT", "587"))

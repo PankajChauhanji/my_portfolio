@@ -129,6 +129,8 @@
       var email = form.email.value.trim(), phone = form.phone.value.trim(),
           subject = form.subject.value.trim(), message = form.message.value.trim();
       if (!email || !message) { setStatus("Please add your email and a message.", true); return; }
+      var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(email)) { setStatus("Please enter a valid email address.", true); return; }
       var provider = form.dataset.provider, to = form.dataset.to, key = form.dataset.key,
           success = form.dataset.success || "Thanks! Your message is on its way.";
       var subj = subject || ("New message from " + email);
