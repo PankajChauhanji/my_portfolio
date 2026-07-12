@@ -9,9 +9,14 @@ BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
 DATA_DIR = os.path.join(BASE_DIR, "data")
 
 
+_cache = {}
+
+
 def load(name):
-    with open(os.path.join(DATA_DIR, name), "r", encoding="utf-8") as f:
-        return json.load(f)
+    if name not in _cache:
+        with open(os.path.join(DATA_DIR, name), "r", encoding="utf-8") as f:
+            _cache[name] = json.load(f)
+    return _cache[name]
 
 
 def by_slug(items, slug):

@@ -1,5 +1,9 @@
 {% extends 'base.html' %}
 {% block title %}{{ post.title }} - {{ profile.name }}{% endblock %}
+{% block meta_description %}{{ post.excerpt }}{% endblock %}
+{% block og_title %}{{ post.title }}{% endblock %}
+{% block og_description %}{{ post.excerpt }}{% endblock %}
+{% block og_image %}{{ post.cover }}{% endblock %}
 {% block content %}
 <article class="max-w-content mx-auto px-5 sm:px-8 pt-8">
   <a href="{{ url_for('blog') }}" class="font-mono text-sm text-muted hover:text-glacier transition-colors inline-flex items-center gap-1.5"><span aria-hidden="true">&larr;</span> all posts</a>

@@ -63,18 +63,38 @@
   if (lb) {
     var lbImg = document.getElementById("lightbox-img");
     var lbCap = document.getElementById("lightbox-cap");
-    function openLb(t) {
+    var lbCounter = document.getElementById("lightbox-counter");
+    var lbPrev = document.getElementById("lightbox-prev");
+    var lbNext = document.getElementById("lightbox-next");
+    var triggers = Array.from(document.querySelectorAll(".lightbox-trigger"));
+    var currentIdx = 0;
+
+    function showAt(i) {
+      currentIdx = (i + triggers.length) % triggers.length;
+      var t = triggers[currentIdx];
       lbImg.src = t.dataset.img;
       var cap = t.dataset.caption || t.dataset.name || "";
       lbImg.alt = cap;
       lbCap.textContent = cap;
+      if (lbCounter) lbCounter.textContent = (currentIdx + 1) + " / " + triggers.length;
+    }
+    function openLb(i) {
+      showAt(i);
       lb.classList.remove("hidden"); lb.classList.add("flex");
     }
     function closeLb() { lb.classList.add("hidden"); lb.classList.remove("flex"); }
-    document.querySelectorAll(".lightbox-trigger").forEach(function (b) { b.addEventListener("click", function () { openLb(b); }); });
+
+    triggers.forEach(function (b, i) { b.addEventListener("click", function () { openLb(i); }); });
     document.getElementById("lightbox-close").addEventListener("click", closeLb);
     lb.addEventListener("click", function (e) { if (e.target === lb) closeLb(); });
-    document.addEventListener("keydown", function (e) { if (e.key === "Escape") closeLb(); });
+    if (lbPrev) lbPrev.addEventListener("click", function () { showAt(currentIdx - 1); });
+    if (lbNext) lbNext.addEventListener("click", function () { showAt(currentIdx + 1); });
+    document.addEventListener("keydown", function (e) {
+      if (lb.classList.contains("hidden")) return;
+      if (e.key === "Escape") closeLb();
+      else if (e.key === "ArrowLeft") showAt(currentIdx - 1);
+      else if (e.key === "ArrowRight") showAt(currentIdx + 1);
+    });
   }
 
   /* ---------- Contact modal ---------- */

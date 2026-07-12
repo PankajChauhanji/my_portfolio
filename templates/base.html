@@ -3,12 +3,17 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="{{ site.seo.description }}">
+  <meta name="description" content="{% block meta_description %}{{ site.seo.description }}{% endblock %}">
   <meta name="keywords" content="{{ site.seo.keywords | join(', ') }}">
   <meta name="author" content="{{ profile.name }}">
-  <meta property="og:title" content="{{ profile.name }} - {{ profile.role }}">
-  <meta property="og:description" content="{{ site.seo.description }}">
+  <meta property="og:title" content="{% block og_title %}{{ profile.name }} - {{ profile.role }}{% endblock %}">
+  <meta property="og:description" content="{% block og_description %}{{ site.seo.description }}{% endblock %}">
   <meta property="og:type" content="website">
+  <meta property="og:image" content="{% block og_image %}{{ url_for('static', filename='img/og-image.jpg', _external=False) }}{% endblock %}">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="{{ profile.name }} - {{ profile.role }}">
+  <meta name="twitter:description" content="{{ site.seo.description }}">
+  <meta name="twitter:image" content="{{ url_for('static', filename='img/og-image.jpg', _external=False) }}">
   <title>{% block title %}{{ profile.name }}{% endblock %} - {{ profile.role }}</title>
   <link rel="icon" href="{{ url_for('static', filename='img/favicon.svg') }}" type="image/svg+xml">
   <script>

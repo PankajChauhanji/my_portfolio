@@ -10,7 +10,8 @@
   "features": { "projects": true, "explorer": true, "blog": true, "resume": true, "contact": true },
   "seo": {
     "description": "Pankaj Chauhan - Software Engineer specializing in Python, Agentic AI, and large-scale data extraction. Builder, problem-solver, high-altitude trekker.",
-    "keywords": ["Software Engineer", "Python", "Agentic AI", "RAG", "Data Extraction", "Perfios", "OCR", "LLM"]
+    "keywords": ["Software Engineer", "Python", "Agentic AI", "RAG", "Data Extraction", "Perfios", "OCR", "LLM"],
+    "og_image": "/static/img/og-image.jpg"
   },
   "footer_note": "built with Flask & a lot of altitude.",
   "contact": {
@@ -34,6 +35,7 @@
       "experience":     { "eyebrow": "// experience", "title": "Where I've shipped." },
       "skills":         { "eyebrow": "// toolkit" },
       "certifications": { "eyebrow": "// certifications" },
+      "education":      { "eyebrow": "// education" },
       "cta":            { "title_pre": "Let's build something ", "title_accent": "solid", "title_post": ".", "subtitle": "Open to interesting problems in data, AI, and backend engineering." }
     },
     "projects": {
