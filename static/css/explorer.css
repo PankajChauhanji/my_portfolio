@@ -17,13 +17,16 @@ html.dark .cursive-quote {
 }
 
 #runner-container {
-  height: 160px;
-  margin-top: 1.5rem;
+  position: relative;
+  width: 100%;
+  height: 40px; /* Compact height so it fits directly below the text line */
+  margin-top: 0.75rem;
+  margin-bottom: 2rem;
 }
 
 #runner-container .track-line {
   position: absolute;
-  bottom: 20px;
+  bottom: 10px;
   left: 0;
   right: 0;
   height: 2px;
@@ -33,44 +36,36 @@ html.dark .cursive-quote {
 
 #runner-container .boulder {
   position: absolute;
-  bottom: 20px;
+  bottom: 10px;
   color: var(--glacier);
   opacity: 0.65;
   background: transparent;
 }
 
 #runner-container .boulder-1 {
-  left: 20%;
   width: 20px;
   height: 20px;
-  margin-left: -10px;
 }
 
 #runner-container .boulder-2 {
-  left: 40%;
   width: 20px;
   height: 20px;
-  margin-left: -10px;
 }
 
 #runner-container .boulder-3 {
-  left: 60%;
   width: 20px;
   height: 20px;
-  margin-left: -10px;
 }
 
 #runner-container .boulder-4 {
-  left: 80%;
   width: 20px;
   height: 20px;
-  margin-left: -10px;
 }
 
 #runner-container .mountain-container {
   position: absolute;
   right: 8px;
-  bottom: 20px;
+  bottom: 10px; /* Align with track line */
   width: 120px;
   height: 120px;
   pointer-events: none;
@@ -83,9 +78,24 @@ html.dark .cursive-quote {
   opacity: 0.6;
 }
 
+/* Mobile responsive version */
+@media (max-w: 640px) {
+  #runner-container {
+    height: 90px; /* Give it space to stack below the mobile quote */
+    margin-top: 1.25rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  #runner-container .mountain-container {
+    width: 80px;
+    height: 80px;
+    right: 4px;
+  }
+}
+
 #runner-character {
   position: absolute;
-  bottom: 20px;
+  bottom: 10px;
   left: 0;
   width: 28px;
   height: 28px;

@@ -1,7 +1,8 @@
 document.addEventListener("DOMContentLoaded", function () {
   var container = document.getElementById("runner-container");
   var char = document.getElementById("runner-character");
-  if (!container || !char) return;
+  var mountainContainer = container ? container.querySelector(".mountain-container") : null;
+  if (!container || !char || !mountainContainer) return;
 
   // Respect user prefers-reduced-motion preferences
   var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -21,6 +22,13 @@ document.addEventListener("DOMContentLoaded", function () {
     celebrate: char.querySelector(".frame-celebrate")
   };
 
+  var boulders = [
+    container.querySelector(".boulder-1"),
+    container.querySelector(".boulder-2"),
+    container.querySelector(".boulder-3"),
+    container.querySelector(".boulder-4")
+  ];
+
   function setFrame(activeFrame) {
     for (var f in frames) {
       if (f === activeFrame) {
@@ -36,11 +44,10 @@ document.addEventListener("DOMContentLoaded", function () {
   var climbSpeed = 0.13; // Slower climbing speed
   var fallSpeed = 0.95; // Slower slide-down speed
   var jumpHeight = 22; // Max jump height in pixels
-  var climbLimit = 93.6; // 78% of 120px (mountain peak Y height relative to base)
 
   // State variables
   var progress = 0; // 0 to 100% of the running track
-  var climbY = 0; // pixels climbed (up to 93.6px)
+  var climbY = 0; // pixels climbed (up to climbLimit)
   var celebrateTime = 0; // tick counter for celebration
   var state = "run"; // 'run', 'jump', 'climb', 'fall', 'wait_after_fall', 'celebrate', 'wait'
   var jumpStartProgress = 0;
@@ -49,16 +56,37 @@ document.addEventListener("DOMContentLoaded", function () {
   var climbFrameToggle = 0; // counter to cycle climbing limbs
   var fallFrameToggle = 0; // counter to cycle flailing arms
   
-  // Track geometry (relative to container size)
+  // Dynamic geometry variables
   var endX = 0; 
+  var mountainWidth = 0;
+  var mountainLeft = 0;
+  var climbLimit = 0;
   
+  function updateGeometry() {
+    mountainWidth = mountainContainer.clientWidth;
+    mountainLeft = mountainContainer.offsetLeft;
+    climbLimit = mountainWidth * 0.78; // Summit peak is 78% of mountain container height
+    endX = getEndX();
+  }
+
   function getEndX() {
-    // aligns the center of the 28px character with the start of the mountain (x=10 in 120px container)
-    return container.clientWidth - 130; 
+    // aligns character's center with the base of the mountain (x=10% on mountain SVG)
+    // 14px offset centers the 28px character
+    return mountainLeft + (10 / 100) * mountainWidth - 14; 
+  }
+
+  function updateBoulderPositions() {
+    // Char width is 28px, boulder width is 20px. Center offset = (28 - 20) / 2 = 4px
+    var offset = 4;
+    if (boulders[0]) boulders[0].style.left = (0.20 * endX + offset) + "px";
+    if (boulders[1]) boulders[1].style.left = (0.40 * endX + offset) + "px";
+    if (boulders[2]) boulders[2].style.left = (0.60 * endX + offset) + "px";
+    if (boulders[3]) boulders[3].style.left = (0.80 * endX + offset) + "px";
   }
 
   function tick() {
-    endX = getEndX();
+    updateGeometry();
+    updateBoulderPositions();
 
     if (state === "run" || state === "jump") {
       progress += runSpeed;
@@ -153,9 +181,8 @@ document.addEventListener("DOMContentLoaded", function () {
       var svgX = (1-t)*(1-t)*10 + 2*(1-t)*t*32 + t*t*68;
       var svgY = (1-t)*(1-t)*100 + 2*(1-t)*t*60 + t*t*22;
       
-      var mountainLeft = container.clientWidth - 128; // right: 8px, width: 120px
-      var posX = mountainLeft + (svgX / 100) * 120 - 14;
-      var posY = -(((100 - svgY) / 100) * 120);
+      var posX = mountainLeft + (svgX / 100) * mountainWidth - 14;
+      var posY = -(((100 - svgY) / 100) * mountainWidth);
       char.style.transform = "translate3d(" + posX + "px, " + posY + "px, 0)";
 
     } else if (state === "fall") {
@@ -185,9 +212,8 @@ document.addEventListener("DOMContentLoaded", function () {
       var svgX = (1-t)*(1-t)*10 + 2*(1-t)*t*32 + t*t*68;
       var svgY = (1-t)*(1-t)*100 + 2*(1-t)*t*60 + t*t*22;
       
-      var mountainLeft = container.clientWidth - 128;
-      var posX = mountainLeft + (svgX / 100) * 120 - 14;
-      var posY = -(((100 - svgY) / 100) * 120);
+      var posX = mountainLeft + (svgX / 100) * mountainWidth - 14;
+      var posY = -(((100 - svgY) / 100) * mountainWidth);
       char.style.transform = "translate3d(" + posX + "px, " + posY + "px, 0)";
 
     } else if (state === "celebrate") {
@@ -195,8 +221,7 @@ document.addEventListener("DOMContentLoaded", function () {
       // Celebrate jump animation (up and down)
       var jumpOffset = -Math.abs(Math.sin(celebrateTime * 0.12)) * 12;
       
-      var mountainLeft = container.clientWidth - 128;
-      var posX = mountainLeft + (68 / 100) * 120 - 14;
+      var posX = mountainLeft + (68 / 100) * mountainWidth - 14;
       var posY = -climbLimit + jumpOffset;
       char.style.transform = "translate3d(" + posX + "px, " + posY + "px, 0)";
 
