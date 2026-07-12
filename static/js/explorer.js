@@ -30,14 +30,15 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   // Animation constants
-  var runSpeed = 0.09; // Reduced by 20% for slower run
-  var climbSpeed = 0.13; // Reduced by 20% for slower climb
-  var fallSpeed = 0.95; // Reduced by 20% for slower fall
+  var runSpeed = 0.09; // Slower run
+  var climbSpeed = 0.13; // Slower climbing speed
+  var fallSpeed = 0.95; // Slower slide-down speed
   var jumpHeight = 22; // Max jump height in pixels
+  var climbLimit = 93.6; // 78% of 120px (mountain peak Y height relative to base)
 
   // State variables
   var progress = 0; // 0 to 100% of the running track
-  var climbY = 0; // pixels climbed (up to 72px)
+  var climbY = 0; // pixels climbed (up to 93.6px)
   var celebrateTime = 0; // tick counter for celebration
   var state = "run"; // 'run', 'jump', 'climb', 'fall', 'wait_after_fall', 'celebrate', 'wait'
   var jumpStartProgress = 0;
@@ -48,8 +49,10 @@ document.addEventListener("DOMContentLoaded", function () {
   var endX = 0; 
   
   function getEndX() {
-    // 53px offset aligns the center of the 28px character with the rope peak at x=68
-    return container.clientWidth - 53; 
+    // aligns the center of the 28px character with the start of the mountain (x=10 in 120px container)
+    // Mountain is right: 8px, width: 120px. Left base is at x=10% of 120px = 12px from mountain left.
+    // So base X is at container.clientWidth - 8 - 120 + 12 - 14 (half char width) = clientWidth - 130.
+    return container.clientWidth - 130; 
   }
 
   function tick() {
@@ -61,6 +64,7 @@ document.addEventListener("DOMContentLoaded", function () {
         progress = 100;
         state = "climb";
         setFrame("climb");
+        climbY = 0;
       }
 
       // Check jumping over 4 rocks:
@@ -122,18 +126,24 @@ document.addEventListener("DOMContentLoaded", function () {
       climbY += climbSpeed;
       
       // Story detail: Slip and fall back down halfway up the first time
-      if (!hasFallen && climbY >= 35) {
+      if (!hasFallen && climbY >= (climbLimit / 2)) {
         state = "fall";
         setFrame("fall");
-      } else if (climbY >= 72) { // Reached the peak
-        climbY = 72;
+      } else if (climbY >= climbLimit) { // Reached the peak
+        climbY = climbLimit;
         state = "celebrate";
         setFrame("celebrate");
         celebrateTime = 0;
       }
       
-      var posX = endX;
-      var posY = -climbY;
+      // Interpolate along the quadratic bezier ridge: P0(10, 100), P1(32, 60), P2(68, 22)
+      var t = climbY / climbLimit;
+      var svgX = (1-t)*(1-t)*10 + 2*(1-t)*t*32 + t*t*68;
+      var svgY = (1-t)*(1-t)*100 + 2*(1-t)*t*60 + t*t*22;
+      
+      var mountainLeft = container.clientWidth - 128; // right: 8px, width: 120px
+      var posX = mountainLeft + (svgX / 100) * 120 - 14;
+      var posY = -(((100 - svgY) / 100) * 120);
       char.style.transform = "translate3d(" + posX + "px, " + posY + "px, 0)";
 
     } else if (state === "fall") {
@@ -148,16 +158,25 @@ document.addEventListener("DOMContentLoaded", function () {
           hasFallen = true; // climb successfully next time
         }, 750); // Pause for 750ms on the ground before trying again
       }
-      var posX = endX;
-      var posY = -climbY;
+      
+      // Interpolate coordinates during fall to slide back down along the ridge line
+      var t = climbY / climbLimit;
+      var svgX = (1-t)*(1-t)*10 + 2*(1-t)*t*32 + t*t*68;
+      var svgY = (1-t)*(1-t)*100 + 2*(1-t)*t*60 + t*t*22;
+      
+      var mountainLeft = container.clientWidth - 128;
+      var posX = mountainLeft + (svgX / 100) * 120 - 14;
+      var posY = -(((100 - svgY) / 100) * 120);
       char.style.transform = "translate3d(" + posX + "px, " + posY + "px, 0)";
 
     } else if (state === "celebrate") {
       celebrateTime += 1;
       // Celebrate jump animation (up and down)
       var jumpOffset = -Math.abs(Math.sin(celebrateTime * 0.12)) * 12;
-      var posX = endX;
-      var posY = -72 + jumpOffset;
+      
+      var mountainLeft = container.clientWidth - 128;
+      var posX = mountainLeft + (68 / 100) * 120 - 14;
+      var posY = -climbLimit + jumpOffset;
       char.style.transform = "translate3d(" + posX + "px, " + posY + "px, 0)";
 
       if (celebrateTime >= 150) { // celebrate for 2.5s
