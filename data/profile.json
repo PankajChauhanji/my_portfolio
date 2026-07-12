@@ -1,17 +1,17 @@
 {
   "name": "Pankaj Chauhan",
   "first_name": "Pankaj",
-  "role": "Software Engineer",
-  "title": "Senior Member of Technical Staff",
+  "role": "Technical Lead",
+  "title": "Technical Lead",
   "company": "Perfios Software Solutions",
-  "location": "New Delhi, India",
+  "location": "Dehradun, India",
   "hometown": "Dehradun, Uttarakhand",
   "email": "pankajchauhan.nitsri@gmail.com",
   "phone": "+91 8057307366",
   "quote": "Be the change that you want to see in the world.",
-  "tagline": "I turn millions of messy PDFs into clean, structured data - and trade screens for ridgelines on the weekend.",
+  "tagline": "I lead teams that turn millions of messy PDFs into clean, structured data - and trade screens for ridgelines on the weekend.",
   "terminal_roles": [
-    "software_engineer @ perfios",
+    "tech_lead @ perfios",
     "agentic_ai_builder",
     "pdf_data_miner",
     "high_altitude_trekker"
@@ -42,10 +42,18 @@
       "location": "New Delhi, India",
       "roles": [
         {
-          "title": "Senior Member of Technical Staff",
-          "start": "Apr 2024", "end": "Present", "current": true,
+          "title": "Technical Lead",
+          "start": "Apr 2026", "end": "Present", "current": true,
           "highlights": [
-            "Architected a Corporate Risk platform monitoring Indian entities for adverse media and governance risk - a 10K/day pipeline with custom ML noise-filters and a scalable API layer.",
+            "Driving adoption of AI workflows across products — reducing manual work and accelerating feature delivery.",
+            "Leading parser frameworks, prompt engineering, and production ML best practices."
+          ]
+        },
+        {
+          "title": "Senior Member of Technical Staff",
+          "start": "Apr 2024", "end": "Apr 2026", "current": false,
+          "highlights": [
+            "Architected a Corporate Risk platform monitoring Indian entities for adverse media and governance risk — a 10K/day pipeline with custom ML noise-filters and a scalable API layer.",
             "Cut LLM costs by 85% through advanced prompt engineering while accurately classifying Fraud, Litigation, and Misconduct risk.",
             "Built a DGFT trade-risk pipeline that analyses daily court judgments, combining multi-stage OCR with prompt engineering to classify complex legal risk.",
             "Led research on table extraction from PDFs and images, shipping a versatile solution across 10M+ records."
