@@ -137,7 +137,7 @@
     <div class="mt-7 flex flex-wrap gap-3 justify-center">
       {% if site.features.contact and site.contact.enabled %}<button type="button" class="contact-open btn btn-primary">{{ site.contact.button_label }}</button>{% endif %}
       {% for s in profile.social %}
-      <a href="{{ s.href }}"{% if s.type != 'email' %} target="_blank" rel="noopener"{% endif %} class="btn btn-ghost">{{ s.label }}</a>
+        {% include 'partials/social_link.html' %}
       {% endfor %}
     </div>
   </div>

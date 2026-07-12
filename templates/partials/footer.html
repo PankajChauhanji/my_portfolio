@@ -6,7 +6,9 @@
       <button type="button" class="contact-open text-glacier hover:brightness-110 transition">{{ site.contact.button_label }}</button>
       {% endif %}
       {% for s in profile.social %}
-      <a href="{{ s.href }}"{% if s.type != 'email' %} target="_blank" rel="noopener"{% endif %} class="text-muted hover:text-glacier transition-colors">{{ s.label }}</a>
+        {% with size_class="sz-md" %}
+          {% include 'partials/social_link.html' %}
+        {% endwith %}
       {% endfor %}
     </div>
   </div>
