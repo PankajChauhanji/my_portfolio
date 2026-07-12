@@ -179,8 +179,8 @@ document.addEventListener("DOMContentLoaded", function () {
     requestAnimationFrame(tick);
   }
 
-  // Start the animation
+  // Start the animation immediately
   setTimeout(function() {
     tick();
-  }, 1200); // Start 1.2s after page load
+  }, 50);
 });

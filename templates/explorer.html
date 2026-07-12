@@ -17,18 +17,38 @@
     <div class="track-line"></div>
     
     <!-- Boulders -->
-    <div class="boulder boulder-1"></div>
-    <div class="boulder boulder-2"></div>
-    <div class="boulder boulder-3"></div>
-    <div class="boulder boulder-4"></div>
+    <div class="boulder boulder-1">
+      <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" class="w-full h-full">
+        <!-- Curvy stone -->
+        <path d="M2,18 Q8,6 12,6 Q16,6 18,18" />
+      </svg>
+    </div>
+    <div class="boulder boulder-2">
+      <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" class="w-full h-full">
+        <!-- Jagged triangle/rock -->
+        <path d="M2,18 L10,3 L18,18 Z" />
+      </svg>
+    </div>
+    <div class="boulder boulder-3">
+      <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" class="w-full h-full">
+        <!-- Curvy mound -->
+        <path d="M2,18 Q10,2 18,18" />
+      </svg>
+    </div>
+    <div class="boulder boulder-4">
+      <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" class="w-full h-full">
+        <!-- Double jagged peak rock -->
+        <path d="M2,18 L6,10 L10,13 L15,5 L18,18" />
+      </svg>
+    </div>
     
     <!-- Mountain and Rope -->
     <div class="mountain-container">
       <svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="1.8">
-        <!-- Background Mountain Peak (Depth Layer) -->
-        <path d="M 5,100 L 25,55 L 42,65 L 58,35 L 75,70 L 90,100" stroke-width="1.2" style="opacity:0.45" />
-        <!-- Foreground Jagged Mountain Peak -->
-        <path d="M 10,100 L 22,72 L 32,78 L 45,45 L 53,52 L 68,22 L 78,60 L 84,55 L 95,100" />
+        <!-- Background Mountain Peak (Curvy Depth Layer) -->
+        <path d="M 5,100 Q 20,65 32,50 Q 44,38 52,38 Q 65,48 78,72 Q 86,88 90,100" stroke-width="1.2" style="opacity:0.45" />
+        <!-- Foreground Curvy/Parabolic Mountain Peak -->
+        <path d="M 10,100 Q 25,75 35,60 Q 48,45 68,22 Q 76,55 82,65 Q 88,85 95,100" />
         <!-- Rope hanging from the highest summit peak (68, 22) -->
         <line x1="68" y1="22" x2="68" y2="100" stroke="var(--text-muted)" stroke-dasharray="3,3" />
       </svg>
@@ -36,37 +56,45 @@
     
     <!-- Character -->
     <div id="runner-character">
-      <!-- Run Frame 1 -->
+      <!-- Run Frame 1 (Stride Phase) -->
       <div class="runner-frame frame-run1 w-full h-full">
         <svg viewBox="0 0 24 24" class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--text)">
-          <circle cx="12" cy="5" r="2.2" fill="currentColor"/>
-          <line x1="12" y1="7.2" x2="11.5" y2="13" />
-          <path d="M12 8.5 L15.5 10.5 L18 8.5" />
-          <path d="M12 8.5 L8.5 10 L6 12" />
-          <path d="M11.5 13 L14.5 16 L12.5 20.5" />
-          <path d="M11.5 13 L8.5 15.5 L10.5 19.5" />
+          <circle cx="11.5" cy="5" r="2.2" fill="currentColor"/>
+          <!-- Leaning spine -->
+          <path d="M12 7.2 Q13 10.5 13.8 13.5" />
+          <!-- Arms -->
+          <path d="M12.5 8.5 Q15.5 11 17.5 9.5" />
+          <path d="M12.5 8.5 Q9 10.5 6.5 8.5" />
+          <!-- Legs -->
+          <path d="M13.8 13.5 L17 17.5 L14.2 21.5" />
+          <path d="M13.8 13.5 L9.5 17 L10.8 20.8" />
         </svg>
       </div>
-      <!-- Run Frame 2 -->
+      <!-- Run Frame 2 (Passing Phase) -->
       <div class="runner-frame frame-run2 w-full h-full hidden">
         <svg viewBox="0 0 24 24" class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--text)">
-          <circle cx="12" cy="5" r="2.2" fill="currentColor"/>
-          <line x1="12" y1="7.2" x2="12.5" y2="13" />
-          <path d="M12 8.5 L9 10.5 L6.5 8.5" />
-          <path d="M12 8.5 L15 10 L17.5 12" />
-          <path d="M12.5 13 L9.5 16 L11.5 20.5" />
-          <path d="M12.5 13 L15.5 15.5 L13.5 19.5" />
+          <circle cx="11.5" cy="5" r="2.2" fill="currentColor"/>
+          <!-- Leaning spine -->
+          <path d="M12 7.2 Q12.8 10.5 13.5 13.5" />
+          <!-- Arms -->
+          <path d="M12.2 8.5 Q9.5 11 7.5 9.5" />
+          <path d="M12.2 8.5 Q15 10.5 17.5 8.5" />
+          <!-- Legs -->
+          <path d="M13.5 13 L10.5 16.5 L13 21" />
+          <path d="M13.5 13 L16 16 L14 19.8" />
         </svg>
       </div>
       <!-- Jump Frame -->
       <div class="runner-frame frame-jump w-full h-full hidden">
         <svg viewBox="0 0 24 24" class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--text)">
           <circle cx="12" cy="4.2" r="2.2" fill="currentColor"/>
-          <line x1="12" y1="6.4" x2="12" y2="11.5" />
-          <path d="M12 8.4 L16.5 5.5 L19.5 6.5" />
-          <path d="M12 8.4 L7.5 5.5 L4.5 6.5" />
-          <path d="M12 11.5 L9 14.5 L11.5 17.5" />
-          <path d="M12 11.5 L15 14.5 L12.5 17.5" />
+          <path d="M12 6.4 L13.5 11" />
+          <!-- Arms raised up in the air -->
+          <path d="M12.5 7.5 L17.5 5.5 L19.5 3.5" />
+          <path d="M12.5 7.5 L7.5 5.5 L5.5 3.5" />
+          <!-- Legs bent/tucked up -->
+          <path d="M13.5 11 L10.5 14 L12 17.5" />
+          <path d="M13.5 11 L16 14.5 L13.5 18" />
         </svg>
       </div>
       <!-- Fall Frame -->
