@@ -11,8 +11,10 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   var frames = {
-    run: char.querySelector(".frame-run"),
+    run1: char.querySelector(".frame-run1"),
+    run2: char.querySelector(".frame-run2"),
     jump: char.querySelector(".frame-jump"),
+    fall: char.querySelector(".frame-fall"),
     climb: char.querySelector(".frame-climb"),
     celebrate: char.querySelector(".frame-celebrate")
   };
@@ -28,24 +30,26 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   // Animation constants
-  var runSpeed = 0.55; // percentage progress per frame (calibrated for a nice running pace)
-  var climbSpeed = 0.65; // pixels per frame
-  var jumpHeight = 22; // max jump height in pixels
+  var runSpeed = 0.11; // Half slower for clear slow motion
+  var climbSpeed = 0.16; // Half slower climbing speed
+  var fallSpeed = 1.2; // Match slow motion fall speed
+  var jumpHeight = 22; // Max jump height in pixels
 
   // State variables
   var progress = 0; // 0 to 100% of the running track
   var climbY = 0; // pixels climbed (up to 72px)
   var celebrateTime = 0; // tick counter for celebration
-  var state = "run"; // 'run', 'jump', 'climb', 'celebrate', 'wait'
+  var state = "run"; // 'run', 'jump', 'climb', 'fall', 'wait_after_fall', 'celebrate', 'wait'
   var jumpStartProgress = 0;
+  var hasFallen = false; // flag to only slip once per climb
+  var runFrameToggle = 0; // counter to cycle leg movements
   
   // Track geometry (relative to container size)
-  var startX = 0; 
   var endX = 0; 
   
   function getEndX() {
-    // 64px offset aligns the center of the 28px character with the mountain rope
-    return container.clientWidth - 64; 
+    // 53px offset aligns the center of the 28px character with the rope peak at x=68
+    return container.clientWidth - 53; 
   }
 
   function tick() {
@@ -59,17 +63,29 @@ document.addEventListener("DOMContentLoaded", function () {
         setFrame("climb");
       }
 
-      // Check jumping over rocks
-      // Rock 1 at 30% progress
-      if (state === "run" && progress >= 26 && progress <= 34) {
+      // Check jumping over 4 rocks:
+      // Rock 1 at 20%
+      if (state === "run" && progress >= 16 && progress <= 24) {
         state = "jump";
-        jumpStartProgress = 26;
+        jumpStartProgress = 16;
         setFrame("jump");
       }
-      // Rock 2 at 65% progress
-      if (state === "run" && progress >= 61 && progress <= 69) {
+      // Rock 2 at 40%
+      if (state === "run" && progress >= 36 && progress <= 44) {
         state = "jump";
-        jumpStartProgress = 61;
+        jumpStartProgress = 36;
+        setFrame("jump");
+      }
+      // Rock 3 at 60%
+      if (state === "run" && progress >= 56 && progress <= 64) {
+        state = "jump";
+        jumpStartProgress = 56;
+        setFrame("jump");
+      }
+      // Rock 4 at 80%
+      if (state === "run" && progress >= 76 && progress <= 84) {
+        state = "jump";
+        jumpStartProgress = 76;
         setFrame("jump");
       }
 
@@ -77,12 +93,20 @@ document.addEventListener("DOMContentLoaded", function () {
       var posX = (progress / 100) * endX;
       var posY = 0;
 
-      if (state === "jump") {
-        // Simple parabolic arc: y = -sin(progress) * height
+      if (state === "run") {
+        // Toggle running frames to create leg-pumping movement instead of sliding
+        runFrameToggle += 1;
+        if (Math.floor(runFrameToggle / 20) % 2 === 0) {
+          setFrame("run1");
+        } else {
+          setFrame("run2");
+        }
+      } else if (state === "jump") {
+        // Parabolic jump arc: y = -sin(progress) * height
         var jumpProgress = (progress - jumpStartProgress) / 8; // jump duration is 8% progress
         if (jumpProgress >= 1.0) {
           state = "run";
-          setFrame("run");
+          setFrame("run1");
           posY = 0;
         } else {
           posY = -Math.sin(jumpProgress * Math.PI) * jumpHeight;
@@ -96,11 +120,33 @@ document.addEventListener("DOMContentLoaded", function () {
 
     } else if (state === "climb") {
       climbY += climbSpeed;
-      if (climbY >= 72) { // height of the mountain peak rope
+      
+      // Story detail: Slip and fall back down halfway up the first time
+      if (!hasFallen && climbY >= 35) {
+        state = "fall";
+        setFrame("fall");
+      } else if (climbY >= 72) { // Reached the peak
         climbY = 72;
         state = "celebrate";
         setFrame("celebrate");
         celebrateTime = 0;
+      }
+      
+      var posX = endX;
+      var posY = -climbY;
+      char.style.transform = "translate3d(" + posX + "px, " + posY + "px, 0)";
+
+    } else if (state === "fall") {
+      climbY -= fallSpeed; // falling speed
+      if (climbY <= 0) {
+        climbY = 0;
+        state = "wait_after_fall";
+        setFrame("run1");
+        setTimeout(function() {
+          state = "climb";
+          setFrame("climb");
+          hasFallen = true; // climb successfully next time
+        }, 750); // Pause for 750ms on the ground before trying again
       }
       var posX = endX;
       var posY = -climbY;
@@ -114,7 +160,7 @@ document.addEventListener("DOMContentLoaded", function () {
       var posY = -72 + jumpOffset;
       char.style.transform = "translate3d(" + posX + "px, " + posY + "px, 0)";
 
-      if (celebrateTime >= 150) { // celebrate for about 2.5 seconds
+      if (celebrateTime >= 150) { // celebrate for 2.5s
         state = "wait";
         char.style.opacity = "0";
         setTimeout(function() {
@@ -122,9 +168,11 @@ document.addEventListener("DOMContentLoaded", function () {
           progress = 0;
           climbY = 0;
           celebrateTime = 0;
+          hasFallen = false;
           state = "run";
-          setFrame("run");
-        }, 1500); // wait 1.5s before repeating
+          setFrame("run1");
+          runFrameToggle = 0;
+        }, 1500); // Wait 1.5s before repeating
       }
     }
 
@@ -134,5 +182,5 @@ document.addEventListener("DOMContentLoaded", function () {
   // Start the animation
   setTimeout(function() {
     tick();
-  }, 1200); // Start 1.2s after load
+  }, 1200); // Start 1.2s after page load
 });
