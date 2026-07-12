@@ -14,8 +14,10 @@ document.addEventListener("DOMContentLoaded", function () {
     run1: char.querySelector(".frame-run1"),
     run2: char.querySelector(".frame-run2"),
     jump: char.querySelector(".frame-jump"),
-    fall: char.querySelector(".frame-fall"),
-    climb: char.querySelector(".frame-climb"),
+    fall1: char.querySelector(".frame-fall1"),
+    fall2: char.querySelector(".frame-fall2"),
+    climb1: char.querySelector(".frame-climb1"),
+    climb2: char.querySelector(".frame-climb2"),
     celebrate: char.querySelector(".frame-celebrate")
   };
 
@@ -44,14 +46,14 @@ document.addEventListener("DOMContentLoaded", function () {
   var jumpStartProgress = 0;
   var hasFallen = false; // flag to only slip once per climb
   var runFrameToggle = 0; // counter to cycle leg movements
+  var climbFrameToggle = 0; // counter to cycle climbing limbs
+  var fallFrameToggle = 0; // counter to cycle flailing arms
   
   // Track geometry (relative to container size)
   var endX = 0; 
   
   function getEndX() {
     // aligns the center of the 28px character with the start of the mountain (x=10 in 120px container)
-    // Mountain is right: 8px, width: 120px. Left base is at x=10% of 120px = 12px from mountain left.
-    // So base X is at container.clientWidth - 8 - 120 + 12 - 14 (half char width) = clientWidth - 130.
     return container.clientWidth - 130; 
   }
 
@@ -63,8 +65,9 @@ document.addEventListener("DOMContentLoaded", function () {
       if (progress >= 100) {
         progress = 100;
         state = "climb";
-        setFrame("climb");
+        setFrame("climb1");
         climbY = 0;
+        climbFrameToggle = 0;
       }
 
       // Check jumping over 4 rocks:
@@ -128,12 +131,21 @@ document.addEventListener("DOMContentLoaded", function () {
       // Story detail: Slip and fall back down halfway up the first time
       if (!hasFallen && climbY >= (climbLimit / 2)) {
         state = "fall";
-        setFrame("fall");
+        setFrame("fall1");
+        fallFrameToggle = 0;
       } else if (climbY >= climbLimit) { // Reached the peak
         climbY = climbLimit;
         state = "celebrate";
         setFrame("celebrate");
         celebrateTime = 0;
+      } else {
+        // Cycle hand and leg climbing movements
+        climbFrameToggle += 1;
+        if (Math.floor(climbFrameToggle / 16) % 2 === 0) {
+          setFrame("climb1");
+        } else {
+          setFrame("climb2");
+        }
       }
       
       // Interpolate along the quadratic bezier ridge: P0(10, 100), P1(32, 60), P2(68, 22)
@@ -154,9 +166,18 @@ document.addEventListener("DOMContentLoaded", function () {
         setFrame("run1");
         setTimeout(function() {
           state = "climb";
-          setFrame("climb");
+          setFrame("climb1");
+          climbFrameToggle = 0;
           hasFallen = true; // climb successfully next time
         }, 750); // Pause for 750ms on the ground before trying again
+      } else {
+        // Cycle panic flailing arms as he falls down
+        fallFrameToggle += 1;
+        if (Math.floor(fallFrameToggle / 6) % 2 === 0) {
+          setFrame("fall1");
+        } else {
+          setFrame("fall2");
+        }
       }
       
       // Interpolate coordinates during fall to slide back down along the ridge line
@@ -191,6 +212,8 @@ document.addEventListener("DOMContentLoaded", function () {
           state = "run";
           setFrame("run1");
           runFrameToggle = 0;
+          climbFrameToggle = 0;
+          fallFrameToggle = 0;
         }, 1500); // Wait 1.5s before repeating
       }
     }
