@@ -30,9 +30,9 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   // Animation constants
-  var runSpeed = 0.11; // Half slower for clear slow motion
-  var climbSpeed = 0.16; // Half slower climbing speed
-  var fallSpeed = 1.2; // Match slow motion fall speed
+  var runSpeed = 0.09; // Reduced by 20% for slower run
+  var climbSpeed = 0.13; // Reduced by 20% for slower climb
+  var fallSpeed = 0.95; // Reduced by 20% for slower fall
   var jumpHeight = 22; // Max jump height in pixels
 
   // State variables
@@ -96,7 +96,7 @@ document.addEventListener("DOMContentLoaded", function () {
       if (state === "run") {
         // Toggle running frames to create leg-pumping movement instead of sliding
         runFrameToggle += 1;
-        if (Math.floor(runFrameToggle / 20) % 2 === 0) {
+        if (Math.floor(runFrameToggle / 24) % 2 === 0) {
           setFrame("run1");
         } else {
           setFrame("run2");
