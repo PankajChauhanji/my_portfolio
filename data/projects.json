@@ -94,5 +94,22 @@
     "year": "",
     "featured": true,
     "cover": "/static/img/project-salary-predictions.svg"
+  },
+  {
+    "slug": "pdf-processing",
+    "title": "PDF Processing Toolkit",
+    "summary": "A collection of PDF-processing experiments — text extraction, layout analysis, and structure parsing from complex documents.",
+    "description": "Jupyter notebooks exploring PDF text extraction, table detection, and layout parsing techniques — the same class of problems behind my day-job data-mining pipelines.",
+    "highlights": [
+      "Text extraction and structure parsing from complex PDFs",
+      "Table detection and layout analysis experiments"
+    ],
+    "tags": ["Python", "PDF", "Data Mining", "Jupyter", "PyMuPDF"],
+    "language": "Python",
+    "links": [{ "label": "Source", "href": "https://github.com/PankajChauhanji/pdf_processing", "type": "github" }],
+    "year": "",
+    "featured": true,
+    "cover": "/static/img/project-pdf-processing.svg"
   }
 ]
+
