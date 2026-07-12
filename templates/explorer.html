@@ -1,5 +1,8 @@
 {% extends 'base.html' %}
 {% block title %}Explorer - {{ profile.name }}{% endblock %}
+{% block styles %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/explorer.css') }}">
+{% endblock %}
 {% block meta_description %}{{ site.pages.explorer.subtitle }}{% endblock %}
 {% block content %}
 <section class="max-w-content mx-auto px-5 sm:px-8 pt-20 sm:pt-28 pb-12">
@@ -9,17 +12,17 @@
   <p class="reveal cursive-quote">"Never get so busy making a living that you forget to make a life"</p>
   
   <!-- Running Boy Animation Container -->
-  <div id="runner-container" class="reveal relative w-full overflow-hidden mt-6" style="height: 120px;">
+  <div id="runner-container" class="reveal relative w-full overflow-hidden">
     <!-- Track line -->
-    <div class="absolute bottom-[20px] left-0 right-0 h-[2px]" style="background:var(--border)"></div>
+    <div class="track-line"></div>
     
     <!-- Boulders -->
-    <div class="absolute bottom-[20px] left-[30%] w-4 h-3 rounded-t-sm" style="margin-left: -8px; background:var(--text-muted); opacity: 0.35;"></div>
-    <div class="absolute bottom-[20px] left-[65%] w-5 h-3.5 rounded-t-sm" style="margin-left: -10px; background:var(--text-muted); opacity: 0.35;"></div>
+    <div class="boulder boulder-1"></div>
+    <div class="boulder boulder-2"></div>
     
     <!-- Mountain and Rope -->
-    <div class="absolute right-2 bottom-[20px] w-24 h-24 pointer-events-none">
-      <svg viewBox="0 0 100 100" class="w-full h-full" fill="none" stroke="currentColor" stroke-width="1.8" style="color:var(--border)">
+    <div class="mountain-container">
+      <svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="1.8">
         <!-- Mountain Peak -->
         <polygon points="10,100 50,22 90,100" fill="var(--surface-2)" />
         <!-- Rope -->
@@ -28,7 +31,7 @@
     </div>
     
     <!-- Character -->
-    <div id="runner-character" class="absolute" style="bottom: 20px; left: 0; width: 28px; height: 28px; transform: translate3d(0, 0, 0); opacity: 0; will-change: transform; transition: opacity 0.5s ease;">
+    <div id="runner-character">
       <!-- Run Frame -->
       <div class="runner-frame frame-run w-full h-full">
         <svg viewBox="0 0 24 24" class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--text)">
@@ -99,4 +102,8 @@
     {% endfor %}
   </div>
 </section>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/explorer.js') }}" defer></script>
 {% endblock %}

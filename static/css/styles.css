@@ -203,20 +203,3 @@ html.dark .social-btn-github:hover {
   opacity: 1;
   transform: translate3d(-50%, 0, 0);
 }
-
-/* ---- Cursive Quote (Explorer Page) ---- */
-.cursive-quote {
-  font-family: 'Dancing Script', cursive;
-  font-size: 1.65rem;
-  font-weight: 600;
-  color: var(--glacier);
-  margin-top: 1.25rem;
-  margin-bottom: 0.5rem;
-  letter-spacing: 0.03em;
-  line-height: 1.4;
-  text-shadow: 0 2px 10px rgba(14, 159, 140, 0.1);
-}
-
-html.dark .cursive-quote {
-  text-shadow: 0 2px 12px rgba(94, 234, 212, 0.15);
-}
