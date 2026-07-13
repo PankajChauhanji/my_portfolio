@@ -45,8 +45,8 @@
           "title": "Technical Lead",
           "start": "Apr 2026", "end": "Present", "current": true,
           "highlights": [
-            "Driving adoption of AI workflows across products — reducing manual work and accelerating feature delivery.",
-            "Leading parser frameworks, prompt engineering, and production ML best practices."
+            "Leading parser frameworks, prompt engineering, and production ML best practices while driving AI workflow adoption across products — reducing manual work and accelerating feature delivery.",
+            "Redesigned a legacy document-OCR service into a modular, multi-engine pipeline (Google Vision / Tesseract, Python) — introduced streaming batch processing that keeps memory constant regardless of document size, parallelized OCR execution, and eliminated a redundant preprocessing stage consuming ~95% of pipeline CPU. Delivered 70% faster processing, 34% lower peak memory, and 41% less CPU on production."
           ]
         },
         {
