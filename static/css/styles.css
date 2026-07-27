@@ -50,6 +50,22 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--glacier); outli
 }
 
 /* ---- Blog prose ---- */
+.project-highlights {
+  list-style-type: disc;
+  list-style-position: inside;
+  padding-left: 0.9rem;
+  margin-top: 1rem;
+  color: var(--text-muted);
+  line-height: 1.65;
+}
+.project-highlights li {
+  margin-top: 0.4rem;
+}
+.project-highlights li::marker {
+  color: var(--glacier);
+  opacity: 0.82;
+  font-size: 0.9em;
+}
 .prose-portfolio { color: var(--text); font-size: 1.075rem; line-height: 1.75; }
 .prose-portfolio > * + * { margin-top: 1.25em; }
 .prose-portfolio h1, .prose-portfolio h2, .prose-portfolio h3 {

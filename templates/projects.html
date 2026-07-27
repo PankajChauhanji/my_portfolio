@@ -22,6 +22,13 @@
           {% if p.year %}<span class="font-mono text-xs text-muted shrink-0 mt-1">{{ p.year }}</span>{% endif %}
         </div>
         <p class="mt-3 text-muted leading-relaxed flex-1">{{ p.summary }}</p>
+        {% if p.highlights %}
+        <ul class="project-highlights">
+          {% for highlight in p.highlights[:3] %}
+          <li>{{ highlight }}</li>
+          {% endfor %}
+        </ul>
+        {% endif %}
         <div class="flex flex-wrap gap-2 mt-5">{% for t in p.tags %}<span class="tag">{{ t }}</span>{% endfor %}</div>
         <div class="flex items-center gap-5 mt-6 pt-5 font-mono text-sm" style="border-top:1px solid var(--border)">
           {% for link in p.links %}

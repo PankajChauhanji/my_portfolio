@@ -21,9 +21,8 @@
     "summary": "Real-time multiplayer browser card game platform with shared lobby and live room-based gameplay.",
     "description": "A Flask-SocketIO platform for browser card games, with room creation, live sync, and server-authoritative multiplayer flow across multiple game modes.",
     "highlights": [
-      "Real-time multiplayer rooms with Flask-SocketIO",
-      "Shared lobby, room management, reconnection, and multi-game platform architecture",
-      "Live browser gameplay with no installation required"
+      "Real-time multiplayer rooms with Flask-SocketIO and live room lifecycle",
+      "Shared lobby, reconnection, and multi-game browser gameplay with no install"
     ],
     "tags": ["Python", "Flask", "WebSockets", "JavaScript", "HTML"],
     "language": "Python & JavaScript",
