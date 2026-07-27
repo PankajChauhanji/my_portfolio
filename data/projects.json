@@ -16,20 +16,21 @@
     "cover": "/static/img/projects/draw_hunt_player_lobby.webp"
   },
   {
-    "slug": "super-seven-cards",
-    "title": "Super Seven Cards",
-    "summary": "A digital implementation of the Sevens card game (a.k.a. Card Dominoes), built in Python.",
-    "description": "A Python implementation of Sevens / Card Dominoes, where players build sequences outward from the sevens. Includes the full game logic and turn handling.",
+    "slug": "super-cards",
+    "title": "Super Cards",
+    "summary": "Real-time multiplayer browser card game platform with shared lobby and live room-based gameplay.",
+    "description": "A Flask-SocketIO platform for browser card games, with room creation, live sync, and server-authoritative multiplayer flow across multiple game modes.",
     "highlights": [
-      "Complete Sevens game rules and turn engine",
-      "Clean, testable Python game logic"
+      "Real-time multiplayer rooms with Flask-SocketIO",
+      "Shared lobby, room management, reconnection, and multi-game platform architecture",
+      "Live browser gameplay with no installation required"
     ],
-    "tags": ["Python", "WebSockets", "HTML5 Canvas", "CSS", "JavaScript"],
+    "tags": ["Python", "Flask", "WebSockets", "JavaScript", "HTML"],
     "language": "Python & JavaScript",
-    "links": [{ "label": "Source", "href": "https://github.com/PankajChauhanji/SuperSevenCards", "type": "github" }],
+    "links": [{ "label": "Source", "href": "https://github.com/PankajChauhanji/super_cards", "type": "github" }],
     "year": "",
     "featured": true,
-    "cover": "/static/img/projects/super_seven_game_table.webp"
+    "cover": "/static/img/projects/super_seven_game_window.webp"
   },
   {
     "slug": "cricket-analysis-prediction",
