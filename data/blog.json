@@ -3,7 +3,7 @@
     "slug": "cutting-ocr-costs",
     "title": "How I Cut OCR API Costs by 80% Without Touching the Downstream",
     "excerpt": "An OCR request costs you twice — once to the vendor for the call, once to your own machines for the work of producing it. I went after both: page merging to collapse the API calls, and a streamed, bounded pipeline to flatten RAM, CPU, and latency underneath them. Here's exactly how the combined cost reduction works.",
-    "date": "2026-05-18",
+    "date": "2026-07-18",
     "tags": ["Engineering", "OCR", "Python", "Performance", "Cost Optimization"],
     "cover": "/static/img/blog-cutting-ocr-costs.svg",
     "reading_time": "12 min read",
