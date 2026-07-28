@@ -7,8 +7,8 @@ Personal portfolio of **Pankaj Chauhan**, Software Engineer at Perfios Software 
 ---
 
 <!-- Add portfolio screenshots here -->
-![Explorer](static/img/portfolio_home.png)
-![Home](static/img/portfolio_explorer.png)
+![Explorer](static/img/portfolio_home.webp)
+![Home](static/img/portfolio_explorer.webp)
 
 ## What's inside
 
