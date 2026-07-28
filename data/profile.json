@@ -18,16 +18,16 @@
   ],
   "summary": "Software Engineer specializing in Python and Agentic AI, building scalable data-extraction pipelines for millions of records. I integrate LLMs, RAG, and custom parser frameworks to hit 98%+ accuracy while cutting operational and OCR costs.",
   "about": [
-    "I build scalable backend systems for fintech, where my work revolves around one messy problem: extracting clean, structured data from millions of complex PDFs and images. I've built the core pipelines that handle extraction at massive scale, engineered custom parser frameworks, and shipped PDF-tampering detection that has secured over 1.5 million documents.",
+    "I build scalable backend systems for fintech, where my work revolves around one messy problem: turning millions of complex PDFs and images into clean, structured data. I've built the core pipelines that extract at massive scale, engineered custom parser frameworks, and shipped fraud-investigation workflows that have reviewed over 25 million documents.",
     "Lately my focus has shifted toward applied AI inside enterprise systems - LLMs, RAG, and agentic workflows powering risk-monitoring products that are smarter and far cheaper to run. Combining traditional data mining with modern generative models is exactly the kind of problem I want to keep solving.",
     "Away from the keyboard I'm usually at altitude. Long approaches and quiet summits in the Himalaya are how I reset - and planning an expedition turns out to be a lot like planning a release."
   ],
   "resume": { "file": "resume.pdf", "label": "Résumé" },
   "stats": [
-    { "label": "years_building", "value": "5+", "kind": "code" },
-    { "label": "docs_secured", "value": "10M+", "kind": "code" },
-    { "label": "extraction_accuracy", "value": "98%+", "kind": "code" },
-    { "label": "highest_trek_m", "value": "4,600", "kind": "trek" }
+    { "label": "5+ years building", "value": "5+", "kind": "code" },
+    { "label": "100M+ docs processed", "value": "100M+", "kind": "code" },
+    { "label": "98%+ extraction accuracy", "value": "98%+", "kind": "code" },
+    { "label": "4,600m summit", "value": "4,600", "kind": "trek" }
   ],
   "skills": [
     { "group": "Languages", "items": ["Python", "C++", "Java", "JavaScript"] },
@@ -56,7 +56,7 @@
             "Architected a Corporate Risk platform monitoring Indian entities for adverse media and governance risk — a 10K/day pipeline with custom ML noise-filters and a scalable API layer.",
             "Cut LLM costs by 85% through advanced prompt engineering while accurately classifying Fraud, Litigation, and Misconduct risk.",
             "Built a DGFT trade-risk pipeline that analyses daily court judgments, combining multi-stage OCR with prompt engineering to classify complex legal risk.",
-            "Led research on table extraction from PDFs and images, shipping a versatile solution across 10M+ records."
+            "Led research on table extraction from PDFs and images, shipping a versatile solution that has supported extraction across 100M+ documents."
           ]
         },
         {

@@ -27,7 +27,7 @@
     {% for s in profile.stats %}
     <div class="reveal card rounded-2xl p-5 sm:p-6">
       <div class="font-display font-bold text-3xl sm:text-4xl {{ 'alpenglow' if s.kind == 'trek' else 'text-glacier' }}">{{ s.value }}</div>
-      <div class="font-mono text-[11px] uppercase tracking-wider text-muted mt-2">{{ '\u25b2' if s.kind == 'trek' else '$' }} {{ s.label }}</div>
+      <div class="font-mono text-[11px] uppercase tracking-wider text-muted mt-2">{{ '▲' if s.kind == 'trek' else '↗' }} {{ s.label }}</div>
     </div>
     {% endfor %}
   </div>
