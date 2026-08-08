@@ -5,7 +5,7 @@
     "excerpt": "An OCR request costs you twice — once to the vendor for the call, once to your own machines for the work of producing it. I went after both: page merging to collapse the API calls, and a streamed, bounded pipeline to flatten RAM, CPU, and latency underneath them. Here's exactly how the combined cost reduction works.",
     "date": "2026-07-18",
     "tags": ["Engineering", "OCR", "Python", "Performance", "Cost Optimization"],
-    "cover": "/static/img/blog-cutting-ocr-costs.svg",
+    "cover": "/static/img/blog/cutting-ocr-costs.svg",
     "reading_time": "12 min read",
     "content_file": "cutting-ocr-costs.md",
     "published": true
@@ -16,7 +16,7 @@
     "excerpt": "87 square kilometres of wildflowers, monsoon rain that soaks through everything, and the most peaceful feeling I've had in years. The Valley of Flowers is the kind of place that recalibrates you.",
     "date": "2026-06-15",
     "tags": ["Mountains", "Travel", "Life"],
-    "cover": "/static/img/valley_of_flowers/20250621_132210.webp",
+    "cover": "/static/img/explorer/valley-of-flowers/20250621_132210.webp",
     "reading_time": "7 min read",
     "content_file": "valley-of-flowers.md",
     "published": true
