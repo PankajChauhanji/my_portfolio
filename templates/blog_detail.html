@@ -3,13 +3,16 @@
 {% block meta_description %}{{ post.excerpt }}{% endblock %}
 {% block og_title %}{{ post.title }}{% endblock %}
 {% block og_description %}{{ post.excerpt }}{% endblock %}
-{% block og_image %}{{ post.cover }}{% endblock %}
+{% block og_image %}{{ site.domain }}{{ post.cover }}{% endblock %}
+{% block og_image_dims %}{% endblock %}
 {% block content %}
+<div id="reading-progress" class="reading-progress" aria-hidden="true"></div>
 <article class="max-w-content mx-auto px-5 sm:px-8 pt-8">
   <a href="{{ url_for('blog') }}" class="font-mono text-sm text-muted hover:text-glacier transition-colors inline-flex items-center gap-1.5"><span aria-hidden="true">&larr;</span> all posts</a>
 
   <header class="max-w-3xl mx-auto pt-10 text-center">
-    <div class="font-mono text-xs text-muted flex items-center justify-center gap-3">
+    <p class="font-mono text-sm text-muted"><span style="color:var(--glacier)">$</span> cat {{ post.content_file }}</p>
+    <div class="font-mono text-xs text-muted flex items-center justify-center gap-3 mt-4">
       <span>{{ fmt_date(post.date) }}</span><span class="opacity-40">/</span><span>{{ post.reading_time }}</span>
     </div>
     <h1 class="font-display font-bold text-3xl sm:text-5xl leading-tight mt-4">{{ post.title }}</h1>
@@ -28,4 +31,23 @@
     <a href="{{ url_for('blog') }}" class="btn btn-ghost">&larr; Back to all posts</a>
   </div>
 </article>
+{% endblock %}
+
+{% block scripts %}
+<script>
+(function () {
+  var bar = document.getElementById("reading-progress");
+  var article = document.querySelector("article");
+  if (!bar || !article) return;
+  function update() {
+    var total = article.offsetHeight - window.innerHeight;
+    var scrolled = -article.getBoundingClientRect().top;
+    var pct = total > 0 ? Math.min(100, Math.max(0, (scrolled / total) * 100)) : 0;
+    bar.style.width = pct + "%";
+  }
+  document.addEventListener("scroll", update, { passive: true });
+  window.addEventListener("resize", update);
+  update();
+})();
+</script>
 {% endblock %}
