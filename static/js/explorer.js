@@ -4,13 +4,6 @@ document.addEventListener("DOMContentLoaded", function () {
   var mountainContainer = container ? container.querySelector(".mountain-container") : null;
   if (!container || !char || !mountainContainer) return;
 
-  // Respect user prefers-reduced-motion preferences
-  var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  if (reduceMotion) {
-    char.style.display = "none";
-    return;
-  }
-
   var frames = {
     run1: char.querySelector(".frame-run1"),
     run2: char.querySelector(".frame-run2"),
@@ -39,128 +32,138 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
-  // Animation constants
-  var runSpeed = 0.09; // Slower run
-  var climbSpeed = 0.13; // Slower climbing speed
-  var fallSpeed = 0.95; // Slower slide-down speed
-  var jumpHeight = 22; // Max jump height in pixels
+  // Where the rocks sit along the track, as a fraction of its length
+  var BOULDER_FRACS = [0.20, 0.40, 0.60, 0.80];
 
-  // State variables
-  var progress = 0; // 0 to 100% of the running track
-  var climbY = 0; // pixels climbed (up to climbLimit)
-  var celebrateTime = 0; // tick counter for celebration
-  var state = "run"; // 'run', 'jump', 'climb', 'fall', 'wait_after_fall', 'celebrate', 'wait'
-  var jumpStartProgress = 0;
-  var hasFallen = false; // flag to only slip once per climb
-  var runFrameToggle = 0; // counter to cycle leg movements
-  var climbFrameToggle = 0; // counter to cycle climbing limbs
-  var fallFrameToggle = 0; // counter to cycle flailing arms
-  
-  // Dynamic geometry variables
-  var endX = 0; 
+  // Dynamic geometry — recomputed on resize only, never inside the frame loop
   var mountainWidth = 0;
   var mountainLeft = 0;
   var climbLimit = 0;
-  
+  var endX = 0;
+  var jumpSpan = 0;
+
   function updateGeometry() {
     mountainWidth = mountainContainer.clientWidth;
     mountainLeft = mountainContainer.offsetLeft;
     climbLimit = mountainWidth * 0.78; // Summit peak is 78% of mountain container height
-    endX = getEndX();
-  }
-
-  function getEndX() {
     // aligns character's center with the base of the mountain (x=10% on mountain SVG)
     // 14px offset centers the 28px character
-    return mountainLeft + (10 / 100) * mountainWidth - 14; 
+    endX = mountainLeft + (10 / 100) * mountainWidth - 14;
+    // Rocks sit 20% of the track apart, so the hop must stay well inside that
+    // gap or a narrow screen would start the next jump before landing.
+    jumpSpan = Math.min(46, endX * 0.14);
+    updateBoulderPositions();
   }
 
   function updateBoulderPositions() {
     // Char width is 28px, boulder width is 20px. Center offset = (28 - 20) / 2 = 4px
     var offset = 4;
-    if (boulders[0]) boulders[0].style.left = (0.20 * endX + offset) + "px";
-    if (boulders[1]) boulders[1].style.left = (0.40 * endX + offset) + "px";
-    if (boulders[2]) boulders[2].style.left = (0.60 * endX + offset) + "px";
-    if (boulders[3]) boulders[3].style.left = (0.80 * endX + offset) + "px";
+    for (var i = 0; i < boulders.length; i++) {
+      if (boulders[i]) boulders[i].style.left = (BOULDER_FRACS[i] * endX + offset) + "px";
+    }
+  }
+
+  // Lay out the scene before anything else, so the boulders sit along the track
+  // even when the character animation never starts (reduced motion).
+  updateGeometry();
+
+  // Recompute on resize rather than every frame (reading clientWidth/offsetLeft
+  // in the frame loop forces a layout flush 60x a second). Both listeners are
+  // registered so a viewport change is still caught if ResizeObserver is
+  // unavailable or never delivers.
+  window.addEventListener("resize", updateGeometry);
+  if (typeof ResizeObserver !== "undefined") {
+    new ResizeObserver(updateGeometry).observe(container);
+  }
+
+  // Respect user prefers-reduced-motion preferences
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    char.style.display = "none";
+    return;
+  }
+
+  // Animation constants. Everything is per-frame PIXELS, not a percentage of
+  // the track: a % based speed crosses the track in a fixed time, so on a
+  // narrow screen the figure crawls a few px/sec and stops reading as running.
+  var RUN_SPEED = 1.3; // px per frame along the track
+  var CLIMB_SPEED = 0.55; // px per frame up the ridge
+  var FALL_SPEED = 1.8; // px per frame sliding back down
+  var JUMP_HEIGHT = 24; // px at the top of the arc
+  var STRIDE_PX = 20; // px of ground per leg swap
+  var CLIMB_CYCLE_PX = 9; // px climbed per limb swap
+  var FALL_CYCLE_PX = 6; // px fallen per flail swap
+
+  // State variables
+  var runX = 0; // px travelled along the track (0 -> endX)
+  var climbY = 0; // px climbed (up to climbLimit)
+  var celebrateTime = 0; // tick counter for celebration
+  var state = "run"; // 'run', 'jump', 'climb', 'fall', 'wait_after_fall', 'celebrate', 'wait'
+  var jumpStartX = 0;
+  var nextBoulder = 0; // index of the next rock to hop
+  var hasFallen = false; // flag to only slip once per climb
+  var distanceRun = 0; // px accumulator driving the stride cycle
+
+  // Position along the mountain ridge — quadratic bezier P0(10,100) P1(32,60) P2(68,22)
+  function placeOnRidge() {
+    var t = climbY / climbLimit;
+    var svgX = (1 - t) * (1 - t) * 10 + 2 * (1 - t) * t * 32 + t * t * 68;
+    var svgY = (1 - t) * (1 - t) * 100 + 2 * (1 - t) * t * 60 + t * t * 22;
+    var posX = mountainLeft + (svgX / 100) * mountainWidth - 14;
+    var posY = -(((100 - svgY) / 100) * mountainWidth);
+    char.style.transform = "translate3d(" + posX + "px, " + posY + "px, 0)";
   }
 
   function tick() {
-    updateGeometry();
-    updateBoulderPositions();
-
     if (state === "run" || state === "jump") {
-      progress += runSpeed;
-      if (progress >= 100) {
-        progress = 100;
+      runX += RUN_SPEED;
+      distanceRun += RUN_SPEED;
+      if (runX >= endX) {
+        runX = endX;
         state = "climb";
         setFrame("climb1");
         climbY = 0;
-        climbFrameToggle = 0;
       }
 
-      // Check jumping over 4 rocks:
-      // Rock 1 at 20%
-      if (state === "run" && progress >= 16 && progress <= 24) {
-        state = "jump";
-        jumpStartProgress = 16;
-        setFrame("jump");
-      }
-      // Rock 2 at 40%
-      if (state === "run" && progress >= 36 && progress <= 44) {
-        state = "jump";
-        jumpStartProgress = 36;
-        setFrame("jump");
-      }
-      // Rock 3 at 60%
-      if (state === "run" && progress >= 56 && progress <= 64) {
-        state = "jump";
-        jumpStartProgress = 56;
-        setFrame("jump");
-      }
-      // Rock 4 at 80%
-      if (state === "run" && progress >= 76 && progress <= 84) {
-        state = "jump";
-        jumpStartProgress = 76;
-        setFrame("jump");
+      // Take off just before the next rock, one hop per rock
+      if (state === "run" && nextBoulder < BOULDER_FRACS.length) {
+        var boulderX = BOULDER_FRACS[nextBoulder] * endX;
+        if (runX >= boulderX - jumpSpan * 0.5) {
+          state = "jump";
+          jumpStartX = runX;
+          nextBoulder += 1;
+          setFrame("jump");
+        }
       }
 
-      // Calculate coordinates
-      var posX = (progress / 100) * endX;
+      var posX = runX;
       var posY = 0;
 
       if (state === "run") {
-        // Toggle running frames to create leg-pumping movement instead of sliding
-        runFrameToggle += 1;
-        if (Math.floor(runFrameToggle / 24) % 2 === 0) {
-          setFrame("run1");
-        } else {
-          setFrame("run2");
-        }
+        // Swap legs per distance covered, so the stride matches the speed
+        setFrame(Math.floor(distanceRun / STRIDE_PX) % 2 === 0 ? "run1" : "run2");
       } else if (state === "jump") {
-        // Parabolic jump arc: y = -sin(progress) * height
-        var jumpProgress = (progress - jumpStartProgress) / 8; // jump duration is 8% progress
+        // Parabolic arc across a fixed span of ground
+        var jumpProgress = (runX - jumpStartX) / jumpSpan;
         if (jumpProgress >= 1.0) {
           state = "run";
           setFrame("run1");
-          posY = 0;
         } else {
-          posY = -Math.sin(jumpProgress * Math.PI) * jumpHeight;
+          posY = -Math.sin(jumpProgress * Math.PI) * JUMP_HEIGHT;
         }
       }
 
       char.style.transform = "translate3d(" + posX + "px, " + posY + "px, 0)";
-      if (progress > 1 && char.style.opacity === "0") {
+      if (runX > 1 && char.style.opacity === "0") {
         char.style.opacity = "1";
       }
 
     } else if (state === "climb") {
-      climbY += climbSpeed;
-      
+      climbY += CLIMB_SPEED;
+
       // Story detail: Slip and fall back down halfway up the first time
       if (!hasFallen && climbY >= (climbLimit / 2)) {
         state = "fall";
         setFrame("fall1");
-        fallFrameToggle = 0;
       } else if (climbY >= climbLimit) { // Reached the peak
         climbY = climbLimit;
         state = "celebrate";
@@ -168,86 +171,82 @@ document.addEventListener("DOMContentLoaded", function () {
         celebrateTime = 0;
       } else {
         // Cycle hand and leg climbing movements
-        climbFrameToggle += 1;
-        if (Math.floor(climbFrameToggle / 16) % 2 === 0) {
-          setFrame("climb1");
-        } else {
-          setFrame("climb2");
-        }
+        setFrame(Math.floor(climbY / CLIMB_CYCLE_PX) % 2 === 0 ? "climb1" : "climb2");
       }
-      
-      // Interpolate along the quadratic bezier ridge: P0(10, 100), P1(32, 60), P2(68, 22)
-      var t = climbY / climbLimit;
-      var svgX = (1-t)*(1-t)*10 + 2*(1-t)*t*32 + t*t*68;
-      var svgY = (1-t)*(1-t)*100 + 2*(1-t)*t*60 + t*t*22;
-      
-      var posX = mountainLeft + (svgX / 100) * mountainWidth - 14;
-      var posY = -(((100 - svgY) / 100) * mountainWidth);
-      char.style.transform = "translate3d(" + posX + "px, " + posY + "px, 0)";
+
+      placeOnRidge();
 
     } else if (state === "fall") {
-      climbY -= fallSpeed; // falling speed
+      climbY -= FALL_SPEED; // falling speed
       if (climbY <= 0) {
         climbY = 0;
         state = "wait_after_fall";
         setFrame("run1");
-        setTimeout(function() {
+        setTimeout(function () {
           state = "climb";
           setFrame("climb1");
-          climbFrameToggle = 0;
           hasFallen = true; // climb successfully next time
         }, 750); // Pause for 750ms on the ground before trying again
       } else {
         // Cycle panic flailing arms as he falls down
-        fallFrameToggle += 1;
-        if (Math.floor(fallFrameToggle / 6) % 2 === 0) {
-          setFrame("fall1");
-        } else {
-          setFrame("fall2");
-        }
+        setFrame(Math.floor(climbY / FALL_CYCLE_PX) % 2 === 0 ? "fall1" : "fall2");
       }
-      
-      // Interpolate coordinates during fall to slide back down along the ridge line
-      var t = climbY / climbLimit;
-      var svgX = (1-t)*(1-t)*10 + 2*(1-t)*t*32 + t*t*68;
-      var svgY = (1-t)*(1-t)*100 + 2*(1-t)*t*60 + t*t*22;
-      
-      var posX = mountainLeft + (svgX / 100) * mountainWidth - 14;
-      var posY = -(((100 - svgY) / 100) * mountainWidth);
-      char.style.transform = "translate3d(" + posX + "px, " + posY + "px, 0)";
+
+      placeOnRidge();
 
     } else if (state === "celebrate") {
       celebrateTime += 1;
       // Celebrate jump animation (up and down)
       var jumpOffset = -Math.abs(Math.sin(celebrateTime * 0.12)) * 12;
-      
-      var posX = mountainLeft + (68 / 100) * mountainWidth - 14;
-      var posY = -climbLimit + jumpOffset;
-      char.style.transform = "translate3d(" + posX + "px, " + posY + "px, 0)";
+
+      var cx = mountainLeft + (68 / 100) * mountainWidth - 14;
+      var cy = -climbLimit + jumpOffset;
+      char.style.transform = "translate3d(" + cx + "px, " + cy + "px, 0)";
 
       if (celebrateTime >= 150) { // celebrate for 2.5s
         state = "wait";
         char.style.opacity = "0";
-        setTimeout(function() {
+        setTimeout(function () {
           // Reset all variables to start over
-          progress = 0;
+          runX = 0;
           climbY = 0;
           celebrateTime = 0;
           hasFallen = false;
+          nextBoulder = 0;
+          distanceRun = 0;
           state = "run";
           setFrame("run1");
-          runFrameToggle = 0;
-          climbFrameToggle = 0;
-          fallFrameToggle = 0;
         }, 1500); // Wait 1.5s before repeating
       }
     }
 
-    requestAnimationFrame(tick);
+    if (running) rafId = requestAnimationFrame(tick);
   }
 
-  // Start the animation immediately
-  setTimeout(function() {
-    tick();
-  }, 50);
+  // Only animate while the scene is actually on screen
+  var running = false;
+  var rafId = null;
+
+  function start() {
+    if (running) return;
+    running = true;
+    rafId = requestAnimationFrame(tick);
+  }
+
+  function stop() {
+    running = false;
+    if (rafId) cancelAnimationFrame(rafId);
+    rafId = null;
+  }
+
+  // Start straight away, then let the observer pause/resume it. Starting first
+  // matters: if IntersectionObserver never delivers a callback the animation
+  // still runs, rather than silently never starting.
+  start();
+
+  if (typeof IntersectionObserver !== "undefined") {
+    new IntersectionObserver(function (entries) {
+      if (entries[0].isIntersecting) start(); else stop();
+    }, { threshold: 0 }).observe(container);
+  }
 });
