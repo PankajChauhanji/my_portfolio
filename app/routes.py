@@ -5,7 +5,7 @@ import ssl
 import smtplib
 from email.message import EmailMessage
 
-from flask import render_template, abort, send_from_directory, request, jsonify
+from flask import render_template, abort, send_from_directory, request, jsonify, Response
 
 from .content import load, by_slug, render_markdown, DATA_DIR
 
@@ -16,6 +16,49 @@ def register_routes(app):
     @app.route("/")
     def home():
         return render_template("index.html", active="home")
+
+    @app.route("/robots.txt")
+    def robots_txt():
+        domain = load("site.json").get("domain", "").rstrip("/")
+        lines = ["User-agent: *", "Allow: /"]
+        if domain:
+            lines += ["", f"Sitemap: {domain}/sitemap.xml"]
+        return Response("\n".join(lines) + "\n", mimetype="text/plain")
+
+    @app.route("/sitemap.xml")
+    def sitemap_xml():
+        site = load("site.json")
+        domain = site.get("domain", "").rstrip("/")
+        features = site.get("features", {})
+
+        pages = [("/", None)]
+        if features.get("projects"):
+            pages.append(("/projects/", None))
+        if features.get("explorer"):
+            pages.append(("/explorer/", None))
+            for e in load("explorer.json"):
+                pages.append((f"/explorer/{e['slug']}/", None))
+        if features.get("blog"):
+            pages.append(("/blog/", None))
+            for p in load("blog.json"):
+                if p.get("published", True):
+                    pages.append((f"/blog/{p['slug']}/", p.get("date")))
+
+        entries = []
+        for path, lastmod in pages:
+            loc = f"{domain}{path}" if domain else path
+            entry = f"  <url>\n    <loc>{loc}</loc>"
+            if lastmod:
+                entry += f"\n    <lastmod>{lastmod}</lastmod>"
+            entry += "\n  </url>"
+            entries.append(entry)
+
+        xml = (
+            '<?xml version="1.0" encoding="UTF-8"?>\n'
+            '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
+            + "\n".join(entries) + "\n</urlset>\n"
+        )
+        return Response(xml, mimetype="application/xml")
 
     @app.route("/projects/")
     def projects():
@@ -28,10 +71,17 @@ def register_routes(app):
 
     @app.route("/explorer/<slug>/")
     def explorer_detail(slug):
-        entry = by_slug(load("explorer.json"), slug)
+        entries = sorted(load("explorer.json"), key=lambda e: e.get("altitude_m", 0), reverse=True)
+        entry = by_slug(entries, slug)
         if not entry:
             abort(404)
-        return render_template("explorer_detail.html", active="explorer", entry=entry)
+        idx = entries.index(entry)
+        prev_entry = entries[idx - 1] if idx > 0 else None
+        next_entry = entries[idx + 1] if idx < len(entries) - 1 else None
+        return render_template(
+            "explorer_detail.html", active="explorer", entry=entry,
+            prev_entry=prev_entry, next_entry=next_entry,
+        )
 
     @app.route("/blog/")
     def blog():
