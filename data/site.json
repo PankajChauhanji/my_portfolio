@@ -1,5 +1,6 @@
 {
   "brand": "Pankaj",
+  "domain": "https://pankaj-sde.pages.dev",
   "nav": [
     { "label": "home", "endpoint": "home" },
     { "label": "work", "endpoint": "projects" },
@@ -11,7 +12,7 @@
   "seo": {
     "description": "Pankaj Chauhan - Software Engineer specializing in Python, Agentic AI, and large-scale data extraction. Builder, problem-solver, high-altitude trekker.",
     "keywords": ["Software Engineer", "Python", "Agentic AI", "RAG", "Data Extraction", "Perfios", "OCR", "LLM"],
-    "og_image": "/static/img/og-image.jpg"
+    "og_image": "/static/img/site/og-image.jpg"
   },
   "footer_note": "built with Flask & a lot of altitude.",
   "contact": {
@@ -33,9 +34,9 @@
       ],
       "about":          { "eyebrow": "// about", "title_pre": "Two worlds,", "title_break": "one approach." },
       "experience":     { "eyebrow": "// experience", "title": "Where I've shipped." },
-      "skills":         { "eyebrow": "// toolkit" },
-      "certifications": { "eyebrow": "// certifications" },
-      "education":      { "eyebrow": "// education" },
+      "skills":         { "eyebrow": "// toolkit", "title": "What's in the stack." },
+      "certifications": { "eyebrow": "// certifications", "title": "Staying sharp." },
+      "education":      { "eyebrow": "// education", "title": "Where it started." },
       "cta":            { "title_pre": "Let's build something ", "title_accent": "solid", "title_post": ".", "subtitle": "Open to interesting problems in data, AI, and backend engineering." }
     },
     "projects": {
