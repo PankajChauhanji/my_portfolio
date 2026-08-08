@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" preserveAspectRatio="xMidYMid slice">
+  <defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#101a36"/><stop offset="1" stop-color="#3a2467"/></linearGradient></defs>
+  <rect width="800" height="500" fill="url(#bg)"/>
+  <line x1="647" y1="213" x2="691" y2="79" stroke="#ff9e6d" stroke-width="1" opacity="0.30"/>
+<line x1="647" y1="213" x2="633" y2="204" stroke="#ff9e6d" stroke-width="1" opacity="0.30"/>
+<line x1="647" y1="213" x2="633" y2="302" stroke="#ff9e6d" stroke-width="1" opacity="0.30"/>
+<line x1="647" y1="213" x2="650" y2="316" stroke="#ff9e6d" stroke-width="1" opacity="0.30"/>
+<line x1="201" y1="278" x2="118" y2="187" stroke="#ff9e6d" stroke-width="1" opacity="0.30"/>
+<line x1="201" y1="278" x2="64" y2="211" stroke="#ff9e6d" stroke-width="1" opacity="0.30"/>
+<line x1="201" y1="278" x2="155" y2="240" stroke="#ff9e6d" stroke-width="1" opacity="0.30"/>
+<line x1="201" y1="278" x2="167" y2="333" stroke="#ff9e6d" stroke-width="1" opacity="0.30"/>
+<line x1="118" y1="187" x2="64" y2="211" stroke="#ff9e6d" stroke-width="1" opacity="0.30"/>
+<line x1="118" y1="187" x2="155" y2="240" stroke="#ff9e6d" stroke-width="1" opacity="0.30"/>
+<line x1="118" y1="187" x2="167" y2="333" stroke="#ff9e6d" stroke-width="1" opacity="0.30"/>
+<line x1="64" y1="211" x2="155" y2="240" stroke="#ff9e6d" stroke-width="1" opacity="0.30"/>
+<line x1="64" y1="211" x2="167" y2="333" stroke="#ff9e6d" stroke-width="1" opacity="0.30"/>
+<line x1="466" y1="288" x2="451" y2="288" stroke="#ff9e6d" stroke-width="1" opacity="0.30"/>
+<line x1="466" y1="288" x2="633" y2="204" stroke="#ff9e6d" stroke-width="1" opacity="0.30"/>
+<line x1="466" y1="288" x2="633" y2="302" stroke="#ff9e6d" stroke-width="1" opacity="0.30"/>
+<line x1="466" y1="288" x2="650" y2="316" stroke="#ff9e6d" stroke-width="1" opacity="0.30"/>
+<line x1="466" y1="288" x2="367" y2="389" stroke="#ff9e6d" stroke-width="1" opacity="0.30"/>
+<line x1="155" y1="240" x2="167" y2="333" stroke="#ff9e6d" stroke-width="1" opacity="0.30"/>
+<line x1="691" y1="79" x2="633" y2="204" stroke="#ff9e6d" stroke-width="1" opacity="0.30"/>
+<line x1="451" y1="288" x2="633" y2="302" stroke="#ff9e6d" stroke-width="1" opacity="0.30"/>
+<line x1="451" y1="288" x2="367" y2="389" stroke="#ff9e6d" stroke-width="1" opacity="0.30"/>
+<line x1="633" y1="204" x2="633" y2="302" stroke="#ff9e6d" stroke-width="1" opacity="0.30"/>
+<line x1="633" y1="204" x2="650" y2="316" stroke="#ff9e6d" stroke-width="1" opacity="0.30"/>
+<line x1="633" y1="302" x2="650" y2="316" stroke="#ff9e6d" stroke-width="1" opacity="0.30"/>
+  <circle cx="647" cy="213" r="7" fill="#ff9e6d" opacity="0.9"/>
+<circle cx="201" cy="278" r="6" fill="#ff9e6d" opacity="0.9"/>
+<circle cx="118" cy="187" r="4" fill="#ff9e6d" opacity="0.9"/>
+<circle cx="64" cy="211" r="7" fill="#ff9e6d" opacity="0.9"/>
+<circle cx="466" cy="288" r="5" fill="#ff9e6d" opacity="0.9"/>
+<circle cx="155" cy="240" r="4" fill="#ff9e6d" opacity="0.9"/>
+<circle cx="167" cy="333" r="7" fill="#ff9e6d" opacity="0.9"/>
+<circle cx="691" cy="79" r="4" fill="#ff9e6d" opacity="0.9"/>
+<circle cx="451" cy="288" r="5" fill="#ff9e6d" opacity="0.9"/>
+<circle cx="633" cy="204" r="4" fill="#ff9e6d" opacity="0.9"/>
+<circle cx="633" cy="302" r="6" fill="#ff9e6d" opacity="0.9"/>
+<circle cx="650" cy="316" r="4" fill="#ff9e6d" opacity="0.9"/>
+<circle cx="367" cy="389" r="4" fill="#ff9e6d" opacity="0.9"/>
+  <text x="34" y="470" font-family="ui-monospace,Menlo,Consolas,monospace" font-size="22" fill="#ffffff" opacity="0.85">&lt;/&gt; Python</text>
+</svg>
