@@ -66,6 +66,69 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--glacier); outli
   opacity: 0.82;
   font-size: 0.9em;
 }
+.live-dot > span:first-child { animation: live-ping 1.8s cubic-bezier(0,0,0.2,1) infinite; }
+
+/* ---- Experience: git-log ---- */
+.overflow-x-auto { overflow-x: auto; }
+.git-titlebar { display: flex; align-items: center; gap: 0.5rem; padding: 0.85rem 1.25rem; border-bottom: 1px solid var(--border); background: var(--surface-2); }
+.git-dot { width: 0.7rem; height: 0.7rem; border-radius: 9999px; flex-shrink: 0; }
+.git-log-wrap { padding: 1.5rem 1.25rem 1.75rem; font-family: "JetBrains Mono", ui-monospace, monospace; font-size: 0.85rem; overflow-x: auto; }
+.git-log-header { color: var(--text-muted); margin: 0 0 1.5rem; }
+.git-log { position: relative; padding-left: 1.75rem; min-width: 340px; }
+.git-rail { position: absolute; left: 0.28rem; top: 0.5rem; bottom: 0.6rem; width: 2px; background: var(--border); }
+.git-tag { position: relative; display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.55rem; margin: 2.5rem 0 1.15rem; }
+.git-tag:first-child { margin-top: 0; }
+.git-tag-node { position: absolute; left: -1.71rem; top: 0.4rem; width: 0.6rem; height: 0.6rem; border-radius: 2px; transform: rotate(45deg); background: var(--alpenglow-3); box-shadow: 0 0 0 4px color-mix(in srgb, var(--alpenglow-3) 22%, transparent); }
+.git-tag-text { font-family: "Manrope", system-ui, sans-serif; font-weight: 700; font-size: 1.05rem; color: var(--text); }
+.git-tag-prefix { font-family: "JetBrains Mono", ui-monospace, monospace; font-weight: 400; font-size: 0.85rem; color: var(--alpenglow-3); }
+.git-tag-loc { font-size: 0.78rem; color: var(--text-muted); }
+.git-commit { position: relative; padding-bottom: 1.6rem; }
+.git-commit:last-child { padding-bottom: 0; }
+.git-node { position: absolute; left: -1.71rem; top: 0.32rem; width: 0.6rem; height: 0.6rem; border-radius: 9999px; background: var(--text-muted); border: 2px solid var(--surface); }
+.git-node.is-head { background: var(--glacier); box-shadow: 0 0 0 4px color-mix(in srgb, var(--glacier) 22%, transparent); }
+.git-commit-head { display: flex; flex-wrap: wrap; align-items: center; gap: 0.55rem; }
+.git-hash { color: var(--alpenglow-2); }
+.git-decor { color: var(--glacier); background: color-mix(in srgb, var(--glacier) 15%, transparent); border-radius: 9999px; padding: 0.1rem 0.6rem; font-size: 0.72rem; letter-spacing: 0.02em; }
+.git-subject { color: var(--text); font-weight: 600; font-family: "Manrope", system-ui, sans-serif; }
+.git-meta { color: var(--text-muted); margin: 0.4rem 0 0.65rem; font-size: 0.78rem; }
+.git-diff { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.45rem; }
+.git-diff li { color: var(--text-muted); line-height: 1.55; }
+
+/* ---- Certifications & Education: icon badge ---- */
+.icon-badge { display: flex; align-items: center; justify-content: center; width: 2.75rem; height: 2.75rem; border-radius: 9999px; background: color-mix(in srgb, currentColor 14%, transparent); flex-shrink: 0; }
+.icon-badge svg { width: 1.5rem; height: 1.5rem; }
+.cert-verify { font-family: "JetBrains Mono", ui-monospace, monospace; font-size: 0.72rem; color: var(--glacier); border: 1px solid var(--border); border-radius: 9999px; padding: 0.3rem 0.7rem; opacity: 0.8; transition: opacity 0.2s, border-color 0.2s; }
+.group:hover .cert-verify { opacity: 1; border-color: var(--glacier); }
+
+/* ---- CTA layout ---- */
+.cta-layout { display: flex; flex-direction: column; align-items: center; text-align: center; }
+.cta-illustration { max-width: 220px; margin: 0 auto 1.5rem; }
+.cta-illustration svg { width: 100%; height: auto; display: block; }
+.cta-cursor { animation: blink 1.05s step-end infinite; }
+.cta-text { width: 100%; }
+.cta-subtitle { max-width: 36rem; margin: 1rem auto 0; }
+.cta-actions { display: flex; flex-wrap: wrap; gap: 0.75rem; justify-content: center; margin-top: 1.75rem; }
+@media (min-width: 640px) {
+  .cta-layout { flex-direction: row; align-items: center; text-align: left; gap: 2.75rem; }
+  .cta-illustration { max-width: 190px; margin: 0; flex-shrink: 0; }
+  .cta-text { flex: 1 1 auto; min-width: 0; }
+  .cta-subtitle { margin-left: 0; margin-right: 0; }
+  .cta-actions { justify-content: flex-start; }
+}
+@keyframes live-ping { 75%, 100% { transform: scale(2.2); opacity: 0; } }
+@media (prefers-reduced-motion: reduce) { .live-dot > span:first-child { animation: none; opacity: 0; } }
+
+/* ---- Projects page ---- */
+.terminal-strip { font-family: "JetBrains Mono", ui-monospace, monospace; font-size: 0.85rem; color: var(--text-muted); background: var(--surface-2); border: 1px solid var(--border); border-radius: 9999px; padding: 0.6rem 1.25rem; display: inline-flex; align-items: center; gap: 0.5rem; flex-wrap: wrap; }
+.terminal-strip-sep { opacity: 0.4; }
+.project-featured { border-color: color-mix(in srgb, var(--glacier) 45%, var(--border)); box-shadow: 0 18px 50px -24px var(--glow); }
+
+/* ---- Blog post: reading progress ---- */
+.reading-progress { position: fixed; top: 0; left: 0; height: 3px; width: 0%; background: linear-gradient(90deg, var(--alpenglow-1), var(--alpenglow-2), var(--alpenglow-3)); z-index: 45; transition: width 0.1s ease-out; }
+@media (prefers-reduced-motion: reduce) { .reading-progress { transition: none; } }
+
+/* ---- Explorer detail: prev/next ---- */
+.trek-nav-card { max-width: 20rem; }
 .prose-portfolio { color: var(--text); font-size: 1.075rem; line-height: 1.75; }
 .prose-portfolio > * + * { margin-top: 1.25em; }
 .prose-portfolio h1, .prose-portfolio h2, .prose-portfolio h3 {
