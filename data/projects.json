@@ -1,83 +1,116 @@
 [
   {
+    "slug": "cricovo",
+    "title": "Cricovo",
+    "summary": "A cricket tournament management platform - live scorecards, stats, and a full organizer toolkit for local and regional tournaments.",
+    "description": "Cricovo is a cricket tournament management platform - part live-scores site, part organizer toolkit. Anyone can follow a tournament without an account; organizers, team owners, and players get full tools to run one end-to-end, from team approvals and fixtures to ball-by-ball scorecards and auto-computed stats. Think of it as a lightweight Cricbuzz for local and regional tournaments, with the admin tooling built right in.",
+    "highlights": [
+      "Full ball-by-ball scorecards - batting, bowling, extras, fall of wickets, and Player of the Match",
+      "Auto-computed points tables and cross-tournament player career stats, always up to date",
+      "Role-based access for public visitors, players, team owners, and organizers with Google Sign-In",
+      "Kept warm on Render via a scheduled GitHub Actions health-check"
+    ],
+    "tags": ["Flask", "MongoDB", "OAuth", "Python", "Jinja"],
+    "language": "Python",
+    "links": [
+      { "label": "Live Demo", "href": "https://cricovo.onrender.com", "type": "live" },
+      { "label": "Source", "href": "https://github.com/PankajChauhanji/cric_ovo", "type": "github" }
+    ],
+    "year": "2026",
+    "featured": true,
+    "cover": "/static/img/projects/cricovo.webp"
+  },
+  {
     "slug": "drawhunt",
     "title": "DrawHunt",
-    "summary": "A draw-and-guess party game for the browser - one player sketches the secret word while everyone else races to guess it.",
-    "description": "DrawHunt is a browser-based take on the classic draw-and-guess game. One player gets a word and sketches it on a shared canvas while the others type their guesses against the clock.",
+    "summary": "A real-time multiplayer draw-and-guess game - one player sketches the secret word on a shared canvas while everyone else races to guess it in live chat.",
+    "description": "DrawHunt is a fast-paced, real-time multiplayer draw-and-guess game built on Flask and Flask-SocketIO. One player draws a chosen secret word on a shared canvas while everyone else races against the clock to crack it in live chat. Stroke data streams as lightweight vector segments rather than images, correct guesses are intercepted server-side so the word never leaks, and stable client identities let players survive refreshes mid-game.",
     "highlights": [
-      "Real-time canvas drawing and guessing loop",
-      "Lightweight, no-install browser gameplay"
+      "Low-latency vector canvas - stroke data streamed as segments per frame, not images",
+      "Server-side guess detection keeps the secret word from ever leaking to other players",
+      "Stable client identities survive page refreshes, with host migration if the creator drops",
+      "Dynamic letter hints, time-based scoring, and an animated podium finish"
     ],
-    "tags": ["Flask", "WebSockets", "JavaScript", "HTML5 Canvas"],
-    "language": "JavaScript & Python",
-    "links": [{ "label": "Source", "href": "https://github.com/PankajChauhanji/DrawHunt", "type": "github" }],
-    "year": "",
+    "tags": ["Flask", "Flask-SocketIO", "WebSockets", "JavaScript", "HTML5 Canvas"],
+    "language": "Python & JavaScript",
+    "links": [
+      { "label": "Live Demo", "href": "https://draw-hunt.onrender.com", "type": "live" },
+      { "label": "Source", "href": "https://github.com/PankajChauhanji/DrawHunt", "type": "github" }
+    ],
+    "year": "2026",
     "featured": true,
-    "cover": "/static/img/projects/draw_hunt_player_lobby.webp"
+    "cover": "/static/img/projects/drawhunt.webp"
   },
   {
     "slug": "super-cards",
     "title": "Super Cards",
-    "summary": "Real-time multiplayer browser card game platform with shared lobby and live room-based gameplay.",
-    "description": "A Flask-SocketIO platform for browser card games, with room creation, live sync, and server-authoritative multiplayer flow across multiple game modes.",
+    "summary": "A real-time multiplayer card-game platform - Super Seven, Super Four, and Bluff, all sharing one lobby, room system, and live gameplay engine.",
+    "description": "Super Cards is a real-time multiplayer card-game platform built with Flask-SocketIO and vanilla JavaScript. Players create a room, pick a game, invite friends, and jump into a shared table directly in the browser. It has grown beyond a single game into a home for multiple card experiences under one consistent lobby, room system, and live gameplay flow - Super Seven's tactical shedding, Super Four's hidden-card memory play, and Bluff's deception and challenge mechanics.",
     "highlights": [
-      "Real-time multiplayer rooms with Flask-SocketIO and live room lifecycle",
-      "Shared lobby, reconnection, and multi-game browser gameplay with no install"
+      "Three games (Super Seven, Super Four, Bluff) sharing one room and lobby platform",
+      "Server-authoritative rules, timers, and turn flow for fair play",
+      "Custom-generated SVG card art instead of third-party assets",
+      "Reconnection and host hand-off keep live sessions stable"
     ],
-    "tags": ["Python", "Flask", "WebSockets", "JavaScript", "HTML"],
+    "tags": ["Flask", "Flask-SocketIO", "WebSockets", "Python", "JavaScript"],
     "language": "Python & JavaScript",
-    "links": [{ "label": "Source", "href": "https://github.com/PankajChauhanji/super_cards", "type": "github" }],
-    "year": "",
+    "links": [
+      { "label": "Live Demo", "href": "https://super-cards.onrender.com", "type": "live" },
+      { "label": "Source", "href": "https://github.com/PankajChauhanji/SuperCards", "type": "github" }
+    ],
+    "year": "2026",
     "featured": true,
-    "cover": "/static/img/projects/super_seven_game_window.webp"
+    "cover": "/static/img/projects/super-cards.webp"
   },
   {
     "slug": "cricket-analysis-prediction",
     "title": "Cricket Analysis & Prediction",
-    "summary": "Exploratory data analysis and predictive modelling on cricket match data.",
-    "description": "A data-science notebook that explores historical cricket data and builds models to predict innings scores and outcomes - feature engineering, EDA, and regression in one place.",
+    "summary": "A Flask app that predicts IPL first-innings scores from live match state, backed by historical team, venue, and player stats.",
+    "description": "A Flask web app that analyses IPL match data and predicts first-innings scores using a linear regression model trained on IPL 2008-2016 data. Beyond the score predictor, it surfaces historical win/loss records by team, a toss advisor for bat-or-field decisions by venue, average first-innings scores across venues, and career stats for any IPL player.",
     "highlights": [
-      "EDA on historical match data",
-      "Regression models for score prediction"
+      "Live score predictor from match state - teams, venue, overs, runs, wickets",
+      "Toss Advisor - bat-or-field recommendation from historical venue win rates",
+      "Career stats lookup for any IPL player, plus venue and team-level historicals"
     ],
-    "tags": ["Python", "Pandas", "ML", "Regression", "Flask"],
+    "tags": ["Python", "Flask", "scikit-learn", "Pandas", "Bootstrap"],
     "language": "Python & JavaScript",
     "links": [{ "label": "Source", "href": "https://github.com/PankajChauhanji/cricket-analysis-prediction", "type": "github" }],
-    "year": "",
+    "year": "2021",
     "featured": true,
-    "cover": "/static/img/projects/cricket_prediction.webp"
+    "cover": "/static/img/projects/cricket-analysis-prediction.webp"
   },
   {
     "slug": "line-encoder",
     "title": "Line Encoder & Scrambler",
-    "summary": "Digital line-encoding schemes and scrambling techniques, implemented from scratch in Python.",
-    "description": "An implementation of classic digital line-encoding schemes - NRZ-L, NRZ-I, RZ, Manchester, Differential Manchester, AMI, and pseudoternary - plus advanced scrambling techniques B8ZS and 4B5B.",
+    "summary": "Seven classic digital line-encoding schemes and two scrambling techniques, implemented from scratch in Python with a visual preview.",
+    "description": "An implementation of classic digital line-encoding schemes - NRZ-L, NRZ-I, RZ, Manchester, Differential Manchester, AMI, and pseudoternary - plus the advanced scrambling techniques B8ZS and 4B5B, built from first principles rather than a signal-processing library.",
     "highlights": [
-      "Seven line-encoding schemes implemented from scratch",
-      "B8ZS and 4B5B scrambling"
+      "Seven line-encoding schemes: NRZ-L, NRZ-I, RZ, Manchester, Differential Manchester, AMI, pseudoternary",
+      "B8ZS and 4B5B scrambling for AMI and high-density encoding"
     ],
     "tags": ["Python", "Networking", "Algorithms", "Flask"],
     "language": "Python",
     "links": [{ "label": "Source", "href": "https://github.com/PankajChauhanji/line_encoder", "type": "github" }],
-    "year": "",
+    "year": "2020",
     "featured": true,
-    "cover": "/static/img/projects/line_encoder_.webp"
+    "cover": "/static/img/projects/line-encoder.webp"
   },
   {
     "slug": "ocr-string-similarity",
     "title": "OCR String Similarity",
-    "summary": "Image-similarity and fuzzy string-matching experiments for cleaning up noisy OCR output.",
-    "description": "A set of experiments in image similarity and fuzzy string matching aimed at de-noising and reconciling OCR output against references - the same class of problem behind my day-job parser work.",
+    "summary": "A visually-grounded weighted Levenshtein distance for OCR error correction - built from actual glyph similarity, not arbitrary substitution costs.",
+    "description": "Standard Levenshtein treats every substitution equally - replacing O with 0 costs the same as replacing O with X. But OCR errors aren't random; they happen because characters look alike. This library renders each character as a glyph across multiple fonts, measures perceptual distance between every pair with SSIM (structural similarity), and builds a substitution-cost matrix so visually similar pairs get a lower edit cost - the same class of problem behind production OCR parser work at Perfios.",
     "highlights": [
-      "Image similarity matching for OCR de-duplication",
-      "Fuzzy string comparison for noisy text"
+      "Substitution costs derived from SSIM glyph similarity across multiple fonts, not guesswork",
+      "O(1) substitution lookup at runtime via a precomputed, cached matrix",
+      "Applies to post-OCR fuzzy matching, confidence scoring, and document-digitisation pipelines"
     ],
     "tags": ["Python", "OCR", "Jupyter", "NLP", "Image Processing"],
     "language": "Python",
     "links": [{ "label": "Source", "href": "https://github.com/PankajChauhanji/ocr-string-similarity", "type": "github" }],
-    "year": "",
+    "year": "2022",
     "featured": true,
-    "cover": "/static/img/project-ocr-string-similarity.svg"
+    "cover": "/static/img/projects/ocr-string-similarity.svg"
   },
   {
     "slug": "salary-predictions",
@@ -91,9 +124,9 @@
     "tags": ["Python", "ML", "Regression"],
     "language": "Python",
     "links": [{ "label": "Source", "href": "https://github.com/PankajChauhanji/salary_predictions", "type": "github" }],
-    "year": "",
+    "year": "2020",
     "featured": true,
-    "cover": "/static/img/project-salary-predictions.svg"
+    "cover": "/static/img/projects/salary-predictions.svg"
   },
   {
     "slug": "pdf-processing",
@@ -107,9 +140,8 @@
     "tags": ["Python", "PDF", "Data Mining", "Jupyter", "PyMuPDF"],
     "language": "Python",
     "links": [{ "label": "Source", "href": "https://github.com/PankajChauhanji/pdf_processing", "type": "github" }],
-    "year": "",
+    "year": "2022",
     "featured": true,
-    "cover": "/static/img/project-pdf-processing.svg"
+    "cover": "/static/img/projects/pdf-processing.svg"
   }
 ]
-
