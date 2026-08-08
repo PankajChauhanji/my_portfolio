@@ -109,7 +109,7 @@ def compress_gallery(
 
 # ── Run ───────────────────────────────────────────────────────────────────────
 compress_gallery(
-    directory="/home/k10280/Pictures/extra/portfolio-main/static/img/extra/",
+    directory="/home/pankaj/Documents/git_hub/portfolio/static/img/extra/",
     max_width=2000,
     max_height=2000,
     min_size_kb=100,

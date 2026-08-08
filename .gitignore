@@ -120,4 +120,4 @@ dist/
 
 # Data files.
 *.jpg
-!static/img/og-image.jpg
+*.png

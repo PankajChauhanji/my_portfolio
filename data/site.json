@@ -12,7 +12,7 @@
   "seo": {
     "description": "Pankaj Chauhan - Software Engineer specializing in Python, Agentic AI, and large-scale data extraction. Builder, problem-solver, high-altitude trekker.",
     "keywords": ["Software Engineer", "Python", "Agentic AI", "RAG", "Data Extraction", "Perfios", "OCR", "LLM"],
-    "og_image": "/static/img/site/og-image.jpg"
+    "og_image": "/static/img/site/og-image.webp"
   },
   "footer_note": "built with Flask & a lot of altitude.",
   "contact": {
