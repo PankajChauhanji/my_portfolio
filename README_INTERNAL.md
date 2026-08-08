@@ -159,10 +159,10 @@ The public repo has no real photos or `explorer.json` — these are stripped by 
 | Removed | Reason |
 |---|---|
 | `data/explorer.json` | Contains real trek content |
-| `static/img/valley_of_flowers/` | Real trip photos |
-| `static/img/kedarkantha/` | Real trip photos |
-| `static/img/badrinath/` | Real trip photos |
-| `static/img/tungnath/` | Real trip photos |
+| `static/img/explorer/valley-of-flowers/` | Real trip photos |
+| `static/img/explorer/kedarkantha/` | Real trip photos |
+| `static/img/explorer/badrinath-vasudhara/` | Real trip photos |
+| `static/img/explorer/chandrashila/` | Real trip photos |
 | `dist/` | Pre-rendered HTML contains baked-in private content |
 | `__pycache__/` | Compiled bytecode |
 | `.env*` | Secrets |
@@ -198,10 +198,10 @@ Configured in `data/site.json` under `"contact"`. Three provider options:
 ```
 *.jpg               # raw photos never committed
 *.jpeg
-static/img/valley_of_flowers/
-static/img/kedarkantha/
-static/img/badrinath/
-static/img/tungnath/
+static/img/explorer/valley-of-flowers/
+static/img/explorer/kedarkantha/
+static/img/explorer/badrinath-vasudhara/
+static/img/explorer/chandrashila/
 data/explorer.json  # private content
 dist/               # build output
 .env*
