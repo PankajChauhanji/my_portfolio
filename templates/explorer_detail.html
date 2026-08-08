@@ -3,7 +3,8 @@
 {% block meta_description %}{{ entry.summary }}{% endblock %}
 {% block og_title %}{{ entry.title }} — {{ entry.region }}{% endblock %}
 {% block og_description %}{{ entry.summary }}{% endblock %}
-{% block og_image %}{{ entry.cover }}{% endblock %}
+{% block og_image %}{{ site.domain }}{{ entry.cover }}{% endblock %}
+{% block og_image_dims %}{% endblock %}
 {% block content %}
 <section class="max-w-content mx-auto px-5 sm:px-8 pt-8">
   <a href="{{ url_for('explorer') }}" class="font-mono text-sm text-muted hover:text-glacier transition-colors inline-flex items-center gap-1.5"><span aria-hidden="true">&larr;</span> all treks</a>
@@ -26,7 +27,7 @@
 <section class="max-w-content mx-auto px-5 sm:px-8 pt-8">
   <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4">
     {% for s in entry.stats %}
-    <div class="reveal card rounded-2xl p-4 sm:p-5">
+    <div class="reveal card rounded-2xl p-4 sm:p-5" style="border-top:2px solid {{ accent_colors[loop.index0 % accent_colors|length] }}">
       <div class="font-mono text-[11px] uppercase tracking-wider text-muted">{{ s.label }}</div>
       <div class="font-display font-bold text-xl sm:text-2xl text-text mt-1">{{ s.value }}</div>
     </div>
@@ -53,6 +54,33 @@
     {% endfor %}
   </div>
 </section>
+
+{% if prev_entry or next_entry %}
+<!-- PREV / NEXT -->
+<section class="max-w-content mx-auto px-5 sm:px-8 pt-12">
+  <p class="eyebrow reveal mb-5">// keep exploring</p>
+  <div class="reveal flex flex-col sm:flex-row justify-between gap-4" style="border-top:1px solid var(--border); padding-top:1.75rem">
+    {% if prev_entry %}
+    <a href="{{ url_for('explorer_detail', slug=prev_entry.slug) }}" class="card rounded-2xl p-5 trek-nav-card flex items-center gap-3 group">
+      <span aria-hidden="true" class="text-muted group-hover:text-glacier transition-colors">&larr;</span>
+      <div>
+        <div class="font-mono text-[10px] uppercase tracking-wider text-muted">Higher up</div>
+        <div class="font-display font-semibold text-text group-hover:text-glacier transition-colors">{{ prev_entry.title }}</div>
+      </div>
+    </a>
+    {% endif %}
+    {% if next_entry %}
+    <a href="{{ url_for('explorer_detail', slug=next_entry.slug) }}" class="card rounded-2xl p-5 trek-nav-card flex items-center justify-end gap-3 text-right group sm:ml-auto">
+      <div>
+        <div class="font-mono text-[10px] uppercase tracking-wider text-muted">Lower down</div>
+        <div class="font-display font-semibold text-text group-hover:text-glacier transition-colors">{{ next_entry.title }}</div>
+      </div>
+      <span aria-hidden="true" class="text-muted group-hover:text-glacier transition-colors">&rarr;</span>
+    </a>
+    {% endif %}
+  </div>
+</section>
+{% endif %}
 
 <!-- Lightbox -->
 <div id="lightbox" class="fixed inset-0 z-50 hidden items-center justify-center p-5" style="background:rgba(8,10,24,0.9);backdrop-filter:blur(6px)">
