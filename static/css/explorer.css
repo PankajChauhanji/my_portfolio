@@ -79,13 +79,13 @@ html.dark .cursive-quote {
 }
 
 /* Mobile responsive version */
-@media (max-w: 640px) {
+@media (max-width: 640px) {
   #runner-container {
     height: 90px; /* Give it space to stack below the mobile quote */
     margin-top: 1.25rem;
     margin-bottom: 1.5rem;
   }
-  
+
   #runner-container .mountain-container {
     width: 80px;
     height: 80px;
