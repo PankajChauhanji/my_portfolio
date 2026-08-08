@@ -9,13 +9,20 @@
   <meta property="og:title" content="{% block og_title %}{{ profile.name }} - {{ profile.role }}{% endblock %}">
   <meta property="og:description" content="{% block og_description %}{{ site.seo.description }}{% endblock %}">
   <meta property="og:type" content="website">
-  <meta property="og:image" content="{% block og_image %}{{ url_for('static', filename='img/og-image.jpg', _external=False) }}{% endblock %}">
+  <meta property="og:url" content="{{ canonical_url }}">
+  <meta property="og:image" content="{% block og_image %}{{ site.domain }}{{ url_for('static', filename='img/site/og-image.jpg') }}{% endblock %}">
+  {% block og_image_dims %}
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  {% endblock %}
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="{{ profile.name }} - {{ profile.role }}">
   <meta name="twitter:description" content="{{ site.seo.description }}">
-  <meta name="twitter:image" content="{{ url_for('static', filename='img/og-image.jpg', _external=False) }}">
+  <meta name="twitter:image" content="{{ site.domain }}{{ url_for('static', filename='img/site/og-image.jpg') }}">
   <title>{% block title %}{{ profile.name }}{% endblock %} - {{ profile.role }}</title>
-  <link rel="icon" href="{{ url_for('static', filename='img/favicon.svg') }}" type="image/svg+xml">
+  <link rel="canonical" href="{{ canonical_url }}">
+  <link rel="icon" href="{{ url_for('static', filename='img/site/favicon.svg') }}" type="image/svg+xml">
+  <script type="application/ld+json">{{ structured_data | tojson }}</script>
   <script>
     (function () {
       try {
@@ -27,7 +34,7 @@
   </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&family=Caveat:wght@500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700&family=Manrope:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&family=Caveat:wght@500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="{{ url_for('static', filename='css/output.css') }}">
   <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
   {% block styles %}{% endblock %}
