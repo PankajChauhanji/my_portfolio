@@ -1,0 +1,49 @@
+{# Inline stroke icons (24px grid, 1.75 stroke) — one consistent professional set.
+   Usage: {% from 'partials/icons.html' import icon %} {{ icon('arrow-right') }} #}
+{% macro icon(name, cls='') -%}
+{%- set brand = name in ['github', 'linkedin', 'instagram'] -%}
+<svg class="i-{{ name }} {{ cls }}" viewBox="0 0 24 24" aria-hidden="true" focusable="false"
+  {%- if brand %} fill="currentColor"{% else %} fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"{% endif %}>
+{%- if name == 'arrow-right' %}<path d="M5 12h14M13 6l6 6-6 6"/>
+{%- elif name == 'arrow-left' %}<path d="M19 12H5M11 18l-6-6 6-6"/>
+{%- elif name == 'arrow-up-right' %}<path d="M7 17 17 7M8 7h9v9"/>
+{%- elif name == 'download' %}<path d="M12 4v11M7 10l5 5 5-5M5 20h14"/>
+{%- elif name == 'mail' %}<rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="m4 7 8 6 8-6"/>
+{%- elif name == 'sun' %}<circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/>
+{%- elif name == 'moon' %}<path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5Z"/>
+{%- elif name == 'menu' %}<path d="M4 7h16M4 12h16M4 17h16"/>
+{%- elif name == 'x' %}<path d="M6 6l12 12M18 6 6 18"/>
+{%- elif name == 'chevron-left' %}<path d="m15 6-6 6 6 6"/>
+{%- elif name == 'chevron-right' %}<path d="m9 6 6 6-6 6"/>
+{%- elif name == 'globe' %}<circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/>
+{%- elif name == 'shield' %}<path d="M12 3 5 6v5c0 4.5 3 8.3 7 10 4-1.7 7-5.5 7-10V6l-7-3Z"/><path d="m9 12 2 2 4-4"/>
+{%- elif name == 'scan' %}<path d="M4 8V6a2 2 0 0 1 2-2h2M16 4h2a2 2 0 0 1 2 2v2M20 16v2a2 2 0 0 1-2 2h-2M8 20H6a2 2 0 0 1-2-2v-2"/><path d="M8 9h8M8 12h8M8 15h5"/>
+{%- elif name == 'layers' %}<path d="m12 3 9 5-9 5-9-5 9-5Z"/><path d="m3 13 9 5 9-5"/>
+{%- elif name == 'file' %}<path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8l-5-5Z"/><path d="M14 3v5h5M9 13h6M9 17h4"/>
+{%- elif name == 'cpu' %}<rect x="6" y="6" width="12" height="12" rx="2"/><path d="M9 9h6v6H9zM9 2v3M15 2v3M9 19v3M15 19v3M2 9h3M2 15h3M19 9h3M19 15h3"/>
+{%- elif name == 'sparkles' %}<path d="M12 3l1.8 4.7L18.5 9.5l-4.7 1.8L12 16l-1.8-4.7L5.5 9.5l4.7-1.8L12 3Z"/><path d="M19 15l.8 2.2L22 18l-2.2.8L19 21l-.8-2.2L16 18l2.2-.8L19 15Z"/>
+{%- elif name == 'database' %}<ellipse cx="12" cy="5.5" rx="7.5" ry="2.5"/><path d="M4.5 5.5v13c0 1.4 3.4 2.5 7.5 2.5s7.5-1.1 7.5-2.5v-13M4.5 12c0 1.4 3.4 2.5 7.5 2.5s7.5-1.1 7.5-2.5"/>
+{%- elif name == 'braces' %}<path d="M8 4H7a2 2 0 0 0-2 2v4l-2 2 2 2v4a2 2 0 0 0 2 2h1M16 4h1a2 2 0 0 1 2 2v4l2 2-2 2v4a2 2 0 0 1-2 2h-1"/>
+{%- elif name == 'code' %}<path d="m8 8-4 4 4 4M16 8l4 4-4 4M14 5l-4 14"/>
+{%- elif name == 'terminal' %}<rect x="3" y="4" width="18" height="16" rx="2.5"/><path d="m7 9 3 3-3 3M13 15h4"/>
+{%- elif name == 'award' %}<circle cx="12" cy="9" r="6"/><path d="M8.5 13.8 7 21l5-3 5 3-1.5-7.2"/>
+{%- elif name == 'graduation' %}<path d="M2 9l10-5 10 5-10 5L2 9Z"/><path d="M6 11v5c0 1.2 2.7 3 6 3s6-1.8 6-3v-5M22 9v6"/>
+{%- elif name == 'briefcase' %}<rect x="3" y="7" width="18" height="13" rx="2.5"/><path d="M9 7V5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2M3 13h18"/>
+{%- elif name == 'map-pin' %}<path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21Z"/><circle cx="12" cy="9.5" r="2.5"/>
+{%- elif name == 'calendar' %}<rect x="3" y="5" width="18" height="16" rx="2.5"/><path d="M3 10h18M8 3v4M16 3v4"/>
+{%- elif name == 'clock' %}<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>
+{%- elif name == 'mountain' %}<path d="m3 20 6.5-11 4 6.5L16 12l5 8H3Z"/><path d="m8 11.5 1.5 1.5 1.5-1.5"/>
+{%- elif name == 'image' %}<rect x="3" y="4" width="18" height="16" rx="2.5"/><circle cx="9" cy="10" r="1.8"/><path d="m21 16-5-5-9 9"/>
+{%- elif name == 'zap' %}<path d="M13 2 4 14h7l-1 8 9-12h-7l1-8Z"/>
+{%- elif name == 'message' %}<path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1.1-4.6A8 8 0 1 1 21 12Z"/>
+{%- elif name == 'github' %}<path fill-rule="evenodd" d="M12 2C6.48 2 2 6.48 2 12.02c0 4.42 2.87 8.17 6.84 9.5.5.09.68-.22.68-.48l-.01-1.7c-2.78.6-3.37-1.34-3.37-1.34-.45-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.61.07-.61 1 .07 1.53 1.03 1.53 1.03.89 1.53 2.34 1.09 2.91.83.09-.65.35-1.09.64-1.34-2.22-.25-4.56-1.11-4.56-4.95 0-1.09.39-1.99 1.03-2.69-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.03a9.56 9.56 0 0 1 5 0c1.91-1.3 2.75-1.03 2.75-1.03.55 1.38.2 2.4.1 2.65.64.7 1.03 1.6 1.03 2.69 0 3.85-2.34 4.7-4.57 4.94.36.31.68.92.68 1.86l-.01 2.75c0 .27.18.58.69.48A10.02 10.02 0 0 0 22 12.02C22 6.48 17.52 2 12 2Z"/>
+{%- elif name == 'linkedin' %}<path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28ZM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13ZM7.12 20.45H3.56V9h3.56v11.45ZM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0Z" transform="scale(.83) translate(2.4 2.4)"/>
+{%- elif name == 'instagram' %}<path d="M12 7.3a4.7 4.7 0 1 0 0 9.4 4.7 4.7 0 0 0 0-9.4Zm0 7.7a3 3 0 1 1 0-6 3 3 0 0 1 0 6Zm6-7.9a1.1 1.1 0 1 1-2.2 0 1.1 1.1 0 0 1 2.2 0ZM21.9 8.1c-.07-1.5-.4-2.8-1.5-3.9s-2.4-1.44-3.9-1.5C15 2.6 9 2.6 7.5 2.7c-1.5.07-2.8.4-3.9 1.5S2.16 6.6 2.1 8.1C2 9.6 2 14.4 2.1 15.9c.07 1.5.4 2.8 1.5 3.9s2.4 1.44 3.9 1.5c1.5.09 7.5.09 9 0 1.5-.07 2.8-.4 3.9-1.5s1.44-2.4 1.5-3.9c.09-1.5.09-6.3 0-7.8ZM19.9 18.2c-.33.83-.97 1.47-1.8 1.8-1.25.5-4.2.38-5.6.38s-4.35.11-5.6-.38a3.2 3.2 0 0 1-1.8-1.8c-.5-1.25-.38-4.2-.38-5.6s-.11-4.35.38-5.6c.33-.83.97-1.47 1.8-1.8 1.25-.5 4.2-.38 5.6-.38s4.35-.11 5.6.38c.83.33 1.47.97 1.8 1.8.5 1.25.38 4.2.38 5.6s.12 4.35-.38 5.6Z"/>
+{%- endif -%}
+</svg>
+{%- endmacro %}
+
+{% macro social_icon(label) -%}
+{%- set l = label|lower -%}
+{{ icon('mail' if l == 'email' else l) }}
+{%- endmacro %}
