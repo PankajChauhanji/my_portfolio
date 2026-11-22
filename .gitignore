@@ -121,3 +121,4 @@ dist/
 # Data files.
 *.jpg
 *.png
+!static/img/og/*.png
