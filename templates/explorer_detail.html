@@ -1,98 +1,76 @@
 {% extends 'base.html' %}
-{% block title %}{{ entry.title }} - {{ profile.name }}{% endblock %}
+{% from 'partials/icons.html' import icon %}
+{% block title %}{{ entry.title }} trek ({{ '{:,}'.format(entry.altitude_m) }} m) — {{ profile.name }}{% endblock %}
 {% block meta_description %}{{ entry.summary }}{% endblock %}
 {% block og_title %}{{ entry.title }} — {{ entry.region }}{% endblock %}
 {% block og_description %}{{ entry.summary }}{% endblock %}
 {% block og_image %}{{ site.domain }}{{ entry.cover }}{% endblock %}
 {% block og_image_dims %}{% endblock %}
 {% block content %}
-<section class="max-w-content mx-auto px-5 sm:px-8 pt-8">
-  <a href="{{ url_for('explorer') }}" class="font-mono text-sm text-muted hover:text-glacier transition-colors inline-flex items-center gap-1.5"><span aria-hidden="true">&larr;</span> all treks</a>
-</section>
-
-<!-- HERO -->
-<section class="max-w-content mx-auto px-5 sm:px-8 pt-6">
-  <div class="reveal relative rounded-3xl overflow-hidden aspect-[21/9] min-h-[260px]">
-    <img src="{{ entry.cover }}" alt="{{ entry.title }}" class="absolute inset-0 w-full h-full object-cover">
-    <div class="absolute inset-0" style="background:linear-gradient(to top, rgba(8,10,24,0.85), rgba(8,10,24,0.15) 60%, transparent)"></div>
-    <div class="absolute bottom-0 left-0 right-0 p-6 sm:p-9">
-      <span class="font-mono text-xs px-2.5 py-1 rounded-md text-white" style="background:rgba(11,16,38,0.55);backdrop-filter:blur(4px)">&#9650; {{ '{:,}'.format(entry.altitude_m) }} m</span>
-      <h1 class="font-display font-bold text-4xl sm:text-6xl text-white mt-4">{{ entry.title }}</h1>
-      <p class="font-mono text-sm text-white/80 mt-2">{{ entry.region }}</p>
+<section class="container" style="padding-top:clamp(28px,4vw,48px)">
+  <a href="{{ url_for('explorer') }}" class="back-link">{{ icon('arrow-left') }}All treks</a>
+  <div class="trek-hero reveal" style="margin-top:20px">
+    <img src="{{ entry.cover }}" alt="{{ entry.title }}, {{ entry.region }}" width="1600" height="686" fetchpriority="high">
+    <div class="trek-hero-text">
+      <span class="alt-badge" style="position:static;display:inline-flex">{{ icon('mountain') }}{{ '{:,}'.format(entry.altitude_m) }} m</span>
+      <h1>{{ entry.title }}</h1>
+      <p>{{ entry.region }}</p>
     </div>
   </div>
 </section>
 
-<!-- STATS STRIP -->
-<section class="max-w-content mx-auto px-5 sm:px-8 pt-8">
-  <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4">
+<section class="container" style="margin-top:20px">
+  <div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(160px,1fr))">
     {% for s in entry.stats %}
-    <div class="reveal card rounded-2xl p-4 sm:p-5" style="border-top:2px solid {{ accent_colors[loop.index0 % accent_colors|length] }}">
-      <div class="font-mono text-[11px] uppercase tracking-wider text-muted">{{ s.label }}</div>
-      <div class="font-display font-bold text-xl sm:text-2xl text-text mt-1">{{ s.value }}</div>
-    </div>
+    <div class="card stat-tile reveal" style="--d:{{ loop.index0 * 70 }}ms"><small>{{ s.label }}</small><b>{{ s.value }}</b></div>
     {% endfor %}
   </div>
 </section>
 
-<!-- STORY -->
-<section class="max-w-content mx-auto px-5 sm:px-8 pt-12">
-  <div class="max-w-2xl space-y-5 text-lg text-muted leading-relaxed reveal">
+<section class="container" style="margin-top:clamp(40px,6vw,64px)">
+  <div class="prose-lg reveal" style="max-width:760px">
     {% for para in entry.story %}<p>{{ para }}</p>{% endfor %}
   </div>
 </section>
 
-<!-- GALLERY -->
-<section class="max-w-content mx-auto px-5 sm:px-8 pt-12">
-  <p class="eyebrow reveal mb-5">// gallery</p>
-  <div class="columns-1 sm:columns-2 lg:columns-3 gap-4 [&>*]:mb-4">
+<section class="container" style="margin-top:clamp(40px,6vw,64px)">
+  <p class="eyebrow reveal" style="margin-bottom:22px">Gallery · {{ entry.gallery | length }} photos</p>
+  <div class="masonry">
     {% for ph in entry.gallery %}
-    <button type="button" class="lightbox-trigger block w-full overflow-hidden rounded-2xl card !p-0 break-inside-avoid text-left" data-img="{{ ph.src }}" data-caption="{{ ph.caption }}">
-      <img src="{{ ph.src }}" alt="{{ ph.caption }}" class="w-full object-cover transition-transform duration-700 hover:scale-105" loading="lazy">
-      <span class="block px-4 py-3 font-mono text-xs text-muted">{{ ph.caption }}</span>
+    <button type="button" class="card photo lightbox-trigger" data-img="{{ ph.src }}" data-caption="{{ ph.caption }}">
+      <img src="{{ ph.src }}" alt="{{ ph.caption }}" loading="lazy" decoding="async">
+      <span>{{ ph.caption }}</span>
     </button>
     {% endfor %}
   </div>
 </section>
 
 {% if prev_entry or next_entry %}
-<!-- PREV / NEXT -->
-<section class="max-w-content mx-auto px-5 sm:px-8 pt-12">
-  <p class="eyebrow reveal mb-5">// keep exploring</p>
-  <div class="reveal flex flex-col sm:flex-row justify-between gap-4" style="border-top:1px solid var(--border); padding-top:1.75rem">
+<section class="container" style="margin-top:clamp(40px,6vw,64px)">
+  <div class="grid grid-2" style="border-top:1px solid var(--border);padding-top:28px">
     {% if prev_entry %}
-    <a href="{{ url_for('explorer_detail', slug=prev_entry.slug) }}" class="card rounded-2xl p-5 trek-nav-card flex items-center gap-3 group">
-      <span aria-hidden="true" class="text-muted group-hover:text-glacier transition-colors">&larr;</span>
-      <div>
-        <div class="font-mono text-[10px] uppercase tracking-wider text-muted">Higher up</div>
-        <div class="font-display font-semibold text-text group-hover:text-glacier transition-colors">{{ prev_entry.title }}</div>
-      </div>
+    <a href="{{ url_for('explorer_detail', slug=prev_entry.slug) }}" class="card spot lift list-card">
+      <span class="icon-tile">{{ icon('chevron-left') }}</span>
+      <span><small>Higher up</small><b>{{ prev_entry.title }}</b></span>
     </a>
-    {% endif %}
+    {% else %}<span></span>{% endif %}
     {% if next_entry %}
-    <a href="{{ url_for('explorer_detail', slug=next_entry.slug) }}" class="card rounded-2xl p-5 trek-nav-card flex items-center justify-end gap-3 text-right group sm:ml-auto">
-      <div>
-        <div class="font-mono text-[10px] uppercase tracking-wider text-muted">Lower down</div>
-        <div class="font-display font-semibold text-text group-hover:text-glacier transition-colors">{{ next_entry.title }}</div>
-      </div>
-      <span aria-hidden="true" class="text-muted group-hover:text-glacier transition-colors">&rarr;</span>
+    <a href="{{ url_for('explorer_detail', slug=next_entry.slug) }}" class="card spot lift list-card" style="justify-content:flex-end;text-align:right">
+      <span><small>Lower down</small><b>{{ next_entry.title }}</b></span>
+      <span class="icon-tile">{{ icon('chevron-right') }}</span>
     </a>
     {% endif %}
   </div>
 </section>
 {% endif %}
 
-<!-- Lightbox -->
-<div id="lightbox" class="fixed inset-0 z-50 hidden items-center justify-center p-5" style="background:rgba(8,10,24,0.9);backdrop-filter:blur(6px)">
-  <button id="lightbox-prev" type="button" aria-label="Previous photo" class="absolute left-4 sm:left-6 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full border border-white/30 text-white text-xl hover:bg-white/10 transition-colors z-10">&#8249;</button>
-  <figure class="max-w-3xl w-full">
-    <img id="lightbox-img" src="" alt="" class="w-full rounded-2xl shadow-2xl">
-    <figcaption class="flex items-center justify-center gap-3 mt-3">
-      <span id="lightbox-cap" class="font-mono text-sm text-white/80"></span>
-      <span id="lightbox-counter" class="font-mono text-xs text-white/50"></span>
-    </figcaption>
+<div id="lightbox" class="lightbox" role="dialog" aria-modal="true" aria-label="Photo viewer">
+  <button id="lightbox-prev" type="button" class="lb-btn lb-prev" aria-label="Previous photo">{{ icon('chevron-left') }}</button>
+  <figure>
+    <img id="lightbox-img" src="" alt="">
+    <figcaption><span id="lightbox-cap"></span><span id="lightbox-counter" style="opacity:.6"></span></figcaption>
   </figure>
-  <button id="lightbox-next" type="button" aria-label="Next photo" class="absolute right-4 sm:right-6 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full border border-white/30 text-white text-xl hover:bg-white/10 transition-colors z-10">&#8250;</button>
-  <button id="lightbox-close" type="button" aria-label="Close" class="absolute top-5 right-5 w-11 h-11 rounded-full border border-white/30 text-white text-xl hover:bg-white/10 transition-colors">&#10005;</button>
+  <button id="lightbox-next" type="button" class="lb-btn lb-next" aria-label="Next photo">{{ icon('chevron-right') }}</button>
+  <button id="lightbox-close" type="button" class="lb-btn lb-close" aria-label="Close">{{ icon('x') }}</button>
 </div>
 {% endblock %}
