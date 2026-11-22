@@ -15,7 +15,10 @@ EMAIL_REGEX = re.compile(r"^[^@\s]+@[^@\s]+\.[^@\s]+$")
 def register_routes(app):
     @app.route("/")
     def home():
-        return render_template("index.html", active="home")
+        posts = sorted((p for p in load("blog.json") if p.get("published", True)),
+                       key=lambda p: p.get("date", ""), reverse=True)
+        return render_template("index.html", active="home",
+                               projects=load("projects.json")[:3], posts=posts[:2])
 
     @app.route("/robots.txt")
     def robots_txt():
