@@ -212,6 +212,7 @@ html.dark .theme-toggle .i-moon { display: none; }
     transform: translateY(-8px); opacity: 0; visibility: hidden; transition: transform .35s var(--ease), opacity .3s, visibility .3s; }
   .mobile-menu.open { transform: none; opacity: 1; visibility: visible; }
   .mobile-menu a, .mobile-menu button { display: flex; width: 100%; align-items: center; justify-content: space-between; padding: 14px 4px; font-size: 17px; font-weight: 550; border-bottom: 1px solid var(--border); }
+  .mobile-menu svg { width: 18px; height: 18px; flex: 0 0 18px; }
 }
 
 /* ---------- hero ---------- */
