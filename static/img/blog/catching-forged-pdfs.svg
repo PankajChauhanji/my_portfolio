@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 420" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0d1530"/><stop offset="1" stop-color="#2b1f55"/></linearGradient>
+    <linearGradient id="hl" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#ff6b6b" stop-opacity=".0"/><stop offset=".5" stop-color="#ff6b6b" stop-opacity=".35"/><stop offset="1" stop-color="#ff6b6b" stop-opacity="0"/></linearGradient>
+  </defs>
+  <rect width="800" height="420" fill="url(#bg)"/>
+  <g transform="translate(470 54)">
+    <rect width="230" height="300" rx="10" fill="#f4f6fb" opacity=".96"/>
+    <rect x="20" y="22" width="90" height="10" rx="3" fill="#5b8cff"/>
+    <rect x="20" y="42" width="140" height="6" rx="3" fill="#c7cede"/>
+    <g fill="#d5dbe8">
+      <rect x="20" y="78" width="190" height="6" rx="3"/><rect x="20" y="100" width="190" height="6" rx="3"/>
+      <rect x="20" y="122" width="190" height="6" rx="3"/><rect x="20" y="166" width="190" height="6" rx="3"/>
+      <rect x="20" y="188" width="190" height="6" rx="3"/><rect x="20" y="210" width="190" height="6" rx="3"/>
+      <rect x="20" y="232" width="190" height="6" rx="3"/>
+    </g>
+    <rect x="12" y="136" width="206" height="24" rx="4" fill="url(#hl)"/>
+    <rect x="20" y="144" width="110" height="6" rx="3" fill="#d5dbe8"/>
+    <rect x="150" y="142" width="60" height="10" rx="3" fill="#ff6b6b"/>
+  </g>
+  <g fill="none" stroke="#ffd49a" stroke-width="3">
+    <circle cx="640" cy="196" r="52" opacity=".95"/>
+    <path d="M677 233 L720 276" stroke-linecap="round" stroke-width="7"/>
+  </g>
+  <g font-family="ui-monospace,Menlo,Consolas,monospace" fill="#9fb4ff" font-size="15" opacity=".75">
+    <text x="40" y="92">obj 41 0 R  /Producer (CoreBank)</text>
+    <text x="40" y="120">obj 97 0 R  /Producer (OnlineEditor)</text>
+    <text x="40" y="148">xref  free entry  0000000000 65535 f</text>
+    <text x="40" y="176">BT /F7 9 Tf (83,000.00) Tj ET</text>
+  </g>
+  <text x="34" y="392" font-family="ui-monospace,Menlo,Consolas,monospace" font-size="20" fill="#ffffff" opacity=".85"># fraud-forensics</text>
+</svg>

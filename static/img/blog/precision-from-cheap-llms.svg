@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 420" preserveAspectRatio="xMidYMid slice">
+  <defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#071a24"/><stop offset="1" stop-color="#14385a"/></linearGradient></defs>
+  <rect width="800" height="420" fill="url(#bg)"/>
+  <g fill="none" stroke="#3dd6f5" stroke-width="1.4">
+    <circle cx="610" cy="190" r="150" opacity=".18"/><circle cx="610" cy="190" r="112" opacity=".26"/>
+    <circle cx="610" cy="190" r="74" opacity=".38"/><circle cx="610" cy="190" r="38" opacity=".55"/>
+    <path d="M610 20 V360 M440 190 H780" opacity=".22"/>
+  </g>
+  <circle cx="610" cy="190" r="10" fill="#ffd49a"/>
+  <g fill="#ffd49a" opacity=".55"><circle cx="628" cy="176" r="4"/><circle cx="596" cy="204" r="4"/><circle cx="618" cy="210" r="4"/><circle cx="600" cy="178" r="4"/></g>
+  <g fill="#a17bff" opacity=".35"><circle cx="690" cy="120" r="4"/><circle cx="530" cy="270" r="4"/></g>
+  <g font-family="ui-monospace,Menlo,Consolas,monospace" font-size="15" fill="#9fdcf0" opacity=".8">
+    <text x="40" y="92">model   = "small"</text>
+    <text x="40" y="120">readers = ["ocr+rules", "llm"]</text>
+    <text x="40" y="148">accept  = readers.agree()</text>
+    <text x="40" y="176">precision → 0.971</text>
+  </g>
+  <text x="34" y="392" font-family="ui-monospace,Menlo,Consolas,monospace" font-size="20" fill="#ffffff" opacity=".85"># llm-engineering</text>
+</svg>
