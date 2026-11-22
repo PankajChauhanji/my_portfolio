@@ -11,28 +11,85 @@
       "The next dawn completely changes the tone. The trek up to Hemkund Sahib is a relentless, gravity-defying climb. Pushing through thin air at 4,632 meters, the rewards hit all at once: a completely silent crystal tarn, floating ice sheets, and the quiet devotion echoing from the world's highest Gurudwara."
     ],
     "stats": [
-      { "label": "Altitude", "value": "4,572 m" },
-      { "label": "Duration", "value": "4 days" },
-      { "label": "Best season", "value": "June-September" },
-      { "label": "Grade", "value": "Moderate" }
+      {
+        "label": "Altitude",
+        "value": "4,572 m"
+      },
+      {
+        "label": "Duration",
+        "value": "4 days"
+      },
+      {
+        "label": "Best season",
+        "value": "June-September"
+      },
+      {
+        "label": "Grade",
+        "value": "Moderate"
+      }
     ],
     "cover": "/static/img/explorer/valley-of-flowers/20250621_132210.webp",
     "gallery": [
-      { "src": "/static/img/explorer/valley-of-flowers/20250621_080530.webp", "caption": "Early morning light over the valley trail" },
-      { "src": "/static/img/explorer/valley-of-flowers/20250621_081716.webp", "caption": "Deep inside the monsoon bloom of the valley" },
-      { "src": "/static/img/explorer/valley-of-flowers/20250621_081813.webp", "caption": "Wildflowers carpeting the valley floor" },
-      { "src": "/static/img/explorer/valley-of-flowers/20250621_083638.webp", "caption": "A quiet moment along the meadow path" },
-      { "src": "/static/img/explorer/valley-of-flowers/20250621_100228.webp", "caption": "Mountain walls rising above the bloom" },
-      { "src": "/static/img/explorer/valley-of-flowers/20250621_120206.webp", "caption": "Midday colours across the alpine meadow" },
-      { "src": "/static/img/explorer/valley-of-flowers/20250621_132115.webp", "caption": "Mist rolling in over the ridge" },
-      { "src": "/static/img/explorer/valley-of-flowers/20250621_132210.webp", "caption": "The valley in full monsoon glory" },
-      { "src": "/static/img/explorer/valley-of-flowers/20250621_133133.webp", "caption": "Glacial streams cutting through a sea of green" },
-      { "src": "/static/img/explorer/valley-of-flowers/20250622_065809.webp", "caption": "Dawn light on the Hemkund Sahib trail" },
-      { "src": "/static/img/explorer/valley-of-flowers/20250622_072502.webp", "caption": "Navigating the steep switchbacks through the mist" },
-      { "src": "/static/img/explorer/valley-of-flowers/20250622_083301.webp", "caption": "Approaching the high-altitude snowline" },
-      { "src": "/static/img/explorer/valley-of-flowers/20250622_083337.webp", "caption": "Snow patches lining the upper trail" },
-      { "src": "/static/img/explorer/valley-of-flowers/20250622_083657.webp", "caption": "Rugged terrain near the glacial lake" },
-      { "src": "/static/img/explorer/valley-of-flowers/20250622_085934.webp", "caption": "The serene and sacred high-altitude lake" }
+      {
+        "src": "/static/img/explorer/valley-of-flowers/20250621_080530.webp",
+        "caption": "Early morning light over the valley trail"
+      },
+      {
+        "src": "/static/img/explorer/valley-of-flowers/20250621_081716.webp",
+        "caption": "Deep inside the monsoon bloom of the valley"
+      },
+      {
+        "src": "/static/img/explorer/valley-of-flowers/20250621_081813.webp",
+        "caption": "Wildflowers carpeting the valley floor"
+      },
+      {
+        "src": "/static/img/explorer/valley-of-flowers/20250621_083638.webp",
+        "caption": "A quiet moment along the meadow path"
+      },
+      {
+        "src": "/static/img/explorer/valley-of-flowers/20250621_100228.webp",
+        "caption": "Mountain walls rising above the bloom"
+      },
+      {
+        "src": "/static/img/explorer/valley-of-flowers/20250621_120206.webp",
+        "caption": "Midday colours across the alpine meadow"
+      },
+      {
+        "src": "/static/img/explorer/valley-of-flowers/20250621_132115.webp",
+        "caption": "Mist rolling in over the ridge"
+      },
+      {
+        "src": "/static/img/explorer/valley-of-flowers/20250621_132210.webp",
+        "caption": "The valley in full monsoon glory"
+      },
+      {
+        "src": "/static/img/explorer/valley-of-flowers/20250621_133133.webp",
+        "caption": "Glacial streams cutting through a sea of green"
+      },
+      {
+        "src": "/static/img/explorer/valley-of-flowers/20250622_065809.webp",
+        "caption": "Dawn light on the Hemkund Sahib trail"
+      },
+      {
+        "src": "/static/img/explorer/valley-of-flowers/20250622_072502.webp",
+        "caption": "Navigating the steep switchbacks through the mist"
+      },
+      {
+        "src": "/static/img/explorer/valley-of-flowers/20250622_083301.webp",
+        "caption": "Approaching the high-altitude snowline"
+      },
+      {
+        "src": "/static/img/explorer/valley-of-flowers/20250622_083337.webp",
+        "caption": "Snow patches lining the upper trail"
+      },
+      {
+        "src": "/static/img/explorer/valley-of-flowers/20250622_083657.webp",
+        "caption": "Rugged terrain near the glacial lake"
+      },
+      {
+        "src": "/static/img/explorer/valley-of-flowers/20250622_085934.webp",
+        "caption": "The serene and sacred high-altitude lake"
+      }
     ]
   },
   {
@@ -47,34 +104,109 @@
       "Simple, accessible, and unforgettable - the perfect introduction to snow."
     ],
     "stats": [
-      { "label": "Altitude", "value": "3,810 m" },
-      { "label": "Duration", "value": "6 days" },
-      { "label": "Best season", "value": "December" },
-      { "label": "Grade", "value": "Easy-Moderate" }
+      {
+        "label": "Altitude",
+        "value": "3,810 m"
+      },
+      {
+        "label": "Duration",
+        "value": "6 days"
+      },
+      {
+        "label": "Best season",
+        "value": "December"
+      },
+      {
+        "label": "Grade",
+        "value": "Easy-Moderate"
+      }
     ],
     "cover": "/static/img/explorer/kedarkantha/IMG_20220115_165856.webp",
     "gallery": [
-      { "src": "/static/img/explorer/kedarkantha/20220114_164633.webp", "caption": "First camp as the light fades over the ridge" },
-      { "src": "/static/img/explorer/kedarkantha/20220115_084223.webp", "caption": "Morning glow on the snow-covered slopes" },
-      { "src": "/static/img/explorer/kedarkantha/20220115_090112.webp", "caption": "Trekkers ascending through deep winter snow" },
-      { "src": "/static/img/explorer/kedarkantha/20220115_112533.webp", "caption": "A clear winter sky above the treeline" },
-      { "src": "/static/img/explorer/kedarkantha/20220115_112734.webp", "caption": "Snow-loaded pines along the summit trail" },
-      { "src": "/static/img/explorer/kedarkantha/20220115_155035.webp", "caption": "Golden afternoon light on the descent" },
-      { "src": "/static/img/explorer/kedarkantha/20220115_155122.webp", "caption": "Wide views opening up near the top" },
-      { "src": "/static/img/explorer/kedarkantha/20220115_155609.webp", "caption": "The final ridge before the summit" },
-      { "src": "/static/img/explorer/kedarkantha/IMG_20220115_132120.webp", "caption": "Panoramic Himalayan peaks from the summit" },
-      { "src": "/static/img/explorer/kedarkantha/IMG_20220115_165420.webp", "caption": "Descending through the pine forest at dusk" },
-      { "src": "/static/img/explorer/kedarkantha/IMG_20220115_165856.webp", "caption": "Camp life as the temperature drops" },
-      { "src": "/static/img/explorer/kedarkantha/20250309_153330.webp", "caption": "A return visit — fresh snow on a familiar trail" },
-      { "src": "/static/img/explorer/kedarkantha/20250309_154457.webp", "caption": "Frozen stillness along the upper path" },
-      { "src": "/static/img/explorer/kedarkantha/20250309_161345.webp", "caption": "Cloud shadows sweeping across the snowfield" },
-      { "src": "/static/img/explorer/kedarkantha/20250309_172401.webp", "caption": "Late afternoon hues painting the white slopes" },
-      { "src": "/static/img/explorer/kedarkantha/20250309_172822.webp", "caption": "Twilight settling over the Kedarkantha basin" },
-      { "src": "/static/img/explorer/kedarkantha/20250309_173435.webp", "caption": "The valley below blanketed in fresh snow" },
-      { "src": "/static/img/explorer/kedarkantha/20250309_173840.webp", "caption": "Last light of the day on the high ridges" },
-      { "src": "/static/img/explorer/kedarkantha/IMG-20250405-WA0017.webp", "caption": "Group shot at the Kedarkantha summit marker" },
-      { "src": "/static/img/explorer/kedarkantha/IMG-20250405-WA0018.webp", "caption": "Smiles and summit views — worth every step" },
-      { "src": "/static/img/explorer/kedarkantha/1000000518-01.webp", "caption": "A wide frame capturing the full winter landscape" }
+      {
+        "src": "/static/img/explorer/kedarkantha/20220114_164633.webp",
+        "caption": "First camp as the light fades over the ridge"
+      },
+      {
+        "src": "/static/img/explorer/kedarkantha/20220115_084223.webp",
+        "caption": "Morning glow on the snow-covered slopes"
+      },
+      {
+        "src": "/static/img/explorer/kedarkantha/20220115_090112.webp",
+        "caption": "Trekkers ascending through deep winter snow"
+      },
+      {
+        "src": "/static/img/explorer/kedarkantha/20220115_112533.webp",
+        "caption": "A clear winter sky above the treeline"
+      },
+      {
+        "src": "/static/img/explorer/kedarkantha/20220115_112734.webp",
+        "caption": "Snow-loaded pines along the summit trail"
+      },
+      {
+        "src": "/static/img/explorer/kedarkantha/20220115_155035.webp",
+        "caption": "Golden afternoon light on the descent"
+      },
+      {
+        "src": "/static/img/explorer/kedarkantha/20220115_155122.webp",
+        "caption": "Wide views opening up near the top"
+      },
+      {
+        "src": "/static/img/explorer/kedarkantha/20220115_155609.webp",
+        "caption": "The final ridge before the summit"
+      },
+      {
+        "src": "/static/img/explorer/kedarkantha/IMG_20220115_132120.webp",
+        "caption": "Panoramic Himalayan peaks from the summit"
+      },
+      {
+        "src": "/static/img/explorer/kedarkantha/IMG_20220115_165420.webp",
+        "caption": "Descending through the pine forest at dusk"
+      },
+      {
+        "src": "/static/img/explorer/kedarkantha/IMG_20220115_165856.webp",
+        "caption": "Camp life as the temperature drops"
+      },
+      {
+        "src": "/static/img/explorer/kedarkantha/20250309_153330.webp",
+        "caption": "A return visit — fresh snow on a familiar trail"
+      },
+      {
+        "src": "/static/img/explorer/kedarkantha/20250309_154457.webp",
+        "caption": "Frozen stillness along the upper path"
+      },
+      {
+        "src": "/static/img/explorer/kedarkantha/20250309_161345.webp",
+        "caption": "Cloud shadows sweeping across the snowfield"
+      },
+      {
+        "src": "/static/img/explorer/kedarkantha/20250309_172401.webp",
+        "caption": "Late afternoon hues painting the white slopes"
+      },
+      {
+        "src": "/static/img/explorer/kedarkantha/20250309_172822.webp",
+        "caption": "Twilight settling over the Kedarkantha basin"
+      },
+      {
+        "src": "/static/img/explorer/kedarkantha/20250309_173435.webp",
+        "caption": "The valley below blanketed in fresh snow"
+      },
+      {
+        "src": "/static/img/explorer/kedarkantha/20250309_173840.webp",
+        "caption": "Last light of the day on the high ridges"
+      },
+      {
+        "src": "/static/img/explorer/kedarkantha/IMG-20250405-WA0017.webp",
+        "caption": "Group shot at the Kedarkantha summit marker"
+      },
+      {
+        "src": "/static/img/explorer/kedarkantha/IMG-20250405-WA0018.webp",
+        "caption": "Smiles and summit views — worth every step"
+      },
+      {
+        "src": "/static/img/explorer/kedarkantha/1000000518-01.webp",
+        "caption": "A wide frame capturing the full winter landscape"
+      }
     ]
   },
   {
@@ -89,30 +221,93 @@
       "From Mana, a 6 km trek on rocky terrain climbs to Vasudhara Falls at 3,658 meters. The waterfall drops 400 feet off a sheer cliff face, and the legend holds that its spray only touches those who are pure of heart. Standing there with Chaukhamba, Nilkantha, and Balakun filling the skyline, it's easy to believe it."
     ],
     "stats": [
-      { "label": "Altitude", "value": "3,658 m" },
-      { "label": "Duration", "value": "3 days" },
-      { "label": "Best season", "value": "May-June, Sep-Oct" },
-      { "label": "Grade", "value": "Moderate" }
+      {
+        "label": "Altitude",
+        "value": "3,658 m"
+      },
+      {
+        "label": "Duration",
+        "value": "3 days"
+      },
+      {
+        "label": "Best season",
+        "value": "May-June, Sep-Oct"
+      },
+      {
+        "label": "Grade",
+        "value": "Moderate"
+      }
     ],
     "cover": "/static/img/explorer/badrinath-vasudhara/20231112_095434.webp",
     "gallery": [
-      { "src": "/static/img/explorer/badrinath-vasudhara/20231111_084517.webp", "caption": "Badrinath trip" },
-      { "src": "/static/img/explorer/badrinath-vasudhara/20231111_083725.webp", "caption": "Badrinath trip" },
-      { "src": "/static/img/explorer/badrinath-vasudhara/20231111_115633.webp", "caption": "Badrinath trip" },
-      { "src": "/static/img/explorer/badrinath-vasudhara/20231111_200826.webp", "caption": "Badrinath trip" },
-      { "src": "/static/img/explorer/badrinath-vasudhara/20231111_202719.webp", "caption": "Badrinath trip" },
-      { "src": "/static/img/explorer/badrinath-vasudhara/20231111_204650.webp", "caption": "Badrinath trip" },
-      { "src": "/static/img/explorer/badrinath-vasudhara/20231111_205246.webp", "caption": "Badrinath trip" },
-      { "src": "/static/img/explorer/badrinath-vasudhara/20231112_094812.webp", "caption": "Badrinath trip" },
-      { "src": "/static/img/explorer/badrinath-vasudhara/20231112_095434.webp", "caption": "Badrinath trip" },
-      { "src": "/static/img/explorer/badrinath-vasudhara/20231112_111618.webp", "caption": "Badrinath trip" },
-      { "src": "/static/img/explorer/badrinath-vasudhara/20231112_111810.webp", "caption": "Badrinath trip" },
-      { "src": "/static/img/explorer/badrinath-vasudhara/20231112_112224.webp", "caption": "Badrinath trip" },
-      { "src": "/static/img/explorer/badrinath-vasudhara/20231112_121901.webp", "caption": "Badrinath trip" },
-      { "src": "/static/img/explorer/badrinath-vasudhara/20231112_132647.webp", "caption": "Badrinath trip" },
-      { "src": "/static/img/explorer/badrinath-vasudhara/20231112_135046.webp", "caption": "Badrinath trip" },
-      { "src": "/static/img/explorer/badrinath-vasudhara/20231112_153849.webp", "caption": "Badrinath trip" },
-      { "src": "/static/img/explorer/badrinath-vasudhara/20231113_060513.webp", "caption": "Badrinath trip" }
+      {
+        "src": "/static/img/explorer/badrinath-vasudhara/20231111_084517.webp",
+        "caption": "Badrinath trip"
+      },
+      {
+        "src": "/static/img/explorer/badrinath-vasudhara/20231111_083725.webp",
+        "caption": "Badrinath trip"
+      },
+      {
+        "src": "/static/img/explorer/badrinath-vasudhara/20231111_115633.webp",
+        "caption": "Badrinath trip"
+      },
+      {
+        "src": "/static/img/explorer/badrinath-vasudhara/20231111_200826.webp",
+        "caption": "Badrinath trip"
+      },
+      {
+        "src": "/static/img/explorer/badrinath-vasudhara/20231111_202719.webp",
+        "caption": "Badrinath trip"
+      },
+      {
+        "src": "/static/img/explorer/badrinath-vasudhara/20231111_204650.webp",
+        "caption": "Badrinath trip"
+      },
+      {
+        "src": "/static/img/explorer/badrinath-vasudhara/20231111_205246.webp",
+        "caption": "Badrinath trip"
+      },
+      {
+        "src": "/static/img/explorer/badrinath-vasudhara/20231112_094812.webp",
+        "caption": "Badrinath trip"
+      },
+      {
+        "src": "/static/img/explorer/badrinath-vasudhara/20231112_095434.webp",
+        "caption": "Badrinath trip"
+      },
+      {
+        "src": "/static/img/explorer/badrinath-vasudhara/20231112_111618.webp",
+        "caption": "Badrinath trip"
+      },
+      {
+        "src": "/static/img/explorer/badrinath-vasudhara/20231112_111810.webp",
+        "caption": "Badrinath trip"
+      },
+      {
+        "src": "/static/img/explorer/badrinath-vasudhara/20231112_112224.webp",
+        "caption": "Badrinath trip"
+      },
+      {
+        "src": "/static/img/explorer/badrinath-vasudhara/20231112_121901.webp",
+        "caption": "Badrinath trip"
+      },
+      {
+        "src": "/static/img/explorer/badrinath-vasudhara/20231112_132647.webp",
+        "caption": "Badrinath trip"
+      },
+      {
+        "src": "/static/img/explorer/badrinath-vasudhara/20231112_135046.webp",
+        "caption": "Badrinath trip"
+      },
+      {
+        "src": "/static/img/explorer/badrinath-vasudhara/20231112_153849.webp",
+        "caption": "Badrinath trip"
+      },
+      {
+        "src": "/static/img/explorer/badrinath-vasudhara/20231113_060513.webp",
+        "caption": "Badrinath trip"
+      }
     ]
   },
   {
@@ -127,24 +322,784 @@
       "On a clear day the view is almost disorienting in its scale. Peaks you've only seen individually suddenly appear together — Nanda Devi, Trishul, Chaukhamba, Kedar Dome, Bandarpunch — lined up across the horizon in every direction."
     ],
     "stats": [
-      { "label": "Altitude", "value": "4,000 m" },
-      { "label": "Duration", "value": "2 days" },
-      { "label": "Best season", "value": "May-June, Sep-Oct" },
-      { "label": "Grade", "value": "Easy-Moderate" }
+      {
+        "label": "Altitude",
+        "value": "4,000 m"
+      },
+      {
+        "label": "Duration",
+        "value": "2 days"
+      },
+      {
+        "label": "Best season",
+        "value": "May-June, Sep-Oct"
+      },
+      {
+        "label": "Grade",
+        "value": "Easy-Moderate"
+      }
     ],
     "cover": "/static/img/explorer/chandrashila/20231113_172215.webp",
     "gallery": [
-      { "src": "/static/img/explorer/chandrashila/1707499046842.webp", "caption": "Tungnath trip" },
-      { "src": "/static/img/explorer/chandrashila/20231113_155528.webp", "caption": "Tungnath trip" },
-      { "src": "/static/img/explorer/chandrashila/20231113_164211.webp", "caption": "Tungnath trip" },
-      { "src": "/static/img/explorer/chandrashila/20231113_164625.webp", "caption": "Tungnath trip" },
-      { "src": "/static/img/explorer/chandrashila/20231113_171432.webp", "caption": "Tungnath trip" },
-      { "src": "/static/img/explorer/chandrashila/20231113_172209.webp", "caption": "Tungnath trip" },
-      { "src": "/static/img/explorer/chandrashila/20231113_172215.webp", "caption": "Tungnath trip" },
-      { "src": "/static/img/explorer/chandrashila/20231113_172335.webp", "caption": "Tungnath trip" },
-      { "src": "/static/img/explorer/chandrashila/20231113_172604.webp", "caption": "Tungnath trip" },
-      { "src": "/static/img/explorer/chandrashila/20231113_172749.webp", "caption": "Tungnath trip" },
-      { "src": "/static/img/explorer/chandrashila/20231113_173544.webp", "caption": "Tungnath trip" }
+      {
+        "src": "/static/img/explorer/chandrashila/1707499046842.webp",
+        "caption": "Tungnath trip"
+      },
+      {
+        "src": "/static/img/explorer/chandrashila/20231113_155528.webp",
+        "caption": "Tungnath trip"
+      },
+      {
+        "src": "/static/img/explorer/chandrashila/20231113_164211.webp",
+        "caption": "Tungnath trip"
+      },
+      {
+        "src": "/static/img/explorer/chandrashila/20231113_164625.webp",
+        "caption": "Tungnath trip"
+      },
+      {
+        "src": "/static/img/explorer/chandrashila/20231113_171432.webp",
+        "caption": "Tungnath trip"
+      },
+      {
+        "src": "/static/img/explorer/chandrashila/20231113_172209.webp",
+        "caption": "Tungnath trip"
+      },
+      {
+        "src": "/static/img/explorer/chandrashila/20231113_172215.webp",
+        "caption": "Tungnath trip"
+      },
+      {
+        "src": "/static/img/explorer/chandrashila/20231113_172335.webp",
+        "caption": "Tungnath trip"
+      },
+      {
+        "src": "/static/img/explorer/chandrashila/20231113_172604.webp",
+        "caption": "Tungnath trip"
+      },
+      {
+        "src": "/static/img/explorer/chandrashila/20231113_172749.webp",
+        "caption": "Tungnath trip"
+      },
+      {
+        "src": "/static/img/explorer/chandrashila/20231113_173544.webp",
+        "caption": "Tungnath trip"
+      }
+    ]
+  },
+  {
+    "slug": "aadi-kailash-and-om-parvat",
+    "title": "Aadi Kailash & Om Parvat",
+    "type": "trek",
+    "region": "Pithoragarh, Uttarakhand",
+    "altitude_m": 5400,
+    "summary": "The high, remote corner of Kumaon near the Tibet border — Aadi Kailash above the sacred lakes of Gauri Kund and Parvati Kund at around 5,400 m, and the snow-written ॐ on Om Parvat.",
+    "story": [
+      "This is the far end of the map. The road clings to sheer cliffs above the Kali river, villages thin out after Gunji, and an inner-line permit is the only way in. Every hour the air gets thinner and the silence gets bigger.",
+      "Then the valley opens: Aadi Kailash rising white above Parvati Kund, the still blue water of Gauri Kund at its feet, prayer flags snapping in the wind at the Om Parvat viewpoint, and the snow on its face tracing the sacred syllable exactly as people describe it. Standing up there at around 5,400 m, breathing hard and grinning harder, is the place I think about most when I need to remember why the hard parts are worth it."
+    ],
+    "stats": [
+      {
+        "label": "Altitude",
+        "value": "~5,400 m"
+      },
+      {
+        "label": "Duration",
+        "value": "7 days"
+      },
+      {
+        "label": "Best season",
+        "value": "May–June, Sep–Oct"
+      },
+      {
+        "label": "Grade",
+        "value": "Challenging"
+      }
+    ],
+    "cover": "/static/img/explorer/aadi-kailash-and-om-parvat/IMG_20261017_142020.webp",
+    "gallery": [
+      {
+        "src": "/static/img/explorer/aadi-kailash-and-om-parvat/20261017_092834.webp",
+        "caption": "Aadi Kailash under a cobalt sky"
+      },
+      {
+        "src": "/static/img/explorer/aadi-kailash-and-om-parvat/20261017_092918.webp",
+        "caption": "The trident shrine at Parvati Kund"
+      },
+      {
+        "src": "/static/img/explorer/aadi-kailash-and-om-parvat/20261017_095851.webp",
+        "caption": "At Parvati Kund, Aadi Kailash behind"
+      },
+      {
+        "src": "/static/img/explorer/aadi-kailash-and-om-parvat/20261017_102720.webp",
+        "caption": "On the moraine at the edge of the snowfield"
+      },
+      {
+        "src": "/static/img/explorer/aadi-kailash-and-om-parvat/IMG_20261016_065143_1.webp",
+        "caption": "The Himalayan wall floating above a sea of clouds"
+      },
+      {
+        "src": "/static/img/explorer/aadi-kailash-and-om-parvat/IMG_20261016_161752.webp",
+        "caption": "The road carved into the cliffs above the Kali river"
+      },
+      {
+        "src": "/static/img/explorer/aadi-kailash-and-om-parvat/IMG_20261017_063511.webp",
+        "caption": "Riders at the Vyas valley checkpost"
+      },
+      {
+        "src": "/static/img/explorer/aadi-kailash-and-om-parvat/IMG_20261017_074014.webp",
+        "caption": "The full face of Aadi Kailash"
+      },
+      {
+        "src": "/static/img/explorer/aadi-kailash-and-om-parvat/IMG_20261017_075324.webp",
+        "caption": "Knee-deep in fresh snow at 5,000 m-plus"
+      },
+      {
+        "src": "/static/img/explorer/aadi-kailash-and-om-parvat/IMG_20261017_080032.webp",
+        "caption": "A breather in the snow below the summit ridge"
+      },
+      {
+        "src": "/static/img/explorer/aadi-kailash-and-om-parvat/IMG_20261017_142020.webp",
+        "caption": "Gauri Kund mirroring the peaks"
+      },
+      {
+        "src": "/static/img/explorer/aadi-kailash-and-om-parvat/IMG_20261018_081847.webp",
+        "caption": "Snow-dusted ridges of the Vyas valley"
+      },
+      {
+        "src": "/static/img/explorer/aadi-kailash-and-om-parvat/IMG_20261018_090716.webp",
+        "caption": "Peaks rising out of the deep valley"
+      },
+      {
+        "src": "/static/img/explorer/aadi-kailash-and-om-parvat/IMG_20261018_090726.webp",
+        "caption": "Rock and ice on the upper ridges"
+      },
+      {
+        "src": "/static/img/explorer/aadi-kailash-and-om-parvat/IMG_20261018_092318.webp",
+        "caption": "Prayer flags at the Om Parvat viewpoint"
+      }
+    ]
+  },
+  {
+    "slug": "gangotri-gaumukh-yamunotri",
+    "title": "Gangotri, Gaumukh–Tapovan & Yamunotri",
+    "type": "trek",
+    "region": "Uttarkashi, Uttarakhand",
+    "altitude_m": 4200,
+    "summary": "To the sources of the Ganga and the Yamuna — a trail of temples, granite gorges and glacial rivers to Gaumukh, the snout of the Gangotri glacier, and on up to the Tapovan meadow at 4,200 m.",
+    "story": [
+      "Two rivers, two journeys. The Yamunotri climb is short and steep, shared with pilgrims and ponies all the way to the temple. Gangotri is different — a town of bells and cold mist, with the Bhagirathi thundering through a granite gorge below.",
+      "Beyond Gangotri the trail leaves the crowds behind. Deodar gives way to bare moraine, the Bhagirathi peaks fill the horizon, and at Gaumukh the river is born straight out of the ice. Above it, a scramble across the glacier leads to Tapovan at 4,200 m, with Shivling standing right over the meadow. I timed the return with the closing ceremony, when the goddess's doli is carried down for winter — music, marigolds and an entire valley turning out to say goodbye."
+    ],
+    "stats": [
+      {
+        "label": "Altitude",
+        "value": "4,200 m (Tapovan)"
+      },
+      {
+        "label": "Duration",
+        "value": "7 days"
+      },
+      {
+        "label": "Best season",
+        "value": "May–June, Sep–Oct"
+      },
+      {
+        "label": "Grade",
+        "value": "Moderate"
+      }
+    ],
+    "cover": "/static/img/explorer/gangotri-gaumukh-yamunotri/20241101_114613.webp",
+    "gallery": [
+      {
+        "src": "/static/img/explorer/gangotri-gaumukh-yamunotri/20240616_090046.webp",
+        "caption": "Pilgrims and ponies on the Yamunotri trail"
+      },
+      {
+        "src": "/static/img/explorer/gangotri-gaumukh-yamunotri/20240616_101425.webp",
+        "caption": "The Yamuna gorge falling away below the trail"
+      },
+      {
+        "src": "/static/img/explorer/gangotri-gaumukh-yamunotri/20240616_103656.webp",
+        "caption": "Crowds at the Yamunotri temple"
+      },
+      {
+        "src": "/static/img/explorer/gangotri-gaumukh-yamunotri/20241031_101415.webp",
+        "caption": "Crossing the Bhagirathi near Gangotri"
+      },
+      {
+        "src": "/static/img/explorer/gangotri-gaumukh-yamunotri/20241031_110203.webp",
+        "caption": "At the Gangotri temple"
+      },
+      {
+        "src": "/static/img/explorer/gangotri-gaumukh-yamunotri/20241101_082708.webp",
+        "caption": "The Bhagirathi peaks above the moraine"
+      },
+      {
+        "src": "/static/img/explorer/gangotri-gaumukh-yamunotri/20241101_112755.webp",
+        "caption": "By the glacial Bhagirathi near Gaumukh"
+      },
+      {
+        "src": "/static/img/explorer/gangotri-gaumukh-yamunotri/20241101_114133.webp",
+        "caption": "Boulder-hopping on the river bed"
+      },
+      {
+        "src": "/static/img/explorer/gangotri-gaumukh-yamunotri/20241101_114613.webp",
+        "caption": "The infant Ganga winding toward the peaks"
+      },
+      {
+        "src": "/static/img/explorer/gangotri-gaumukh-yamunotri/20241101_150412.webp",
+        "caption": "Autumn colours in the Gangotri valley"
+      },
+      {
+        "src": "/static/img/explorer/gangotri-gaumukh-yamunotri/20241101_184039.webp",
+        "caption": "Gangotri temple lit up at night"
+      },
+      {
+        "src": "/static/img/explorer/gangotri-gaumukh-yamunotri/20241102_090820.webp",
+        "caption": "A deodar-lined gorge downstream"
+      },
+      {
+        "src": "/static/img/explorer/gangotri-gaumukh-yamunotri/20241102_101211.webp",
+        "caption": "The Bhagirathi racing through granite"
+      },
+      {
+        "src": "/static/img/explorer/gangotri-gaumukh-yamunotri/20241102_102805.webp",
+        "caption": "Mid-river on a granite boulder"
+      },
+      {
+        "src": "/static/img/explorer/gangotri-gaumukh-yamunotri/20241102_104209.webp",
+        "caption": "A quiet seat in the middle of the current"
+      },
+      {
+        "src": "/static/img/explorer/gangotri-gaumukh-yamunotri/20241102_124516.webp",
+        "caption": "The goddess's doli procession as Gangotri closes for winter"
+      }
+    ]
+  },
+  {
+    "slug": "kashmir-valley",
+    "title": "Kashmir — Four Years in the Valley",
+    "type": "travel",
+    "region": "Jammu & Kashmir, India",
+    "altitude_m": 3684,
+    "summary": "Four years at NIT Srinagar turned Kashmir into my backyard — Dal Lake mornings, Gulmarg snow, Sonamarg glaciers, Pahalgam meadows and the climb to Tulian Lake.",
+    "story": [
+      "I went to Srinagar for an engineering degree and came back with a second education in mountains. Weekends meant chasing a different valley: shikaras on Dal Lake, autumn chinars turning the campus red, the first snowfall that made everyone forget exams for a day.",
+      "Gulmarg taught me to ski badly and laugh about it. Sonamarg showed me my first glacier up close. Pahalgam's meadows became the default answer to 'where this weekend?', and the long walk up to Tulian Lake, at 3,684 m, was the first time altitude really got under my skin. A lot of what I am started here."
+    ],
+    "stats": [
+      {
+        "label": "Altitude",
+        "value": "3,684 m (Tulian Lake)"
+      },
+      {
+        "label": "Duration",
+        "value": "4 years · 2017–21"
+      },
+      {
+        "label": "Best season",
+        "value": "Every season"
+      },
+      {
+        "label": "Grade",
+        "value": "Home for four years"
+      }
+    ],
+    "cover": "/static/img/explorer/kashmir-valley/151196944-151198159_2738.webp",
+    "gallery": [
+      {
+        "src": "/static/img/explorer/kashmir-valley/151196944-151198159_2738.webp",
+        "caption": "A shikara waiting on Dal Lake"
+      },
+      {
+        "src": "/static/img/explorer/kashmir-valley/2017-11-18-16-36-41-474.webp",
+        "caption": "Autumn chinars from the NIT Srinagar lawns"
+      },
+      {
+        "src": "/static/img/explorer/kashmir-valley/20180310_120003_1_01-02.webp",
+        "caption": "A lone tree in the Gulmarg snow"
+      },
+      {
+        "src": "/static/img/explorer/kashmir-valley/20180310_130547-01.webp",
+        "caption": "Friends mid-jump in fresh snow"
+      },
+      {
+        "src": "/static/img/explorer/kashmir-valley/20181021_083252.webp",
+        "caption": "Summer meadows and pine forest"
+      },
+      {
+        "src": "/static/img/explorer/kashmir-valley/20191107_094024-03.webp",
+        "caption": "First snowfall on campus"
+      },
+      {
+        "src": "/static/img/explorer/kashmir-valley/IMG_20180321_173437_001.webp",
+        "caption": "Blue sky over the Gulmarg snowfields"
+      },
+      {
+        "src": "/static/img/explorer/kashmir-valley/IMG_20181008_1.webp",
+        "caption": "A water break above a pine valley in Pahalgam"
+      },
+      {
+        "src": "/static/img/explorer/kashmir-valley/IMG_20181008_2.webp",
+        "caption": "The Aru valley opening up"
+      },
+      {
+        "src": "/static/img/explorer/kashmir-valley/LRM_EXPORT_138393276199181_20181201_123656543.webp",
+        "caption": "A snowy winter afternoon in Srinagar"
+      },
+      {
+        "src": "/static/img/explorer/kashmir-valley/LRM_EXPORT_1831204929798.webp",
+        "caption": "Watching the glacial stream in Sonamarg"
+      },
+      {
+        "src": "/static/img/explorer/kashmir-valley/LRM_EXPORT_257382990085560_20190221_185044207.webp",
+        "caption": "Clear skies and snow peaks over the playing field"
+      },
+      {
+        "src": "/static/img/explorer/kashmir-valley/PSFix_20181121_223057.webp",
+        "caption": "Srinagar city spread out below"
+      },
+      {
+        "src": "/static/img/explorer/kashmir-valley/PSX_20181024_002802-01.webp",
+        "caption": "On the rocks above Sonamarg"
+      },
+      {
+        "src": "/static/img/explorer/kashmir-valley/PSX_20181024_155808-01.webp",
+        "caption": "On the trail to the Thajiwas glacier"
+      },
+      {
+        "src": "/static/img/explorer/kashmir-valley/PSX_20181026_203829.webp",
+        "caption": "A glacial stream under the snow peaks"
+      },
+      {
+        "src": "/static/img/explorer/kashmir-valley/PSX_20181026_205712.webp",
+        "caption": "Pine forest and a mountain stream in Pahalgam"
+      },
+      {
+        "src": "/static/img/explorer/kashmir-valley/PSX_20181026_210826.webp",
+        "caption": "Friends on a meadow bench in Pahalgam"
+      },
+      {
+        "src": "/static/img/explorer/kashmir-valley/PSX_20181026_212544.webp",
+        "caption": "Arms wide on the way to Tulian Lake"
+      },
+      {
+        "src": "/static/img/explorer/kashmir-valley/PSX_20181104_222936.webp",
+        "caption": "Chinar gold and early snow"
+      },
+      {
+        "src": "/static/img/explorer/kashmir-valley/PSX_20181126_133954.webp",
+        "caption": "Bare winter trees in a Mughal garden"
+      },
+      {
+        "src": "/static/img/explorer/kashmir-valley/SAMSUNG_SM-G615F_149490200-149494866_000.webp",
+        "caption": "Learning to ski in Gulmarg"
+      }
+    ]
+  },
+  {
+    "slug": "kedarnath",
+    "title": "Kedarnath",
+    "type": "trek",
+    "region": "Rudraprayag, Uttarakhand",
+    "altitude_m": 3583,
+    "summary": "A 16 km climb along the Mandakini to one of the oldest Shiva temples in the Himalaya, set against a wall of snow peaks at 3,583 m.",
+    "story": [
+      "The walk up from Gaurikund follows the Mandakini the whole way — waterfalls spilling onto the trail, pilgrims of every age moving at their own pace, and the valley narrowing until the snow peaks close it off ahead.",
+      "Then the temple appears: dark stone, marigold garlands and the Kedarnath range glowing behind it. I've been back more than once, and the moment never gets old — the evening aarti, the town lit up under the stars, and dawn painting the peaks gold above a sea of tents."
+    ],
+    "stats": [
+      {
+        "label": "Altitude",
+        "value": "3,583 m"
+      },
+      {
+        "label": "Duration",
+        "value": "2–3 days"
+      },
+      {
+        "label": "Best season",
+        "value": "May–June, Sep–Oct"
+      },
+      {
+        "label": "Grade",
+        "value": "Moderate"
+      }
+    ],
+    "cover": "/static/img/explorer/kedarnath/20251020_141353.webp",
+    "gallery": [
+      {
+        "src": "/static/img/explorer/kedarnath/1708444813249.webp",
+        "caption": "Snow peaks above the Kedarnath trail"
+      },
+      {
+        "src": "/static/img/explorer/kedarnath/20211104_155708.webp",
+        "caption": "The Mandakini crashing over boulders"
+      },
+      {
+        "src": "/static/img/explorer/kedarnath/20211105_130202-01.webp",
+        "caption": "The temple dressed in marigolds"
+      },
+      {
+        "src": "/static/img/explorer/kedarnath/20251019_182643.webp",
+        "caption": "The valley's lights after dark"
+      },
+      {
+        "src": "/static/img/explorer/kedarnath/20251020_083209(1).webp",
+        "caption": "A waterfall spilling across the trail"
+      },
+      {
+        "src": "/static/img/explorer/kedarnath/20251020_131747.webp",
+        "caption": "At the ॐ sculpture near the temple"
+      },
+      {
+        "src": "/static/img/explorer/kedarnath/20251020_141353.webp",
+        "caption": "Kedarnath temple and the waiting crowd"
+      },
+      {
+        "src": "/static/img/explorer/kedarnath/20251020_141841.webp",
+        "caption": "In the temple courtyard"
+      },
+      {
+        "src": "/static/img/explorer/kedarnath/20251020_142544.webp",
+        "caption": "The temple under towering clouds"
+      },
+      {
+        "src": "/static/img/explorer/kedarnath/20251020_143914.webp",
+        "caption": "The Adi Shankaracharya statue"
+      },
+      {
+        "src": "/static/img/explorer/kedarnath/20251020_150742.webp",
+        "caption": "Prayer flags at the Bhairavnath shrine"
+      },
+      {
+        "src": "/static/img/explorer/kedarnath/20251020_151726.webp",
+        "caption": "On a boulder above the valley"
+      },
+      {
+        "src": "/static/img/explorer/kedarnath/20251020_153807.webp",
+        "caption": "Overlooking the Kedarnath township"
+      },
+      {
+        "src": "/static/img/explorer/kedarnath/20251020_181442.webp",
+        "caption": "The temple lit up at night"
+      },
+      {
+        "src": "/static/img/explorer/kedarnath/20251021_071118.webp",
+        "caption": "Dawn on the Kedarnath range"
+      },
+      {
+        "src": "/static/img/explorer/kedarnath/20251021_084949.webp",
+        "caption": "The ancient stone temple up close"
+      },
+      {
+        "src": "/static/img/explorer/kedarnath/20251021_102724.webp",
+        "caption": "One more photo before heading down"
+      },
+      {
+        "src": "/static/img/explorer/kedarnath/20251021_205601.webp",
+        "caption": "The river and bridge glowing at night"
+      }
+    ]
+  },
+  {
+    "slug": "my-village",
+    "title": "My Village",
+    "type": "home",
+    "region": "Garhwal, Uttarakhand",
+    "altitude_m": 2900,
+    "summary": "Terraced fields, slate-roofed houses, monsoon mist and winter snow on Anchriyanda Top above — the village where every trek of mine really began.",
+    "story": [
+      "Before I knew the word 'trek', I knew these hills. Terraced fields stepping down to the river, a small temple at the centre of the village, cattle that know the way home better than any map, and Anchriyanda Top rising to 2,900 m above it all, turning white every winter.",
+      "I come back whenever I can — to walk the old paths in the monsoon mist, climb the same trees I climbed as a kid, plough a field for an afternoon, and sit on Anchriyanda Top in the snow with friends. Every summit since has, in some way, been an attempt to find this feeling somewhere higher."
+    ],
+    "stats": [
+      {
+        "label": "Altitude",
+        "value": "Up to 2,900 m (Anchriyanda Top)"
+      },
+      {
+        "label": "Duration",
+        "value": "Always"
+      },
+      {
+        "label": "Best season",
+        "value": "Monsoon & winter"
+      },
+      {
+        "label": "Grade",
+        "value": "Home"
+      }
+    ],
+    "cover": "/static/img/explorer/my-village/20230714_074131.webp",
+    "gallery": [
+      {
+        "src": "/static/img/explorer/my-village/20220721_172802.webp",
+        "caption": "The meadow path above the village"
+      },
+      {
+        "src": "/static/img/explorer/my-village/20220721_173025.webp",
+        "caption": "Terraced fields after the rain"
+      },
+      {
+        "src": "/static/img/explorer/my-village/20220721_174252.webp",
+        "caption": "The village on its green hillside"
+      },
+      {
+        "src": "/static/img/explorer/my-village/20220724_071623.webp",
+        "caption": "The village temple under a blue sky"
+      },
+      {
+        "src": "/static/img/explorer/my-village/20221022_065404.webp",
+        "caption": "Morning glories over the valley"
+      },
+      {
+        "src": "/static/img/explorer/my-village/20221022_072529.webp",
+        "caption": "Golden evening on the ridges"
+      },
+      {
+        "src": "/static/img/explorer/my-village/20230712_152414.webp",
+        "caption": "Monsoon clouds rolling over the village"
+      },
+      {
+        "src": "/static/img/explorer/my-village/20230712_173748.webp",
+        "caption": "Folded green ridges"
+      },
+      {
+        "src": "/static/img/explorer/my-village/20230713_101207.webp",
+        "caption": "Mist drifting up the valley"
+      },
+      {
+        "src": "/static/img/explorer/my-village/20230714_074131.webp",
+        "caption": "Slate roofs catching the sun"
+      },
+      {
+        "src": "/static/img/explorer/my-village/20230714_080209.webp",
+        "caption": "Houses clustered on the slope"
+      },
+      {
+        "src": "/static/img/explorer/my-village/20240621_094247.webp",
+        "caption": "Autumn on the terraced fields"
+      },
+      {
+        "src": "/static/img/explorer/my-village/20260125_132515.webp",
+        "caption": "Winter on the ridge trail"
+      },
+      {
+        "src": "/static/img/explorer/my-village/20260126_104051.webp",
+        "caption": "Snow on Anchriyanda Top"
+      },
+      {
+        "src": "/static/img/explorer/my-village/20260126_104808.webp",
+        "caption": "Standing in the first snow"
+      },
+      {
+        "src": "/static/img/explorer/my-village/20260126_114700.webp",
+        "caption": "An old hut in the snowfield"
+      },
+      {
+        "src": "/static/img/explorer/my-village/20260914_123004.webp",
+        "caption": "The valley in full monsoon green"
+      },
+      {
+        "src": "/static/img/explorer/my-village/20260916_121510.webp",
+        "caption": "A cattle shed at the forest edge"
+      },
+      {
+        "src": "/static/img/explorer/my-village/20260916_121522.webp",
+        "caption": "A friend among the trees"
+      },
+      {
+        "src": "/static/img/explorer/my-village/LRM_EXPORT_26638729506354_20190206_213418971.webp",
+        "caption": "Blue hour on Anchriyanda Top"
+      },
+      {
+        "src": "/static/img/explorer/my-village/LRM_EXPORT_28456456453231_20190206_220437046.webp",
+        "caption": "Friends on Anchriyanda Top in winter"
+      },
+      {
+        "src": "/static/img/explorer/my-village/LRM_EXPORT_35144736950467_20190723_190344636.webp",
+        "caption": "Ploughing the field the old way"
+      },
+      {
+        "src": "/static/img/explorer/my-village/LRM_EXPORT_4376685561863_20190211_194214254.webp",
+        "caption": "Climbing the tallest tree"
+      },
+      {
+        "src": "/static/img/explorer/my-village/LRM_EXPORT_4528736756564_20190211_194446305.webp",
+        "caption": "Higher still"
+      }
+    ]
+  },
+  {
+    "slug": "naagtibba",
+    "title": "Nag Tibba",
+    "type": "trek",
+    "region": "Tehri Garhwal, Uttarakhand",
+    "altitude_m": 3190,
+    "summary": "The 'Serpent's Peak' — a short, beautiful weekend trek through oak forest to a summit with the Bandarpunch and Gangotri ranges laid out in front of you.",
+    "story": [
+      "Nag Tibba is the trek I keep recommending to friends: close enough for a weekend, high enough to feel like the real thing. I've done it twice — once in the green of July, camping in the mist with a tricolour flying over the tent, and once in February, breaking trail through knee-deep snow.",
+      "The reward is the summit morning. The sun comes up over ridge after ridge, and the whole Garhwal Himalaya — Bandarpunch, Swargarohini, the Gangotri group — lines up across the horizon. A camp dog adopted us both times."
+    ],
+    "stats": [
+      {
+        "label": "Altitude",
+        "value": "3,190 m"
+      },
+      {
+        "label": "Duration",
+        "value": "2 days"
+      },
+      {
+        "label": "Best season",
+        "value": "Dec–Mar for snow; all year"
+      },
+      {
+        "label": "Grade",
+        "value": "Easy"
+      }
+    ],
+    "cover": "/static/img/explorer/naagtibba/20240211_073139.webp",
+    "gallery": [
+      {
+        "src": "/static/img/explorer/naagtibba/1708163957305.webp",
+        "caption": "A summit selfie with the camp dog"
+      },
+      {
+        "src": "/static/img/explorer/naagtibba/20230715_190206.webp",
+        "caption": "Sunset over the Nag Tibba meadows"
+      },
+      {
+        "src": "/static/img/explorer/naagtibba/20230715_195057.webp",
+        "caption": "Camp in the monsoon mist"
+      },
+      {
+        "src": "/static/img/explorer/naagtibba/20230716_080441.webp",
+        "caption": "The tricolour flying over camp"
+      },
+      {
+        "src": "/static/img/explorer/naagtibba/20230716_081000.webp",
+        "caption": "The green ridge to the summit"
+      },
+      {
+        "src": "/static/img/explorer/naagtibba/20230716_081051.webp",
+        "caption": "Looking out over the valleys"
+      },
+      {
+        "src": "/static/img/explorer/naagtibba/20230716_120342.webp",
+        "caption": "Standing in the mist with the flag"
+      },
+      {
+        "src": "/static/img/explorer/naagtibba/20230716_143612.webp",
+        "caption": "A cow grazing the high meadow"
+      },
+      {
+        "src": "/static/img/explorer/naagtibba/20240210_150616.webp",
+        "caption": "Snow in the oak forest"
+      },
+      {
+        "src": "/static/img/explorer/naagtibba/20240210_170520.webp",
+        "caption": "Fresh snow on the summit plateau"
+      },
+      {
+        "src": "/static/img/explorer/naagtibba/20240210_170858.webp",
+        "caption": "Two trekkers on the snowy top"
+      },
+      {
+        "src": "/static/img/explorer/naagtibba/20240211_065233.webp",
+        "caption": "Sunset through the trees on snow"
+      },
+      {
+        "src": "/static/img/explorer/naagtibba/20240211_072637.webp",
+        "caption": "First light over the ranges"
+      },
+      {
+        "src": "/static/img/explorer/naagtibba/20240211_073139.webp",
+        "caption": "Morning sun over the Garhwal ranges"
+      },
+      {
+        "src": "/static/img/explorer/naagtibba/20240211_090854.webp",
+        "caption": "The view from the tent door"
+      },
+      {
+        "src": "/static/img/explorer/naagtibba/20240211_124319.webp",
+        "caption": "Camp pitched in the snow"
+      },
+      {
+        "src": "/static/img/explorer/naagtibba/20240211_130104.webp",
+        "caption": "The Himalayan range on the horizon"
+      },
+      {
+        "src": "/static/img/explorer/naagtibba/20240211_131522.webp",
+        "caption": "Prayer flags at the summit"
+      },
+      {
+        "src": "/static/img/explorer/naagtibba/20240211_134923.webp",
+        "caption": "Heading down through the snowy forest"
+      }
+    ]
+  },
+  {
+    "slug": "surkanda-devi-and-tehari",
+    "title": "Surkanda Devi & Tehri",
+    "type": "trek",
+    "region": "Tehri Garhwal, Uttarakhand",
+    "altitude_m": 2756,
+    "summary": "An Independence Day ride to Tehri lake and the Dobra-Chanti bridge, then a short, steep climb to Surkanda Devi temple floating above a sea of clouds.",
+    "story": [
+      "A long weekend and a tricolour in the backpack. We rode out on Independence Day along the shores of Tehri lake, crossed the Dobra-Chanti suspension bridge high above the water and stopped at the jetty to watch the boats drift across the reservoir.",
+      "The next morning was the short, steep climb to Surkanda Devi. Near the top the clouds dropped below us, and the temple stood bright against a clean blue sky — a small trek with one of the biggest views in Garhwal."
+    ],
+    "stats": [
+      {
+        "label": "Altitude",
+        "value": "2,756 m"
+      },
+      {
+        "label": "Duration",
+        "value": "2 days"
+      },
+      {
+        "label": "Best season",
+        "value": "All year"
+      },
+      {
+        "label": "Grade",
+        "value": "Easy"
+      }
+    ],
+    "cover": "/static/img/explorer/surkanda-devi-and-tehari/20240816_080101.webp",
+    "gallery": [
+      {
+        "src": "/static/img/explorer/surkanda-devi-and-tehari/20240815_134707.webp",
+        "caption": "Independence Day with the tricolour on the hills"
+      },
+      {
+        "src": "/static/img/explorer/surkanda-devi-and-tehari/20240815_134743.webp",
+        "caption": "Flag in hand above the Tehri valley"
+      },
+      {
+        "src": "/static/img/explorer/surkanda-devi-and-tehari/20240815_151359.webp",
+        "caption": "Crossing the Dobra-Chanti suspension bridge"
+      },
+      {
+        "src": "/static/img/explorer/surkanda-devi-and-tehari/20240815_164233.webp",
+        "caption": "At the Tehri lake jetty"
+      },
+      {
+        "src": "/static/img/explorer/surkanda-devi-and-tehari/20240816_075046.webp",
+        "caption": "Surkanda Devi temple under a clear sky"
+      },
+      {
+        "src": "/static/img/explorer/surkanda-devi-and-tehari/20240816_080101.webp",
+        "caption": "Above a sea of clouds at Surkanda Devi"
+      },
+      {
+        "src": "/static/img/explorer/surkanda-devi-and-tehari/20240816_081214.webp",
+        "caption": "The temple courtyard at the top"
+      }
     ]
   }
 ]

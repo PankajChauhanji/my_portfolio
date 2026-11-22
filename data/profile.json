@@ -1,40 +1,99 @@
 {
   "name": "Pankaj Chauhan",
   "first_name": "Pankaj",
-  "role": "Technical Lead",
-  "title": "Technical Lead",
+  "role": "Tech Lead Engineer",
+  "title": "Tech Lead Engineer",
   "company": "Perfios Software Solutions",
   "location": "Dehradun, India",
   "hometown": "Dehradun, Uttarakhand",
   "email": "pankajchauhan.nitsri@gmail.com",
   "phone": "+91 8057307366",
   "quote": "Be the change that you want to see in the world.",
-  "tagline": "I lead teams that turn millions of messy PDFs into clean, structured data - and trade screens for ridgelines on the weekend.",
+  "tagline": "Agentic AI, document AI and LLM pipelines — engineered to stay precise at million-record scale and cheap enough to run every single day.",
   "terminal_roles": [
-    "tech_lead @ perfios",
-    "agentic_ai_builder",
-    "pdf_data_miner",
+    "tech_lead",
+    "agentic_ai_engineer",
+    "document_ai_builder",
+    "llm_pipeline_architect",
     "high_altitude_trekker"
   ],
-  "summary": "Software Engineer specializing in Python and Agentic AI, building scalable data-extraction pipelines for millions of records. I integrate LLMs, RAG, and custom parser frameworks to hit 98%+ accuracy while cutting operational and OCR costs.",
+  "summary": "Engineer with 5+ years in Python and agentic AI, building — and leading teams that build — LLM, RAG and OCR pipelines that deliver 97%+ accuracy across millions of records while cutting operational and LLM costs.",
   "about": [
-    "I build scalable backend systems for fintech, where my work revolves around one messy problem: turning millions of complex PDFs and images into clean, structured data. I've built the core pipelines that extract at massive scale, engineered custom parser frameworks, and shipped fraud-investigation workflows that have reviewed over 25 million documents.",
-    "Lately my focus has shifted toward applied AI inside enterprise systems - LLMs, RAG, and agentic workflows powering risk-monitoring products that are smarter and far cheaper to run. Combining traditional data mining with modern generative models is exactly the kind of problem I want to keep solving.",
-    "Away from the keyboard I'm usually at altitude. Long approaches and quiet summits in the Himalaya are how I reset - and planning an expedition turns out to be a lot like planning a release."
+    "I came to this work through a very unglamorous door: a pile of documents nobody could read. Scanned, skewed, stamped, handwritten — pages that held real answers about real people, locked in a format machines were never built for. Turning that mess into something a system can trust still gives me the same quiet thrill it did the first time one of my parsers got a table exactly right.",
+    "What keeps me here is who sits at the other end. A loan officer deciding whether a family gets credit. An analyst screening a company before money moves. A compliance team that cannot afford a single wrong name. Every percent of precision I fight for is someone downstream not making a mistake — or not being wrongly flagged for one. That is why I care more about the error I prevent than the model I use.",
+    "So I build cheap-first and honest: rules where rules are enough, LLMs where they earn their keep, two independent readers when a mistake would hurt, and a clean “I don't know” over a confident guess. I lead the same way — understand the problem before the code, protect the team's focus, and celebrate the boring, reliable release.",
+    "Away from the keyboard you'll usually find me somewhere above the treeline. The mountains taught me most of what I believe about engineering: pack light, respect the conditions, turn back when something is wrong — and keep walking when it's only hard."
   ],
-  "resume": { "file": "resume.pdf", "label": "Résumé" },
-  "stats": [
-    { "label": "5+ years building", "value": "5+", "kind": "code" },
-    { "label": "100M+ docs processed", "value": "100M+", "kind": "code" },
-    { "label": "98%+ extraction accuracy", "value": "98%+", "kind": "code" },
-    { "label": "4,600m summit", "value": "4,600", "kind": "trek" }
-  ],
+  "resume": {
+    "file": "resume.pdf",
+    "label": "Résumé"
+  },
   "skills": [
-    { "group": "Languages", "items": ["Python", "C++", "Java", "JavaScript"] },
-    { "group": "Generative AI & RAG", "items": ["Prompt Engineering", "Agentic AI", "RAG", "Vector Databases", "LLM Integration", "MCP", "LangChain", "LangGraph", "CrewAI"] },
-    { "group": "Data Mining", "items": ["PDF Parsing", "OCR", "Tampering Detection", "Generic Parsers", "Pandas", "NumPy", "PyMuPDF", "pdfplumber"] },
-    { "group": "Web & Data", "items": ["Flask", "Node.js", "PostgreSQL", "MySQL", "MongoDB", "REST APIs"] },
-    { "group": "Tooling", "items": ["Linux", "Git", "Docker", "Jupyter", "VS Code", "Jira"] }
+    {
+      "group": "Languages",
+      "icon": "code",
+      "items": [
+        "Python",
+        "C++",
+        "Java",
+        "JavaScript"
+      ]
+    },
+    {
+      "group": "Generative AI & LLMs",
+      "icon": "sparkles",
+      "items": [
+        "Agentic AI",
+        "RAG",
+        "MCP",
+        "Prompt Engineering",
+        "LLM Integration",
+        "Vector Databases",
+        "LangChain",
+        "LangGraph",
+        "CrewAI"
+      ]
+    },
+    {
+      "group": "Document AI & OCR",
+      "icon": "scan",
+      "items": [
+        "OCR",
+        "PDF Parsing",
+        "Table Extraction",
+        "Tamper Detection",
+        "Pandas",
+        "NumPy",
+        "PyMuPDF",
+        "pdfplumber"
+      ]
+    },
+    {
+      "group": "Web & Data",
+      "icon": "database",
+      "items": [
+        "Flask",
+        "Node.js",
+        "PostgreSQL",
+        "MySQL",
+        "MongoDB",
+        "REST APIs",
+        "HTML",
+        "CSS"
+      ]
+    },
+    {
+      "group": "Tooling",
+      "icon": "terminal",
+      "items": [
+        "Linux",
+        "Git",
+        "Docker",
+        "Jupyter",
+        "VS Code",
+        "Jira"
+      ]
+    }
   ],
   "experience": [
     {
@@ -42,30 +101,38 @@
       "location": "New Delhi, India",
       "roles": [
         {
-          "title": "Technical Lead",
-          "start": "Apr 2026", "end": "Present", "current": true,
+          "title": "Tech Lead Engineer",
+          "start": "Apr 2026",
+          "end": "Present",
+          "current": true,
           "highlights": [
-            "Leading parser frameworks, prompt engineering, and production ML best practices while driving AI workflow adoption across products — reducing manual work and accelerating feature delivery.",
-            "Redesigned a legacy document-OCR service into a modular, multi-engine pipeline (Google Vision / Tesseract, Python) — introduced streaming batch processing that keeps memory constant regardless of document size, parallelized OCR execution, and eliminated a redundant preprocessing stage consuming ~95% of pipeline CPU. Delivered 70% faster processing, 34% lower peak memory, and 41% less CPU on production."
+            "**Leading a team** delivering AI-driven data intelligence products — owning **feasibility studies**, **cost analysis** and **pipeline design**, while sustaining **95%+ team utilization** and resolving **critical security vulnerabilities** across services.",
+            "**Architected a Business Classification Engine** profiling Indian companies from their web footprint, unlocking **lead generation**, **peer comparison** and **AML/KYC due diligence** for KScan, with identity-verified website discovery at **99.4% precision**.",
+            "Developed an **LLM-driven taxonomy engine** on **self-hosted Qwen** mapping business activities from company websites to NIC-2008 codes — **98%+ accuracy** at **zero API cost** and **97x faster** candidate retrieval via **embedding caching**.",
+            "**Engineered a DGFT Trade-Risk pipeline** monitoring export entities through daily court-judgment analysis, combining multi-stage OCR with **prompt engineering** to classify complex legal risk and extract high-precision compliance parameters."
           ]
         },
         {
           "title": "Senior Member of Technical Staff",
-          "start": "Apr 2024", "end": "Apr 2026", "current": false,
+          "start": "Apr 2024",
+          "end": "Mar 2026",
+          "current": false,
           "highlights": [
-            "Architected a Corporate Risk platform monitoring Indian entities for adverse media and governance risk — a 10K/day pipeline with custom ML noise-filters and a scalable API layer.",
-            "Cut LLM costs by 85% through advanced prompt engineering while accurately classifying Fraud, Litigation, and Misconduct risk.",
-            "Built a DGFT trade-risk pipeline that analyses daily court judgments, combining multi-stage OCR with prompt engineering to classify complex legal risk.",
-            "Led research on table extraction from PDFs and images, shipping a versatile solution that has supported extraction across 100M+ documents."
+            "**Architected a Corporate Risk platform** monitoring Indian entities and management for adverse-media and governance risk — a 10K/day pipeline with **custom ML noise-filters** and a scalable API layer; **advanced prompt engineering** cut LLM costs by **85%** while classifying fraud, litigation and misconduct.",
+            "**Engineered a PEP screening pipeline** extracting PAN from election affidavits in **all Indian languages**, robust to handwritten, rotated and degraded stamp-paper scans; dual-reader **OCR + LLM** consensus delivered **97% precision** at **44% lower cost**.",
+            "**Built ocr_kit**, a unified multi-engine OCR framework (Google Vision, Tesseract, Azure) adopted across teams — smart page batching delivered **3.3x faster** processing and **34% lower memory**.",
+            "**Built an FIR intelligence pipeline** turning FIR PDFs from **all Indian states and languages** into structured data at million-record scale; custom **table reconstruction** and page-stitched OCR achieved **97.5% accuracy** at **85% lower OCR cost**.",
+            "Led **table extraction** research for PDFs and images, delivering a versatile solution that scaled to **10M+ records**."
           ]
         },
         {
-          "title": "Software Engineer - II",
-          "start": "Apr 2022", "end": "Apr 2024", "current": false,
+          "title": "Software Engineer II",
+          "start": "Apr 2022",
+          "end": "Apr 2024",
+          "current": false,
           "highlights": [
-            "Developed an industry-first PDF Tampering Detection solution for banking fraud, analysing 1.5M+ documents with an automated scoring mechanism that slashed false positives.",
-            "Built a versatile parser-utility framework for fields, tables, and key-value pairs from PDFs, images, and OCR - cutting development time 80-85% at 98.6% accuracy.",
-            "Improved accuracy and latency with OCR error management, caching, and region-of-interest cropping."
+            "Developed an industry-first **PDF Tampering Detection** solution for banking fraud — analysed 1.5M+ documents and built an automated scoring mechanism that slashed false positives.",
+            "**Built Parser Utility**, a **lightning-fast** document-extraction framework unifying PDFs, images and **multi-engine OCR** under one API; declarative **data mappers** and **complex table extraction** turn new formats into configuration, while **character-similarity OCR error correction**, fuzzy search and **smart ROI cropping** cut development time by **80–85%** at **98.6% accuracy**."
           ]
         }
       ]
@@ -76,11 +143,14 @@
       "roles": [
         {
           "title": "Software Engineer",
-          "start": "Jun 2021", "end": "Apr 2022", "current": false,
+          "start": "Jun 2021",
+          "end": "Apr 2022",
+          "current": false,
           "highlights": [
-            "Built low-latency parser APIs for KYC services, integrating Google OCR and Azure OCR.",
-            "Reduced API latency 40% via caching and optimised search algorithms.",
-            "Created custom parsers for complex tables, removing the need for expensive third-party APIs."
+            "Built **low-latency KYC parser APIs** on **Google** and **Azure OCR**, cutting response time by **40%** through smart **caching**.",
+            "Raised **extraction accuracy** by auto-correcting **OCR errors** and handling **skewed or rotated** PDFs and images.",
+            "Replaced paid **Adobe APIs** with **in-house parsers** for complex tables, **significantly cutting processing costs**.",
+            "Led **RCA** on production API discrepancies and migrated services to **Python 3.11**, improving stability."
           ]
         }
       ]
@@ -91,10 +161,11 @@
       "roles": [
         {
           "title": "Software Development Intern",
-          "start": "Jan 2021", "end": "Jun 2021", "current": false,
+          "start": "Jan 2021",
+          "end": "Jun 2021",
+          "current": false,
           "highlights": [
-            "Wrote SQL and MongoDB migration scripts and built front-end features with React and jQuery.",
-            "Took ownership from root-cause analysis to production release."
+            "Wrote SQL and MongoDB migration scripts and built front-end features with React and jQuery, owning work from root-cause analysis to production release."
           ]
         }
       ]
@@ -103,22 +174,164 @@
   "education": [
     {
       "institution": "National Institute of Technology, Srinagar",
-      "degree": "B.Tech", "field": "Information Technology",
-      "start": "2017", "end": "2021", "location": "J&K, India"
+      "degree": "B.Tech",
+      "field": "Information Technology",
+      "start": "2017",
+      "end": "2021",
+      "location": "J&K, India"
     }
   ],
   "certifications": [
-    { "name": "IBM RAG and Agentic AI (Specialization)", "issuer": "IBM", "url": "https://coursera.org/share/920288b8a01f570be6ecc0c0f108cb7f" },
-    { "name": "Generative AI for Software Developers (Specialization)", "issuer": "IBM", "url": "https://coursera.org/share/e677124390f6b70b9dbe6f23f8863d3a" },
-    { "name": "Advanced RAG with Vector Databases & Retrievers", "issuer": "IBM", "url": "https://coursera.org/share/847e231943eb0f614734b41fd800d220" },
-    { "name": "Agentic AI with LangGraph, CrewAI, AutoGen & BeeAI", "issuer": "IBM", "url": "https://coursera.org/share/a06e4ae58ee07e980be718acfb1511f7" },
-    { "name": "Build AI Agents using MCP", "issuer": "IBM", "url": "https://coursera.org/share/fc5f79e74ba8998e5e94e338fa0ab702" },
-    { "name": "Build Multimodal Generative AI Applications", "issuer": "IBM", "url": "https://coursera.org/share/b778bd48faea85c520e96ec494e67bac" }
+    {
+      "name": "IBM RAG and Agentic AI (Specialization)",
+      "issuer": "IBM",
+      "url": "https://coursera.org/share/920288b8a01f570be6ecc0c0f108cb7f"
+    },
+    {
+      "name": "Generative AI for Software Developers (Specialization)",
+      "issuer": "IBM",
+      "url": "https://coursera.org/share/e677124390f6b70b9dbe6f23f8863d3a"
+    },
+    {
+      "name": "Advanced RAG with Vector Databases & Retrievers",
+      "issuer": "IBM",
+      "url": "https://coursera.org/share/847e231943eb0f614734b41fd800d220"
+    },
+    {
+      "name": "Agentic AI with LangGraph, CrewAI, AutoGen & BeeAI",
+      "issuer": "IBM",
+      "url": "https://coursera.org/share/a06e4ae58ee07e980be718acfb1511f7"
+    },
+    {
+      "name": "Build AI Agents using MCP",
+      "issuer": "IBM",
+      "url": "https://coursera.org/share/fc5f79e74ba8998e5e94e338fa0ab702"
+    },
+    {
+      "name": "Build Multimodal Generative AI Applications",
+      "issuer": "IBM",
+      "url": "https://coursera.org/share/b778bd48faea85c520e96ec494e67bac"
+    }
   ],
   "social": [
-    { "label": "GitHub", "href": "https://github.com/PankajChauhanji", "type": "link" },
-    { "label": "LinkedIn", "href": "https://www.linkedin.com/in/pankaj-chauhan-sde/", "type": "link" },
-    { "label": "Instagram", "href": "https://www.instagram.com/royalpankz/", "type": "link" },
-    { "label": "Email", "href": "mailto:pankajchauhan.nitsri@gmail.com", "type": "email" }
-  ]
+    {
+      "label": "GitHub",
+      "href": "https://github.com/PankajChauhanji",
+      "type": "link"
+    },
+    {
+      "label": "LinkedIn",
+      "href": "https://www.linkedin.com/in/pankaj-chauhan-sde/",
+      "type": "link"
+    },
+    {
+      "label": "Instagram",
+      "href": "https://www.instagram.com/royalpankz/",
+      "type": "link"
+    },
+    {
+      "label": "Email",
+      "href": "mailto:pankajchauhan.nitsri@gmail.com",
+      "type": "email"
+    }
+  ],
+  "metrics": [
+    {
+      "value": "5+",
+      "label": "years building production data systems"
+    },
+    {
+      "value": "10M+",
+      "label": "records extracted from documents"
+    },
+    {
+      "value": "99.4%",
+      "label": "company-website match precision"
+    },
+    {
+      "value": "98.6%",
+      "label": "parser extraction accuracy"
+    },
+    {
+      "value": "85%",
+      "label": "LLM cost reduction"
+    },
+    {
+      "value": "5,400 m",
+      "label": "highest summit reached",
+      "kind": "trek"
+    }
+  ],
+  "systems": [
+    {
+      "icon": "globe",
+      "name": "Business Classification Engine",
+      "period": "2026 · Tech Lead",
+      "problem": "Registry codes say what a company is registered as — not what it actually does.",
+      "built": "Identity-verified website discovery, crawling and an LLM taxonomy engine that profiles Indian companies from their own web footprint.",
+      "impact": [
+        "99.4% precision",
+        "98%+ NIC accuracy",
+        "Zero API cost"
+      ],
+      "tags": [
+        "Self-hosted Qwen",
+        "Embeddings",
+        "Playwright",
+        "MongoDB"
+      ]
+    },
+    {
+      "icon": "shield",
+      "name": "Corporate Risk Platform",
+      "period": "2024–25 · SMTS",
+      "problem": "Adverse media and governance risk hide in a firehose of daily news.",
+      "built": "A 10K/day pipeline with ML noise-filters, LLM entity extraction and risk profiling behind a scalable API.",
+      "impact": [
+        "85% lower LLM cost",
+        "Fraud · Litigation · Misconduct"
+      ],
+      "tags": [
+        "LLMs",
+        "Prompt engineering",
+        "NLP",
+        "APIs"
+      ]
+    },
+    {
+      "icon": "scan",
+      "name": "PEP Screening Pipeline",
+      "period": "2025 · SMTS",
+      "problem": "PAN numbers buried in election affidavits — every language, handwritten, rotated, stamp-paper scans.",
+      "built": "Precision-first extraction where OCR rules and an LLM must agree before a value is trusted.",
+      "impact": [
+        "97% precision",
+        "44% lower cost"
+      ],
+      "tags": [
+        "OCR",
+        "LLM consensus",
+        "Multilingual"
+      ]
+    },
+    {
+      "icon": "layers",
+      "name": "ocr_kit & Parser Utility",
+      "period": "2022–25",
+      "problem": "Every team re-wrote OCR plumbing and parsers for each new document type.",
+      "built": "A shared multi-engine OCR library and a declarative extraction framework with OCR-error-aware search.",
+      "impact": [
+        "3.3x faster OCR",
+        "80–85% less dev time",
+        "98.6% accuracy"
+      ],
+      "tags": [
+        "Google Vision",
+        "Tesseract",
+        "Azure",
+        "Python"
+      ]
+    }
+  ],
+  "focus": "Agentic AI · Document AI · LLM pipelines"
 }

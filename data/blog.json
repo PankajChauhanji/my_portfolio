@@ -1,10 +1,48 @@
 [
   {
+    "slug": "precision-from-cheap-llms",
+    "title": "Small Models, Serious Precision: Getting 97–99% Accuracy From Cheap LLMs",
+    "excerpt": "Bigger models make pipelines accurate — and unaffordable. Here are the design habits that let small, cheap and even self-hosted LLMs hold 97–99% precision in production: narrow questions, independent readers, honest nulls and a golden set that gates every change.",
+    "date": "2026-11-20",
+    "tags": [
+      "LLM",
+      "AI Engineering",
+      "Precision",
+      "Cost Optimization"
+    ],
+    "cover": "/static/img/blog/precision-from-cheap-llms.svg",
+    "reading_time": "9 min read",
+    "content_file": "precision-from-cheap-llms.md",
+    "published": true
+  },
+  {
+    "slug": "catching-forged-pdfs",
+    "title": "The PDF Remembers: How We Catch Forged Bank Statements Before the Loan Goes Out",
+    "excerpt": "A forged bank statement can look perfect on screen. But a PDF is a small database with a history, and editing it leaves fingerprints the eye can't see. How document forensics helps lenders stop fraud without slowing down honest borrowers.",
+    "date": "2026-10-05",
+    "tags": [
+      "Fraud Detection",
+      "Fintech",
+      "PDF Forensics",
+      "Engineering"
+    ],
+    "cover": "/static/img/blog/catching-forged-pdfs.svg",
+    "reading_time": "8 min read",
+    "content_file": "catching-forged-pdfs.md",
+    "published": true
+  },
+  {
     "slug": "cutting-ocr-costs",
     "title": "How I Cut OCR API Costs by 80% Without Touching the Downstream",
     "excerpt": "An OCR request costs you twice — once to the vendor for the call, once to your own machines for the work of producing it. I went after both: page merging to collapse the API calls, and a streamed, bounded pipeline to flatten RAM, CPU, and latency underneath them. Here's exactly how the combined cost reduction works.",
     "date": "2026-07-18",
-    "tags": ["Engineering", "OCR", "Python", "Performance", "Cost Optimization"],
+    "tags": [
+      "Engineering",
+      "OCR",
+      "Python",
+      "Performance",
+      "Cost Optimization"
+    ],
     "cover": "/static/img/blog/cutting-ocr-costs.svg",
     "reading_time": "12 min read",
     "content_file": "cutting-ocr-costs.md",
@@ -15,7 +53,11 @@
     "title": "The Valley That Didn't Care I Was There",
     "excerpt": "87 square kilometres of wildflowers, monsoon rain that soaks through everything, and the most peaceful feeling I've had in years. The Valley of Flowers is the kind of place that recalibrates you.",
     "date": "2026-06-15",
-    "tags": ["Mountains", "Travel", "Life"],
+    "tags": [
+      "Mountains",
+      "Travel",
+      "Life"
+    ],
     "cover": "/static/img/explorer/valley-of-flowers/20250621_132210.webp",
     "reading_time": "7 min read",
     "content_file": "valley-of-flowers.md",
