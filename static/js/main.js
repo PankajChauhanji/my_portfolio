@@ -1,169 +1,222 @@
 (function () {
   "use strict";
   var root = document.documentElement;
-  var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var finePointer = window.matchMedia("(pointer: fine)").matches;
+  var $ = function (s, c) { return (c || document).querySelector(s); };
+  var $$ = function (s, c) { return Array.prototype.slice.call((c || document).querySelectorAll(s)); };
 
-  function toggleTheme() {
+  /* ---------- theme ---------- */
+  var toggle = $("#theme-toggle");
+  if (toggle) toggle.addEventListener("click", function () {
     var dark = root.classList.toggle("dark");
     try { localStorage.setItem("theme", dark ? "dark" : "light"); } catch (e) {}
-  }
-  ["theme-toggle", "theme-toggle-m"].forEach(function (id) {
-    var el = document.getElementById(id); if (el) el.addEventListener("click", toggleTheme);
   });
 
-  var menuBtn = document.getElementById("menu-btn");
-  var menu = document.getElementById("mobile-menu");
+  /* ---------- header: border on scroll ---------- */
+  var header = $("#site-header");
+  function onScroll() { if (header) header.classList.toggle("scrolled", window.scrollY > 8); }
+  window.addEventListener("scroll", onScroll, { passive: true }); onScroll();
+
+  /* ---------- mobile menu ---------- */
+  var menuBtn = $("#menu-btn"), menu = $("#mobile-menu");
   if (menuBtn && menu) {
     menuBtn.addEventListener("click", function () {
-      var open = menu.classList.toggle("hidden") === false;
+      var open = menu.classList.toggle("open");
       menuBtn.setAttribute("aria-expanded", String(open));
-      menuBtn.textContent = open ? "\u2715" : "\u2261";
     });
+    $$("a, button", menu).forEach(function (el) { el.addEventListener("click", function () { menu.classList.remove("open"); menuBtn.setAttribute("aria-expanded", "false"); }); });
   }
 
-  var typer = document.getElementById("typer");
-  if (typer) {
-    var roles = [];
-    try { roles = JSON.parse(typer.dataset.roles || "[]"); } catch (e) {}
-    if (!roles.length) roles = ["developer"];
-    if (reduceMotion) { typer.textContent = roles[0]; }
-    else {
-      var ri = 0, ci = 0, deleting = false;
-      (function tick() {
-        var word = roles[ri];
-        typer.textContent = word.slice(0, ci);
-        if (!deleting && ci < word.length) { ci++; setTimeout(tick, 75); }
-        else if (!deleting && ci === word.length) { deleting = true; setTimeout(tick, 1400); }
-        else if (deleting && ci > 0) { ci--; setTimeout(tick, 38); }
-        else { deleting = false; ri = (ri + 1) % roles.length; setTimeout(tick, 350); }
-      })();
-    }
+  /* ---------- nav: sliding pill indicator ---------- */
+  var navLinks = $("#nav-links");
+  if (navLinks) {
+    var pill = $(".nav-pill", navLinks);
+    var active = $(".nav-link.active", navLinks);
+    var place = function (el) {
+      if (!el) { pill.style.opacity = "0"; return; }
+      pill.style.left = el.offsetLeft + "px"; pill.style.width = el.offsetWidth + "px"; pill.style.opacity = "1";
+    };
+    place(active);
+    $$(".nav-link", navLinks).forEach(function (a) { a.addEventListener("mouseenter", function () { place(a); }); });
+    navLinks.addEventListener("mouseleave", function () { place(active); });
+    window.addEventListener("resize", function () { place(active); });
   }
 
-  var reveals = document.querySelectorAll(".reveal");
-  if (reduceMotion || !("IntersectionObserver" in window)) {
-    reveals.forEach(function (el) { el.classList.add("in"); });
-  } else {
+  /* ---------- hero headline: line-by-line rise ---------- */
+  requestAnimationFrame(function () { requestAnimationFrame(function () { document.body.classList.add("ready"); }); });
+
+  /* ---------- scroll reveal ---------- */
+  var reveals = $$(".reveal");
+  if (reduce || !("IntersectionObserver" in window)) reveals.forEach(function (el) { el.classList.add("in"); });
+  else {
     var io = new IntersectionObserver(function (entries) {
       entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } });
-    }, { threshold: 0.12, rootMargin: "0px 0px -40px 0px" });
-    reveals.forEach(function (el, i) { el.style.transitionDelay = Math.min(i % 6, 5) * 60 + "ms"; io.observe(el); });
+    }, { threshold: 0.12, rootMargin: "0px 0px -6% 0px" });
+    reveals.forEach(function (el) { io.observe(el); });
   }
 
-  var field = document.querySelector(".contour-field");
-  if (field && !reduceMotion && window.matchMedia("(pointer:fine)").matches) {
-    window.addEventListener("pointermove", function (e) {
-      var x = (e.clientX / window.innerWidth - 0.5) * 18;
-      var y = (e.clientY / window.innerHeight - 0.5) * 18;
-      field.style.transform = "translate3d(" + x + "px," + y + "px,0) scale(1.08)";
+  /* ---------- metric count-up ---------- */
+  var counters = $$("[data-count]");
+  function countUp(el) {
+    var raw = el.getAttribute("data-count");
+    var m = raw.match(/^([^\d]*)([\d,]*\.?\d+)(.*)$/);
+    if (!m || reduce) return;
+    var prefix = m[1], target = parseFloat(m[2].replace(/,/g, "")), suffix = m[3];
+    var decimals = (m[2].split(".")[1] || "").length, comma = m[2].indexOf(",") > -1;
+    var start = null, dur = 1600;
+    function frame(t) {
+      if (!start) start = t;
+      var p = Math.min((t - start) / dur, 1), eased = 1 - Math.pow(1 - p, 4);
+      var v = (target * eased).toFixed(decimals);
+      if (comma) v = Number(v).toLocaleString("en-US", { minimumFractionDigits: decimals, maximumFractionDigits: decimals });
+      el.textContent = prefix + v + suffix;
+      if (p < 1) requestAnimationFrame(frame); else el.textContent = raw;
+    }
+    requestAnimationFrame(frame);
+    setTimeout(function () { el.textContent = raw; }, dur + 400); // never leave a half-counted number
+  }
+  if (counters.length && "IntersectionObserver" in window) {
+    var cio = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) { if (e.isIntersecting) { countUp(e.target); cio.unobserve(e.target); } });
+    }, { threshold: 0.6 });
+    counters.forEach(function (c) { cio.observe(c); });
+  }
+
+  /* ---------- card spotlight follows the cursor ---------- */
+  if (finePointer && !reduce) {
+    document.addEventListener("pointermove", function (e) {
+      var card = e.target.closest && e.target.closest(".spot");
+      if (!card) return;
+      var r = card.getBoundingClientRect();
+      card.style.setProperty("--mx", (e.clientX - r.left) + "px");
+      card.style.setProperty("--my", (e.clientY - r.top) + "px");
     }, { passive: true });
   }
 
-  var lb = document.getElementById("lightbox");
+  /* ---------- terminal typer ---------- */
+  var typer = $("#typer");
+  if (typer && !reduce) {
+    var roles = [];
+    try { roles = JSON.parse(typer.dataset.roles || "[]"); } catch (e) {}
+    if (roles.length) {
+      var ri = 0, ci = roles[0].length, deleting = true;
+      setTimeout(function tick() {
+        var word = roles[ri];
+        typer.textContent = word.slice(0, ci);
+        if (deleting) { if (ci > 0) { ci--; return setTimeout(tick, 32); } deleting = false; ri = (ri + 1) % roles.length; return setTimeout(tick, 260); }
+        if (ci < roles[ri].length) { ci++; return setTimeout(tick, 70); }
+        deleting = true; setTimeout(tick, 1800);
+      }, 2200);
+    }
+  }
+
+  /* ---------- hero pipeline: cycles real use-cases ---------- */
+  var pipe = $("#pipeline");
+  if (pipe) {
+    var out = $("#code-out"), file = $("#pipe-file"), status = $("#pipe-status"), cost = $("#pipe-cost");
+    var nodes = $$(".flow-node", pipe);
+    var esc = function (s) { return String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;"); };
+    var runs = [
+      { file: 'pipeline.run("company_profile")', status: "3 runs/s · p95 412 ms", cost: "precision 99.4%",
+        obj: [["company", "Acme Instruments Pvt Ltd"], ["website", "acme-instruments.in"], ["nic_2008", "26517"], ["activity", "Industrial process control equipment"], ["confidence", 0.994]] },
+      { file: 'pipeline.run("pep_affidavit")', status: "lang: hi · handwritten · rotated", cost: "cost/doc −44%",
+        obj: [["document", "Form-26 affidavit"], ["language", "Hindi"], ["pan", "ABCPK1234Q"], ["readers_agree", true], ["precision", 0.971]] },
+      { file: 'pipeline.run("fir_report")', status: "state: Maharashtra · 7 pages/call", cost: "OCR cost −85%",
+        obj: [["fir_no", "0412/2026"], ["police_station", "Andheri East"], ["sections", ["IPC 420", "IPC 406"]], ["accused", 2], ["accuracy", 0.975]] },
+      { file: 'pipeline.run("adverse_media")', status: "10K articles/day · ML pre-filter", cost: "LLM cost −85%",
+        obj: [["entity", "Example Traders Ltd"], ["risk", "Litigation"], ["severity", "medium"], ["source", "news"], ["llm_calls_saved", 0.48]] }
+    ];
+    var fmtVal = function (v) {
+      if (typeof v === "number" || typeof v === "boolean") return '<span class="n">' + v + "</span>";
+      if (Array.isArray(v)) return '<span class="p">[</span>' + v.map(function (x) { return '<span class="s">"' + esc(x) + '"</span>'; }).join('<span class="p">, </span>') + '<span class="p">]</span>';
+      return '<span class="s">"' + esc(v) + '"</span>';
+    };
+    var render = function (pairs, upto) {
+      var lines = pairs.slice(0, upto).map(function (kv, i) {
+        return '  <span class="k">"' + kv[0] + '"</span><span class="p">:</span> ' + fmtVal(kv[1]) + (i < pairs.length - 1 ? '<span class="p">,</span>' : "");
+      });
+      return '<span class="p">{</span>\n' + lines.join("\n") + (upto ? "\n" : "") + '<span class="p">}</span>';
+    };
+    var idx = 0, visible = true;
+    if ("IntersectionObserver" in window) new IntersectionObserver(function (e) { visible = e[0].isIntersecting; }).observe(pipe);
+    var play = function () {
+      if (reduce) return;
+      if (!visible || document.hidden) return setTimeout(play, 800);
+      var run = runs[idx]; idx = (idx + 1) % runs.length;
+      file.textContent = run.file;
+      var step = 0;
+      var stepper = setInterval(function () {
+        nodes.forEach(function (n, i) { n.classList.toggle("active", i === step); });
+        if (step === 3) {
+          clearInterval(stepper);
+          var k = 0;
+          var typer2 = setInterval(function () {
+            k++; out.innerHTML = render(run.obj, k);
+            if (k >= run.obj.length) {
+              clearInterval(typer2);
+              status.innerHTML = "<b>●</b> " + esc(run.status); cost.textContent = run.cost;
+              setTimeout(function () { nodes.forEach(function (n) { n.classList.remove("active"); }); play(); }, 2600);
+            }
+          }, 170);
+        }
+        step++;
+      }, 520);
+      out.innerHTML = render(run.obj, 0);
+    };
+    setTimeout(play, 1400);
+  }
+
+  /* ---------- lightbox (explorer galleries) ---------- */
+  var lb = $("#lightbox");
   if (lb) {
-    var lbImg = document.getElementById("lightbox-img");
-    var lbCap = document.getElementById("lightbox-cap");
-    var lbCounter = document.getElementById("lightbox-counter");
-    var lbPrev = document.getElementById("lightbox-prev");
-    var lbNext = document.getElementById("lightbox-next");
-    var triggers = Array.from(document.querySelectorAll(".lightbox-trigger"));
-    var currentIdx = 0;
-
-    function showAt(i) {
-      currentIdx = (i + triggers.length) % triggers.length;
-      var t = triggers[currentIdx];
-      lbImg.src = t.dataset.img;
-      var cap = t.dataset.caption || t.dataset.name || "";
-      lbImg.alt = cap;
-      lbCap.textContent = cap;
-      if (lbCounter) lbCounter.textContent = (currentIdx + 1) + " / " + triggers.length;
-    }
-    function openLb(i) {
-      showAt(i);
-      lb.classList.remove("hidden"); lb.classList.add("flex");
-    }
-    function closeLb() { lb.classList.add("hidden"); lb.classList.remove("flex"); }
-
+    var lbImg = $("#lightbox-img"), lbCap = $("#lightbox-cap"), lbCounter = $("#lightbox-counter");
+    var triggers = $$(".lightbox-trigger"), cur = 0;
+    var showAt = function (i) {
+      cur = (i + triggers.length) % triggers.length;
+      var t = triggers[cur]; lbImg.src = t.dataset.img; lbImg.alt = t.dataset.caption || "";
+      lbCap.textContent = t.dataset.caption || ""; if (lbCounter) lbCounter.textContent = (cur + 1) + " / " + triggers.length;
+    };
+    var openLb = function (i) { showAt(i); lb.classList.add("flex"); document.body.style.overflow = "hidden"; };
+    var closeLb = function () { lb.classList.remove("flex"); document.body.style.overflow = ""; };
     triggers.forEach(function (b, i) { b.addEventListener("click", function () { openLb(i); }); });
-    document.getElementById("lightbox-close").addEventListener("click", closeLb);
+    $("#lightbox-close").addEventListener("click", closeLb);
     lb.addEventListener("click", function (e) { if (e.target === lb) closeLb(); });
-    if (lbPrev) lbPrev.addEventListener("click", function () { showAt(currentIdx - 1); });
-    if (lbNext) lbNext.addEventListener("click", function () { showAt(currentIdx + 1); });
+    $("#lightbox-prev").addEventListener("click", function () { showAt(cur - 1); });
+    $("#lightbox-next").addEventListener("click", function () { showAt(cur + 1); });
     document.addEventListener("keydown", function (e) {
-      if (lb.classList.contains("hidden")) return;
-      if (e.key === "Escape") closeLb();
-      else if (e.key === "ArrowLeft") showAt(currentIdx - 1);
-      else if (e.key === "ArrowRight") showAt(currentIdx + 1);
+      if (!lb.classList.contains("flex")) return;
+      if (e.key === "Escape") closeLb(); else if (e.key === "ArrowLeft") showAt(cur - 1); else if (e.key === "ArrowRight") showAt(cur + 1);
     });
   }
 
-  /* ---------- Contact modal ---------- */
-  var cm = document.getElementById("contact-modal");
+  /* ---------- contact modal ---------- */
+  var cm = $("#contact-modal");
   if (cm) {
-    var form = document.getElementById("contact-form");
-    var statusEl = document.getElementById("cf-status");
-    var submitBtn = document.getElementById("cf-submit");
-    function openCM() {
-      cm.classList.remove("hidden"); cm.classList.add("flex");
-      document.body.style.overflow = "hidden";
-      var f = document.getElementById("cf-email"); if (f) setTimeout(function () { f.focus(); }, 60);
-    }
-    function closeCM() { cm.classList.add("hidden"); cm.classList.remove("flex"); document.body.style.overflow = ""; }
-    document.querySelectorAll(".contact-open").forEach(function (b) {
-      b.addEventListener("click", function (e) { e.preventDefault(); openCM(); });
-    });
-    var cClose = document.getElementById("contact-close");
-    if (cClose) cClose.addEventListener("click", closeCM);
+    var form = $("#contact-form"), statusEl = $("#cf-status"), submitBtn = $("#cf-submit");
+    var openCM = function () { cm.classList.add("flex"); document.body.style.overflow = "hidden"; setTimeout(function () { var f = $("#cf-email"); if (f) f.focus(); }, 80); };
+    var closeCM = function () { cm.classList.remove("flex"); document.body.style.overflow = ""; };
+    $$(".contact-open").forEach(function (b) { b.addEventListener("click", function (e) { e.preventDefault(); openCM(); }); });
+    $("#contact-close").addEventListener("click", closeCM);
     cm.addEventListener("click", function (e) { if (e.target === cm) closeCM(); });
-    document.addEventListener("keydown", function (e) { if (e.key === "Escape" && !cm.classList.contains("hidden")) closeCM(); });
-
-    function setStatus(msg, isErr) {
-      statusEl.classList.remove("hidden");
-      statusEl.textContent = msg;
-      statusEl.style.color = isErr ? "var(--alpenglow-1)" : "var(--glacier)";
-    }
-    function resetBtn() { submitBtn.disabled = false; submitBtn.textContent = "Send message"; }
-
-    if (form) form.addEventListener("submit", function (e) {
+    document.addEventListener("keydown", function (e) { if (e.key === "Escape" && cm.classList.contains("flex")) closeCM(); });
+    var setStatus = function (msg, err) { statusEl.classList.remove("hidden"); statusEl.textContent = msg; statusEl.style.color = err ? "#ef4444" : "var(--ok)"; };
+    var resetBtn = function () { submitBtn.disabled = false; submitBtn.textContent = "Send message"; };
+    form.addEventListener("submit", function (e) {
       e.preventDefault();
-      var email = form.email.value.trim(), phone = form.phone.value.trim(),
-          subject = form.subject.value.trim(), message = form.message.value.trim();
-      if (!email || !message) { setStatus("Please add your email and a message.", true); return; }
-      var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      if (!emailRegex.test(email)) { setStatus("Please enter a valid email address.", true); return; }
-      var provider = form.dataset.provider, to = form.dataset.to, key = form.dataset.key,
-          success = form.dataset.success || "Thanks! Your message is on its way.";
+      var email = form.email.value.trim(), phone = form.phone.value.trim(), subject = form.subject.value.trim(), message = form.message.value.trim();
+      if (!email || !message) return setStatus("Please add your email and a message.", true);
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return setStatus("Please enter a valid email address.", true);
+      var provider = form.dataset.provider, to = form.dataset.to, key = form.dataset.key, success = form.dataset.success || "Thanks! Your message is on its way.";
       var subj = subject || ("New message from " + email);
-      submitBtn.disabled = true; submitBtn.textContent = "Sending...";
-      statusEl.classList.add("hidden");
-
+      submitBtn.disabled = true; submitBtn.textContent = "Sending…"; statusEl.classList.add("hidden");
       var req;
-      if (provider === "web3forms") {
-        req = fetch("https://api.web3forms.com/submit", {
-          method: "POST", headers: { "Content-Type": "application/json", Accept: "application/json" },
-          body: JSON.stringify({ access_key: key, email: email, phone: phone, subject: subj, message: message })
-        });
-      } else if (provider === "flask") {
-        req = fetch("/contact", {
-          method: "POST", headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ email: email, phone: phone, subject: subject, message: message })
-        });
-      } else { /* formsubmit (default) */
-        req = fetch("https://formsubmit.co/ajax/" + encodeURIComponent(to), {
-          method: "POST", headers: { "Content-Type": "application/json", Accept: "application/json" },
-          body: JSON.stringify({ email: email, phone: phone, _subject: subj, message: message })
-        });
-      }
+      if (provider === "web3forms") req = fetch("https://api.web3forms.com/submit", { method: "POST", headers: { "Content-Type": "application/json", Accept: "application/json" }, body: JSON.stringify({ access_key: key, email: email, phone: phone, subject: subj, message: message }) });
+      else if (provider === "flask") req = fetch("/contact", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ email: email, phone: phone, subject: subject, message: message }) });
+      else req = fetch("https://formsubmit.co/ajax/" + encodeURIComponent(to), { method: "POST", headers: { "Content-Type": "application/json", Accept: "application/json" }, body: JSON.stringify({ email: email, phone: phone, _subject: subj, message: message }) });
       req.then(function (r) { return r.json().catch(function () { return {}; }); })
-        .then(function (d) {
-          if (d.success === true || d.success === "true" || d.ok === true) {
-            form.reset(); resetBtn(); setStatus(success, false);
-          } else {
-            setStatus(d.message || "Something went wrong - please email me directly.", true); resetBtn();
-          }
-        })
-        .catch(function () { setStatus("Network error - please email me directly.", true); resetBtn(); });
+        .then(function (d) { if (d.success === true || d.success === "true" || d.ok === true) { form.reset(); resetBtn(); setStatus(success, false); } else { setStatus(d.message || "Something went wrong — please email me directly.", true); resetBtn(); } })
+        .catch(function () { setStatus("Network error — please email me directly.", true); resetBtn(); });
     });
   }
-
 })();
