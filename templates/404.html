@@ -1,9 +1,11 @@
 {% extends 'base.html' %}
-{% block title %}Lost - {{ profile.name }}{% endblock %}
+{% from 'partials/icons.html' import icon %}
+{% block title %}Page not found — {{ profile.name }}{% endblock %}
 {% block content %}
-<section class="max-w-content mx-auto px-5 sm:px-8 min-h-[60vh] flex flex-col justify-center text-center">
-  <p class="font-display font-bold text-7xl sm:text-9xl alpenglow">404</p>
-  <p class="font-mono text-muted mt-4">Off the marked trail - this route doesn't exist.</p>
-  <div class="mt-8"><a href="{{ url_for('home') }}" class="btn btn-primary">&larr; Back to base camp</a></div>
+<section class="container" style="min-height:62vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding-block:80px">
+  <p class="mono" style="color:var(--brand-1);font-size:13px;letter-spacing:.14em">ERROR 404</p>
+  <h1 class="h1" style="margin-top:12px"><span class="gradient-text">Off the marked trail.</span></h1>
+  <p class="lead">This route doesn't exist — but the base camp does.</p>
+  <div style="margin-top:32px"><a href="{{ url_for('home') }}" class="btn btn-primary">{{ icon('arrow-left') }}Back to home</a></div>
 </section>
 {% endblock %}
