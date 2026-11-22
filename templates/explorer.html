@@ -1,185 +1,35 @@
 {% extends 'base.html' %}
-{% block title %}Explorer - {{ profile.name }}{% endblock %}
-{% block styles %}
-<link rel="stylesheet" href="{{ url_for('static', filename='css/explorer.css') }}">
-{% endblock %}
+{% from 'partials/icons.html' import icon %}
+{% block title %}Explorer — Himalayan treks by {{ profile.name }}{% endblock %}
+
 {% block meta_description %}{{ site.pages.explorer.subtitle }}{% endblock %}
 {% block content %}
-<section class="max-w-content mx-auto px-5 sm:px-8 pt-20 sm:pt-28 pb-12">
+<section class="container page-head">
   {% set pg = site.pages.explorer %}
   <p class="eyebrow reveal">{{ pg.eyebrow }}</p>
-  <h1 class="reveal font-display font-bold tracking-tight text-4xl sm:text-6xl mt-4">{{ pg.title_pre }}<span class="alpenglow">{{ pg.title_accent }}</span>{{ pg.title_post }}</h1>
-  <p class="reveal cursive-quote">Never get so busy making a living that you forget to make a life</p>
-  
-  <!-- Running Boy Animation Container -->
-  <div id="runner-container" class="reveal relative w-full">
-    <!-- Track line -->
-    <div class="track-line"></div>
-    
-    <!-- Boulders: solid rocks sitting on the track line (ground at y=18) -->
-    <div class="boulder boulder-1">
-      <svg viewBox="0 0 20 20" class="w-full h-full" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round">
-        <!-- rounded boulder -->
-        <path d="M2,18 C1.6,11.5 5.2,7 10,7 C14.8,7 18.4,11.5 18,18 Z" fill="currentColor" fill-opacity="0.22"/>
-      </svg>
-    </div>
-    <div class="boulder boulder-2">
-      <svg viewBox="0 0 20 20" class="w-full h-full" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round">
-        <!-- angular rock -->
-        <path d="M2,18 L5.4,9.5 L10.2,5.5 L15,10 L18,18 Z" fill="currentColor" fill-opacity="0.22"/>
-      </svg>
-    </div>
-    <div class="boulder boulder-3">
-      <svg viewBox="0 0 20 20" class="w-full h-full" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round">
-        <!-- low, wide stone -->
-        <path d="M1.5,18 C2.2,13.4 5.8,10.4 10,10.4 C14.3,10.4 17.9,13.6 18.5,18 Z" fill="currentColor" fill-opacity="0.22"/>
-      </svg>
-    </div>
-    <div class="boulder boulder-4">
-      <svg viewBox="0 0 20 20" class="w-full h-full" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round">
-        <!-- twin-peaked rock -->
-        <path d="M2,18 L5,10.5 L8.6,13.5 L12.6,6.5 L18,18 Z" fill="currentColor" fill-opacity="0.22"/>
-      </svg>
-    </div>
+  <h1 class="h1 reveal" style="font-size:clamp(2.4rem,5vw,4rem);margin-top:14px">{{ pg.title_pre }}<span class="gradient-text">{{ pg.title_accent }}</span>{{ pg.title_post }}</h1>
+  <p class="reveal cursive-quote">“Never get so busy making a living that you forget to make a life.”</p>
 
-    <!-- Mountain: one clean summit. The left ridge is the exact quadratic
-         bezier the climb animation follows - P0(10,100) C(32,60) P2(68,22). -->
-    <div class="mountain-container">
-      <svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round">
-        <path d="M 10,100 Q 32,60 68,22 Q 79,54 86,70 Q 92,86 96,100" />
-        <!-- interior arete, reads as part of the peak rather than a stray line -->
-        <path d="M 68,22 Q 65,55 61,100" stroke-width="1" opacity="0.4" />
-      </svg>
-    </div>
-    
-    <!-- Character -->
-    <div id="runner-character">
-      <!-- Run Frame 1 (Contact) - side profile facing right, torso leaning into the run -->
-      <div class="runner-frame frame-run1 w-full h-full">
-        <svg viewBox="0 0 24 24" class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--text)">
-          <circle cx="12.8" cy="4.6" r="2.3" fill="currentColor"/>
-          <path d="M14.9 4.1 L16.3 4.7 L14.9 5.3 Z" fill="currentColor"/> <!-- nose, faces right -->
-          <path d="M12.6 7 L11.5 13.1" />                                  <!-- torso, leaning forward -->
-          <path d="M12.3 8.5 L15.1 10 L16.6 8.1" />                        <!-- lead arm, bent, swung forward -->
-          <path d="M12.3 8.5 L9.6 10.1 L8.1 8.1" />                        <!-- trail arm, bent, swung back -->
-          <path d="M11.5 13.1 L14.7 15.9 L16.3 21.4" />                    <!-- lead leg reaching forward -->
-          <path d="M11.5 13.1 L9.1 16.5 L7.3 21.8" />                      <!-- trail leg pushing off -->
-        </svg>
-      </div>
-      <!-- Run Frame 2 (Passing) - legs under the body, arms swapped -->
-      <div class="runner-frame frame-run2 w-full h-full hidden">
-        <svg viewBox="0 0 24 24" class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--text)">
-          <circle cx="12.8" cy="4.3" r="2.3" fill="currentColor"/>
-          <path d="M14.9 3.8 L16.3 4.4 L14.9 5 Z" fill="currentColor"/>
-          <path d="M12.6 6.7 L11.5 12.8" />
-          <path d="M12.3 8.2 L9.7 9.8 L8.3 7.7" />                         <!-- arms swapped -->
-          <path d="M12.3 8.2 L15 10.2 L16.5 8.5" />
-          <path d="M11.5 12.8 L11.9 17.1 L11 21.9" />                      <!-- support leg, near vertical -->
-          <path d="M11.5 12.8 L14.4 15.1 L13.3 19.3" />                    <!-- trailing knee driving through -->
-        </svg>
-      </div>
-      <!-- Jump Frame - tucked mid-air, arms driving forward -->
-      <div class="runner-frame frame-jump w-full h-full hidden">
-        <svg viewBox="0 0 24 24" class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--text)">
-          <circle cx="13.2" cy="4" r="2.3" fill="currentColor"/>
-          <path d="M15.3 3.5 L16.7 4.1 L15.3 4.7 Z" fill="currentColor"/>
-          <path d="M13 6.4 L11.9 12.4" />
-          <path d="M12.7 7.9 L15.9 6.6 L17.7 4.7" />                       <!-- lead arm up and forward -->
-          <path d="M12.7 7.9 L9.7 7.2 L8 5.5" />                           <!-- trail arm swung back -->
-          <path d="M11.9 12.4 L15.3 13.9 L16.5 17.7" />                    <!-- lead leg tucked forward -->
-          <path d="M11.9 12.4 L9.1 15 L10.6 18.7" />                       <!-- trail leg tucked under -->
-        </svg>
-      </div>
-      <!-- Fall Frame 1 (sliding back, arms up) -->
-      <div class="runner-frame frame-fall1 w-full h-full hidden">
-        <svg viewBox="0 0 24 24" class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--text)">
-          <circle cx="12.4" cy="5.4" r="2.3" fill="currentColor"/>
-          <path d="M14.5 4.9 L15.9 5.5 L14.5 6.1 Z" fill="currentColor"/>
-          <path d="M12.2 7.8 L12.9 13.4" />                                <!-- torso tipped back -->
-          <path d="M12.4 9.2 L15.5 6.5" />                                 <!-- arms thrown up -->
-          <path d="M12.4 9.2 L9.1 6.8" />
-          <path d="M12.9 13.4 L9.6 16.6 L8.1 21.5" />
-          <path d="M12.9 13.4 L15.9 17.2 L17.7 20.3" />
-        </svg>
-      </div>
-      <!-- Fall Frame 2 (sliding back, arms down) -->
-      <div class="runner-frame frame-fall2 w-full h-full hidden">
-        <svg viewBox="0 0 24 24" class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--text)">
-          <circle cx="12.4" cy="5.4" r="2.3" fill="currentColor"/>
-          <path d="M14.5 4.9 L15.9 5.5 L14.5 6.1 Z" fill="currentColor"/>
-          <path d="M12.2 7.8 L12.9 13.4" />
-          <path d="M12.4 9.2 L15.3 12.3" />                                <!-- arms swung down -->
-          <path d="M12.4 9.2 L8.9 11.9" />
-          <path d="M12.9 13.4 L10.7 18.2 L9.9 21.9" />
-          <path d="M12.9 13.4 L14.9 18 L15.7 21.5" />
-        </svg>
-      </div>
-      <!-- Climb Frame 1 (Pulling Up) -->
-      <div class="runner-frame frame-climb1 w-full h-full hidden">
-        <svg viewBox="0 0 24 24" class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--text)">
-          <circle cx="12" cy="4.2" r="2.2" fill="currentColor"/>
-          <path d="M13.5 3.5 L14.5 3.2 L13.8 4.2" fill="currentColor"/> <!-- Nose tilted up -->
-          <path d="M12 6.4 L12.5 12" />
-          <!-- Hand reaching high to grab rock -->
-          <path d="M12.2 8 L16.5 4 L14 1" />
-          <!-- Hand pulling lower down -->
-          <path d="M12.2 8 L9 9.5 L11 11" />
-          <!-- Leg pulling up high -->
-          <path d="M12.5 12 L15.5 15 L13.5 18" />
-          <!-- Leg extended pushing off -->
-          <path d="M12.5 12 L9.5 16 L11.5 22" />
-        </svg>
-      </div>
-      <!-- Climb Frame 2 (Reaching Up) -->
-      <div class="runner-frame frame-climb2 w-full h-full hidden">
-        <svg viewBox="0 0 24 24" class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--text)">
-          <circle cx="12" cy="4.2" r="2.2" fill="currentColor"/>
-          <path d="M13.5 3.5 L14.5 3.2 L13.8 4.2" fill="currentColor"/> <!-- Nose tilted up -->
-          <path d="M12 6.4 L12.5 12" />
-          <!-- Hand reaching high to grab rock (swapped) -->
-          <path d="M12.2 8 L8.5 4.5 L11 1.5" />
-          <!-- Hand pulling lower down -->
-          <path d="M12.2 8 L15.5 9 L13 11" />
-          <!-- Leg pulling up high (swapped) -->
-          <path d="M12.5 12 L10 15 L12.5 18.5" />
-          <!-- Leg extended pushing off -->
-          <path d="M12.5 12 L15.5 16.5 L13.5 22" />
-        </svg>
-      </div>
-      <!-- Celebrate Frame -->
-      <div class="runner-frame frame-celebrate w-full h-full hidden">
-        <svg viewBox="0 0 24 24" class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--text)">
-          <circle cx="12" cy="4" r="2.2" fill="currentColor"/>
-          <path d="M13.7 3.8 L14.7 4.1 L13.7 4.4" fill="currentColor"/> <!-- Nose profile -->
-          <line x1="12" y1="6.2" x2="12" y2="11.5" />
-          <path d="M12 8.2 L16.5 3.8 L18.5 1.3" />
-          <path d="M12 8.2 L7.5 3.8 L5.5 1.3" />
-          <path d="M12 11.5 L9.5 19" />
-          <path d="M12 11.5 L14.5 19" />
-        </svg>
-      </div>
-    </div>
+  <div id="trek-scene" class="trek-scene reveal" role="img" aria-label="Animated trekker running the trail, hopping rocks, slipping on the ridge, getting back up and planting a flag on the summit">
+    <svg preserveAspectRatio="xMidYMax meet" aria-hidden="true"></svg>
   </div>
 
-  <p class="reveal mt-5 max-w-2xl text-lg text-muted leading-relaxed">{{ pg.subtitle }}</p>
+  <p class="lead reveal">{{ pg.subtitle }}</p>
 </section>
 
-<section class="max-w-content mx-auto px-5 sm:px-8 pb-10">
-  <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
+<section class="container">
+  <div class="grid grid-3">
     {% for e in entries %}
-    <a href="{{ url_for('explorer_detail', slug=e.slug) }}" class="reveal card rounded-3xl overflow-hidden flex flex-col group">
-      <div class="relative aspect-[4/3] overflow-hidden">
-        <img src="{{ e.cover }}" alt="{{ e.title }}, {{ e.region }}" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" loading="lazy">
-        <span class="absolute top-3 right-3 font-mono text-xs font-semibold px-2.5 py-1 rounded-md text-white" style="background:rgba(11,16,38,0.55);backdrop-filter:blur(4px)">&#9650; {{ '{:,}'.format(e.altitude_m) }} m</span>
-        <span class="absolute bottom-3 left-3 right-3 flex items-center justify-between">
-          <span class="font-mono text-[11px] px-2 py-1 rounded-md text-white" style="background:rgba(11,16,38,0.5);backdrop-filter:blur(4px)">{{ e.gallery|length }} photos</span>
-        </span>
+    <a href="{{ url_for('explorer_detail', slug=e.slug) }}" class="card spot lift trek reveal" style="--d:{{ (loop.index0 % 3) * 80 }}ms">
+      <div class="trek-media">
+        <img src="{{ e.cover }}" alt="{{ e.title }}, {{ e.region }}" loading="{{ 'eager' if loop.index0 < 3 else 'lazy' }}" decoding="async" width="800" height="600">
+        <span class="alt-badge">{{ icon('mountain') }}{{ '{:,}'.format(e.altitude_m) }} m</span>
       </div>
-      <div class="p-6 flex flex-col flex-1">
-        <h2 class="font-display font-bold text-xl">{{ e.title }}</h2>
-        <p class="font-mono text-xs text-glacier mt-1">{{ e.region }}</p>
-        <p class="mt-3 text-sm text-muted leading-relaxed flex-1">{{ e.summary }}</p>
-        <span class="mt-5 font-mono text-sm text-text inline-flex items-center gap-1.5 group-hover:text-glacier transition-colors">View gallery <span aria-hidden="true" class="transition-transform group-hover:translate-x-1">&rarr;</span></span>
+      <div class="trek-body">
+        <h2>{{ e.title }}</h2>
+        <span class="region">{{ e.region }} · {{ e.gallery | length }} photos</span>
+        <p>{{ e.summary }}</p>
+        <span class="text-link" style="margin-top:6px">View story &amp; gallery{{ icon('arrow-right') }}</span>
       </div>
     </a>
     {% endfor %}
